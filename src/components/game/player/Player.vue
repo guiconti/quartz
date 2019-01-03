@@ -17,8 +17,9 @@
     </v-container>
 
     <v-card-actions>
-      <v-btn flat color="orange">Share</v-btn>
-      <v-btn flat color="orange">Explore</v-btn>
+      <v-btn flat color="orange">Pick a crystal</v-btn>
+      <v-spacer/>
+      <v-btn flat color="orange">Close mine</v-btn>
     </v-card-actions>
   </v-card>
 </template>
