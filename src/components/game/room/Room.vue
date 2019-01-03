@@ -5,6 +5,8 @@
         <app-player 
           name="Guilherme" 
           :crystals="this.crystals"
+          :money="100"
+          :cards="7"
         />
       </v-flex>
     </v-layout>

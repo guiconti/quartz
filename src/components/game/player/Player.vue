@@ -16,6 +16,17 @@
       />
     </v-container>
 
+    <v-container fluid>
+      <v-layout>
+        <v-flex xs2>
+        <v-icon color="yellow lighten-1">monetization_on</v-icon>{{money}}
+        </v-flex>
+        <v-flex xs2>
+        <v-icon color="indigo">class</v-icon>{{cards}}
+        </v-flex>
+      </v-layout>
+    </v-container>
+
     <v-card-actions>
       <v-btn flat color="orange">Pick a crystal</v-btn>
       <v-spacer/>
@@ -31,7 +42,9 @@ export default {
   name: 'Player',
   props: {
     name: String,
-    crystals: Array
+    crystals: Array,
+    money: Number,
+    cards: Number
   },
   components: {
     appCrystal: Crystal
