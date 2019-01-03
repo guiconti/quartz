@@ -1,12 +1,13 @@
 import Example from './components/Example';
+import Room from './components/game/room/Room';
 
 const routes = [
   {
     path: '/',
-    name: 'Default',
+    name: 'Room',
     components: {
       // 'menu-top': Navmenu,
-      default: Example
+      default: Room
       // 'foot-compo': Footer
     }
   }
