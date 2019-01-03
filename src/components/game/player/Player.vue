@@ -18,10 +18,10 @@
 
     <v-container fluid>
       <v-layout>
-        <v-flex xs2>
+        <v-flex xs4>
         <v-icon color="yellow lighten-1">monetization_on</v-icon>{{money}}
         </v-flex>
-        <v-flex xs2>
+        <v-flex xs4>
         <v-icon color="indigo">class</v-icon>{{cards}}
         </v-flex>
       </v-layout>

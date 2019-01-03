@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex xs2>
+    <v-flex xs4>
       <v-icon :color="this.getCrystalColor()(this.name)">brightness_1</v-icon> {{amount}}
     </v-flex>
   </v-layout>

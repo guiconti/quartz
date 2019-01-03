@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-layout>
-      <v-flex xs12 sm4 offset-sm4>
+      <v-flex xs12 sm3 offset-sm4>
         <app-player 
           name="Guilherme" 
           :crystals="this.crystals"
