@@ -1,7 +1,14 @@
 <template>
-  <v-layout>
-    <v-flex xs4>
-      <v-icon :color="this.getCrystalColor()(this.name)">brightness_1</v-icon> {{amount}}
+  <v-layout column>
+    <v-flex xs4 align-center>
+      <div class="text-xs-center">
+        <v-icon :color="this.getCrystalColor()(this.name)">brightness_1</v-icon>
+      </div>
+    </v-flex>
+    <v-flex xs4 align-center>
+      <div class="text-xs-center">
+        {{amount}}
+      </div>
     </v-flex>
   </v-layout>
 </template>
