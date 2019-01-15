@@ -1,12 +1,15 @@
 <template>
   <v-container fluid>
     <v-layout>
-      <v-flex xs12 sm3 offset-sm4>
+      <v-flex 
+        xs12 
+        sm3
+      >
         <app-player 
-          name="Guilherme" 
-          :crystals="this.crystals"
+          :crystals="crystals"
           :money="100"
           :cards="7"
+          name="Guilherme" 
         />
       </v-flex>
     </v-layout>
