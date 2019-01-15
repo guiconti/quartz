@@ -1,16 +1,65 @@
 <template>
   <v-container fluid>
-    <v-layout>
-      <v-flex 
-        xs12 
-        sm3
-      >
-        <app-player 
-          :crystals="crystals"
-          :money="100"
-          :cards="7"
-          name="Guilherme" 
-        />
+    <v-layout column>
+      <v-flex xs12>
+        <v-layout row>
+          <v-flex 
+            xs12 
+            sm3
+          >
+            <app-player 
+              :crystals="crystals"
+              :money="100"
+              :cards="7"
+              name="Guilherme" 
+            />
+          </v-flex>
+          <v-flex 
+            xs12 
+            sm3
+          >
+            <app-player 
+              :crystals="crystals"
+              :money="100"
+              :cards="7"
+              name="Guilherme" 
+            />
+          </v-flex>
+          <v-flex 
+            xs12 
+            sm3
+          >
+            <app-player 
+              :crystals="crystals"
+              :money="100"
+              :cards="7"
+              name="Guilherme" 
+            />
+          </v-flex>
+          <v-flex 
+            xs12 
+            sm3
+          >
+            <app-player 
+              :crystals="crystals"
+              :money="100"
+              :cards="7"
+              name="Guilherme" 
+            />
+          </v-flex>
+        </v-layout>
+      </v-flex>
+      <v-flex xs12>
+        <v-layout row>
+          <v-flex 
+            xs12 
+            sm3
+          >
+            <app-cave 
+              :crystals="crystals"
+            />
+          </v-flex>
+        </v-layout>
       </v-flex>
     </v-layout>
   </v-container>
@@ -18,11 +67,13 @@
 
 <script>
 import Player from '../player/Player';
+import Cave from '../cave/Cave';
 
 export default {
   name: 'Room',
   components: {
-    appPlayer: Player
+    appPlayer: Player,
+    appCave: Cave
   },
   data() {
     return {
