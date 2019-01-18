@@ -28,6 +28,7 @@
               flat 
               color="orange"
             >
+              <app-pickaxe-icon :size="30"/>
               Pick a crystal
             </v-btn>
           </v-card-actions>
@@ -39,11 +40,13 @@
 
 <script>
 import Crystal from '../crystal/Crystal';
+import PickaxeIcon from '../icons/PickaxeIcon';
 
 export default {
   name: 'Cave',
   components: {
-    appCrystal: Crystal
+    appCrystal: Crystal,
+    appPickaxeIcon: PickaxeIcon
   },
   props: {
     crystals: {

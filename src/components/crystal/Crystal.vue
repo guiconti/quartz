@@ -25,7 +25,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import CrystalIcon from '../../icons/CrystalIcon';
+import CrystalIcon from '../icons/CrystalIcon';
 
 export default {
   name: 'Crystal',

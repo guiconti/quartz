@@ -1,4 +1,4 @@
-import Game from './components/game/game/Game';
+import Game from './components/game/Game';
 
 const routes = [
   {

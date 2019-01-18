@@ -2,7 +2,7 @@
   <svg 
     :width="size" 
     :height="size" 
-    :viewBox="generateViewBox()"
+    viewBox="0 0 200 200"
     xmlns="http://www.w3.org/2000/svg"
   >
     <title>CrystalIcon</title>
@@ -47,11 +47,6 @@ export default {
             adjacent: '#ffffff'
           })
       }
-  },
-  methods: {
-    generateViewBox() {
-      return `0 0 200 200`;
-    }
   }
 }
 </script>
