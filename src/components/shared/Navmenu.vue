@@ -5,9 +5,14 @@
       <v-list>
         <v-list-tile v-if="isLogged">
           <v-list-tile-content>
-            <v-btn 
-              flat>Create a room
-            </v-btn>
+            <router-link 
+              to="/project/create"
+              class="nav-link" 
+            >
+              <v-btn 
+                flat>Create a project
+              </v-btn>
+            </router-link>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile v-else>
@@ -23,11 +28,15 @@
       class="nav-link"
     >
       <v-toolbar-title>
-        Quartz
+        Tiimus
       </v-toolbar-title>
     </router-link>
 
     <v-spacer/>
+    <v-toolbar-items class="hidden-sm-and-down">
+      <app-user-menu v-if="isLogged"/>
+      <app-login v-else/>
+    </v-toolbar-items>
   </v-toolbar>
 </template>
 
@@ -42,7 +51,6 @@ export default {
     appLogin: Login,
     appUserMenu: UserMenu
   },
-  data() {},
   computed: {
     ...mapState('auth', {
       isLogged: state => state.isLogged

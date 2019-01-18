@@ -56,7 +56,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       const path = '/auth/sign_out';
       API
-        .get(
+        .post(
           path
         )
         .then(response => {
