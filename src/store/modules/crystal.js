@@ -38,15 +38,9 @@ const getters = {
 }
 
 const actions = {
-  example({ commit }, payload) {
-    return commit('setExample', payload + 'example');
-  }
 }
 
 const mutations = {
-  setExample (state, example) {
-    state.example = example;
-  }
 }
 
 export default {

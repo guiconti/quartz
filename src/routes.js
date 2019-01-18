@@ -1,3 +1,4 @@
+import Navmenu from './components/shared/Navmenu';
 import Game from './components/game/Game';
 
 const routes = [
@@ -5,7 +6,7 @@ const routes = [
     path: '/',
     name: 'Game',
     components: {
-      // 'menu-top': Navmenu,
+      'menu-top': Navmenu,
       default: Game
       // 'foot-compo': Footer
     }

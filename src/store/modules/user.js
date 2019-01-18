@@ -2,12 +2,16 @@ import API from '../../utils/API';
 
 const state = {
   loggedUser: {},
-  currentUser: {}
+  currentUser: {},
+  navmenu: true
 };
 
 const getters = {};
 
 const actions = {
+  toggleNavmenu({ commit }, payload) {
+    commit('changeNavmenu', payload);
+  },
   listUsers({ commit }) {
     API.get('/users')
       .then(response => {
@@ -48,12 +52,13 @@ const actions = {
 };
 
 const mutations = {
+  setNavmenu(state, navmenu) {
+    state.navmenu = navmenu;
+  },
   setLoggedUser(state, user) {
-    user.avatar = process.env.BACKEND_HOST + user.avatar;
     state.loggedUser = user;
   },
   setCurrentUser(state, user) {
-    user.avatar = process.env.BACKEND_HOST + user.avatar;
     state.currentUser = user;
   }
 };

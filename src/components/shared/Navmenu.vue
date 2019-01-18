@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar>
+  <v-toolbar v-if="showNavmenu">
     <v-menu class="hidden-md-and-up">
       <v-toolbar-side-icon slot="activator"/>
       <v-list>
@@ -54,6 +54,9 @@ export default {
   computed: {
     ...mapState('auth', {
       isLogged: state => state.isLogged
+    }),
+    ...mapState('user', {
+      showNavmenu: state => state.navmenu
     })
   }
 };
