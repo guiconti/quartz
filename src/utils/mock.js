@@ -20,5 +20,17 @@ export default axios => {
     .reply(200, {
       msg: 'Hi'
     });
+  
+  mock
+    .onPost('/room')
+    .reply(200, {
+      msg: {
+        id: '1',
+        name: 'teste',
+        owner: '1',
+        users: [],
+        active: true
+      }
+    });
 
 };
