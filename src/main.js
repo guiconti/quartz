@@ -7,7 +7,7 @@ import VueCookie from 'vue-cookie';
 import AsyncComputed from 'vue-async-computed';
 import Vuetify from 'vuetify';
 import VueSocketIO from 'vue-socket.io'
-import App from './App.vue';
+import App from './App';
 import routes from './routes';
 import store from './store';
 

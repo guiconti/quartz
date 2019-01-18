@@ -2,13 +2,34 @@ import API from '../../utils/API';
 
 const state = {
   colors: {
-    'Quartzo': '#5b8b97',
-    'Rubelita': '#b2517c',
-    'Esmeralda': '#386c45',
-    'Safira': '#1b7bb5',
-    'Rubi': '#b65041',
-    'Âmbar': '#bf7f42',
-    'Autunita': '#8c9f50'
+    'Quartzo': {
+      primary: '#729293',
+      adjacent: '#addbd8'
+    },
+    'Rubelita': {
+      primary:  '#d12f8b',
+      adjacent:  '#f47acc'
+    },
+    'Esmeralda': {
+      primary: '#006837',
+      adjacent: '#00cc61'
+    },
+    'Safira': {
+      primary: '#0071af',
+      adjacent: '#00adea'
+    },
+    'Rubi': {
+      primary: '#bc1d29',
+      adjacent: '#ea545f'
+    },
+    'Âmbar': {
+      primary: '#c6461e',
+      adjacent: '#ef6a50'
+    },
+    'Autunita': {
+      primary: '#5b873d',
+      adjacent: '#8c9f4d',
+    }
   }
 }
 

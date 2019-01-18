@@ -1,13 +1,12 @@
-import Example from './components/Example';
-import Room from './components/game/room/Room';
+import Game from './components/game/game/Game';
 
 const routes = [
   {
     path: '/',
-    name: 'Room',
+    name: 'Game',
     components: {
       // 'menu-top': Navmenu,
-      default: Room
+      default: Game
       // 'foot-compo': Footer
     }
   }
