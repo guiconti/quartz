@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Content from './components/shared/Content';
 
 export default {
@@ -32,8 +33,14 @@ export default {
     };
   },
   created() {
+    this.checkSession(this.$cookie.get('session'));
     this.loading = false;
     this.post = true;
+  },
+  methods: {
+    ...mapActions('auth', [
+      'checkSession'
+    ])
   }
 };
 </script>
