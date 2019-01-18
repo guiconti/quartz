@@ -139,8 +139,8 @@ export default {
     submit () {
       if (this.$refs.form.validate()) {
         this.error = false;
-        const { name, email, password, selectedSkills } = this;
-        const body = this.isSignUp ? { name, email, password, selectedSkills } : { email, password };
+        const { username, password } = this;
+        const body = { username, password };
         if (this.isSignUp) {
           this.signUp(body)
             .then(() => {
