@@ -34,6 +34,7 @@
 
     <v-spacer/>
     <v-toolbar-items class="hidden-sm-and-down">
+      <app-create-room v-if="isLogged"/>
       <app-user-menu v-if="isLogged"/>
       <app-login v-else/>
     </v-toolbar-items>
@@ -44,12 +45,14 @@
 import { mapState } from 'vuex';
 import Login from '../auth/Login';
 import UserMenu from './UserMenu';
+import CreateRoom from '../room/CreateRoom';
 
 export default {
   name: 'Navmenu',
   components: {
     appLogin: Login,
-    appUserMenu: UserMenu
+    appUserMenu: UserMenu,
+    appCreateRoom: CreateRoom
   },
   computed: {
     ...mapState('auth', {
