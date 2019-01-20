@@ -63,4 +63,24 @@ export default axios => {
       }
     ]
   });
+
+  mock.onGet(/\/rooms\/\w+/).reply(200, {
+    msg: {
+      name: 'Testando',
+      game: '',
+      users: [
+        {
+          _id: '5c3fc415ee6803a41dee74d7',
+          username: 'teste'
+        }
+      ],
+      active: true,
+      _id: '5c3fef22831588b451f2ae4a',
+      owner: {
+        _id: '5c3fc415ee6803a41dee74d7',
+        username: 'teste'
+      },
+      __v: 1
+    }
+  });
 };

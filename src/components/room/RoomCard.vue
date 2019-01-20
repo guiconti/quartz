@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <div class="card-content">
-        <h3>{{ room._id }} {{ room.users.length }}/4</h3>
+        <h3>{{ room.name }} {{ room.users.length }}/4</h3>
       </div>
     </v-card-title>
     
