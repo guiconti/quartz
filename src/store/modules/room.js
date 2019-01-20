@@ -1,7 +1,8 @@
 import API from '../../utils/API';
 
 const state = {
-  currentRoom: {}
+  currentRoom: {},
+  rooms: []
 };
 
 const getters = {
@@ -11,7 +12,7 @@ const getters = {
 const actions = {
   createRoom({ commit }, roomData) {
     return new Promise((resolve, reject)  => {
-      const path = '/room';
+      const path = '/rooms';
       API
         .post(
           path,
@@ -28,6 +29,23 @@ const actions = {
           return reject(err);
         });
     });
+  },
+  listRooms({ commit }) {
+    return new Promise ((resolve, reject) => {
+      const path = '/rooms?active=true'
+      API
+        .get(path)
+        .then(response => {
+          commit('setRoomsList', response.data.msg);
+          return resolve(response);
+        })
+        .catch(err => {
+          if (err.response) {
+            return reject(err.response.data.msg);
+          }
+          return reject(err);
+        });
+    });
   }
 };
 
@@ -35,6 +53,9 @@ const mutations = {
   setCurrentRoom(state, currentRoom) {
     state.currentRoom = currentRoom;
   },
+  setRoomsList(state, rooms) {
+    state.rooms = rooms;
+  }
 };
 
 export default {

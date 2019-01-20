@@ -1,9 +1,9 @@
 <template>
   <div>
     <app-rooms-list
-      :projects="rooms"
+      :rooms="rooms"
       title="Join a room to play a game"
-      no-projects="There is no rooms created at the moment"
+      no-rooms="There is no rooms created at the moment"
     />
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
     appRoomsList: RoomsList
   },
   computed: {
-    ...mapState('project', {
+    ...mapState('room', {
       rooms: state => state.rooms.all
     })
   },
