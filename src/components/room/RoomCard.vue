@@ -1,26 +1,40 @@
 <template>
-  <v-card :to="'/projects/' + project.id">
+  <v-card>
     <v-card-title>
       <div class="card-content">
-        <h3>{{ room.name }}</h3>
+        <h3>{{ room.name }} {{ room.users.length }}/4</h3>
       </div>
     </v-card-title>
-    <!--
+    
     <div v-if="!reduced">
       <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn icon @click="show = !show">
+        <v-btn 
+          flat
+          color="orange" 
+        >
+          Join
+        </v-btn>
+        <v-spacer/>
+        <v-btn 
+          icon 
+          @click="show = !show"
+        >
           <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
         </v-btn>
       </v-card-actions>
 
       <v-slide-y-transition>
         <v-card-text v-show="show">
-          {{ project.description }}
+          <h4> Players </h4>
+          <div
+            v-for="user in room.users"
+            :key="user.username"
+          >
+            {{ user.username }}
+          </div>
         </v-card-text>
       </v-slide-y-transition>
     </div>
-    !-->
 
   </v-card>
 </template>
@@ -49,6 +63,9 @@ export default {
 <style lang="stylus" scoped>
   .card-content{
     width: 100%
+  }
+  >>> .v-card__title {
+    padding-bottom: 0px
   }
 </style>
 

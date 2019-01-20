@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     ...mapState('room', {
-      rooms: state => state.rooms.all
+      rooms: state => state.rooms
     })
   },
   created() {
