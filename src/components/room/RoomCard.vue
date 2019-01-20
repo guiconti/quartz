@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <div class="card-content">
-        <h3>{{ room.name }} {{ room.users.length }}/4</h3>
+        <h3>{{ room._id }} {{ room.users.length }}/4</h3>
       </div>
     </v-card-title>
     
@@ -10,7 +10,7 @@
       <v-card-actions>
         <v-btn
           v-if="isLogged"
-          :to="'/rooms/' + room.id" 
+          :to="'/rooms/' + room._id" 
           flat
           color="orange" 
         >
@@ -28,12 +28,12 @@
       <v-slide-y-transition>
         <v-card-text v-show="show">
           <h4> Players </h4>
-          <div
+          <p
             v-for="user in room.users"
-            :key="user.username"
+            :key="user._id"
           >
             {{ user.username }}
-          </div>
+          </p>
         </v-card-text>
       </v-slide-y-transition>
     </div>

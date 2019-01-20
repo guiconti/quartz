@@ -20,7 +20,7 @@
           >
             <v-flex
               v-for="room in rooms"
-              :key="room.id"
+              :key="room._id"
               xs12
               sm6
               md3
