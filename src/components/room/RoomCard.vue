@@ -8,7 +8,8 @@
     
     <div v-if="!reduced">
       <v-card-actions>
-        <v-btn 
+        <v-btn
+          v-if="isLogged" 
           flat
           color="orange" 
         >
@@ -40,6 +41,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'RoomCard',
@@ -56,7 +58,12 @@ export default {
   },
   data: () => ({
     show: false
-  })
+  }),
+  computed: {
+    ...mapGetters('auth', {
+      isLogged: 'isLogged'
+    })
+  },
 }
 </script>
 
