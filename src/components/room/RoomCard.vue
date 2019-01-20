@@ -9,7 +9,8 @@
     <div v-if="!reduced">
       <v-card-actions>
         <v-btn
-          v-if="isLogged" 
+          v-if="isLogged"
+          :to="'/rooms/' + room.id" 
           flat
           color="orange" 
         >
