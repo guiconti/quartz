@@ -98,8 +98,9 @@ export default {
         const { name } = this;
         const body = { name };
         this.createRoom(body)
-          .then(() => {
+          .then(room => {
             this.dialog = false;
+            this.$router.push({ path: `/rooms/${room._id}` })
           })
           .catch(err => {
             this.error = err;

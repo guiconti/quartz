@@ -20,7 +20,7 @@ const actions = {
         )
         .then(response => {
           commit('setCurrentRoom', response.data.msg);
-          return resolve(response);
+          return resolve(response.data.msg);
         })
         .catch(err => {
           if (err.response) {
