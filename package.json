@@ -29,12 +29,12 @@
     "axios": "^0.18.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "socket.io-client": "2.2.0",
     "vue": "^2.5.16",
     "vue-async-computed": "^3.3.1",
     "vue-cookie": "1.1.4",
     "vue-resource": "^1.5.0",
     "vue-router": "^3.0.1",
-    "vue-socket.io": "3.0.4",
     "vuetify": "^1.0.18",
     "vuex": "^3.0.1"
   },

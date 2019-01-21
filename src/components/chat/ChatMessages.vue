@@ -13,7 +13,7 @@
         <div class="username" v-if="index == 0">{{message.owner.username}}</div>
         <div style="margin-top: 5px"></div>
         <div class="content">
-          <div v-html="message.text"></div>
+          <div v-html="message.content"></div>
         </div>
       </div>
     </v-container>
