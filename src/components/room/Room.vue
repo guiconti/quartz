@@ -25,11 +25,6 @@ export default {
   components: {
     appChat: Chat
   },
-  data() {
-    return {
-      
-    }
-  },
   computed: {
     ...mapState('room', {
       room: state => state.currentRoom

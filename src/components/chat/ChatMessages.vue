@@ -18,14 +18,16 @@
       </div>
     </v-container>
     <v-text-field
+      v-model="content"
       label="Type"
       style="margin-left: 20px;"
+      @keydown.enter="send"
     ></v-text-field>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "ChatMessages",
@@ -36,10 +38,28 @@ export default {
       default: () => []
     }
   },
+  data() {
+    return {
+      content: ''
+    }
+  },
   computed: {
-    ...mapState("user", {
+    ...mapState('user', {
       loggedUser: state => state.loggedUser
     })
+  },
+  methods: {
+    ...mapActions('message', [
+      'sendMessage'
+    ]),
+    send() {
+      let messageData = {
+        parent: this.$route.params.id,
+        content: this.content
+      };
+      this.sendMessage(messageData);
+      this.content = '';
+    }
   }
 };
 </script>

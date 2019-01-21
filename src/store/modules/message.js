@@ -27,13 +27,32 @@ const actions = {
           return reject(err);
         });
     });
+  },
+  sendMessage({ commit }, messageData) {
+    return new Promise((resolve, reject)  => {
+      const path = '/messages';
+      API
+        .post(
+          path,
+          messageData
+        )
+        .then(response => {
+          return resolve(response);
+        })
+        .catch(err => {
+          if (err.response) {
+            return reject(err.response.data.msg);
+          }
+          return reject(err);
+        });
+    });
   }
 };
 
 const mutations = {
   setMessages(state, messages) {
     state.messages = messages;
-  },
+  }
 };
 export default {
   namespaced: true,
