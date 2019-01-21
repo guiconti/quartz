@@ -10,9 +10,9 @@
       <v-card-actions>
         <v-btn
           v-if="isLogged"
-          :to="'/rooms/' + room._id" 
           flat
           color="orange" 
+          @click="join"
         >
           Join
         </v-btn>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'RoomCard',
@@ -65,6 +65,21 @@ export default {
       isLogged: 'isLogged'
     })
   },
+  methods: {
+    ...mapActions('room', [
+      'joinRoom'
+    ]),
+    join() {
+      this
+        .joinRoom(this.room._id)
+        .then(response => {
+          this.$router.push({ path: `/rooms/${this.room._id}` })
+        })
+        .catch(err => {
+
+        });
+    }
+  }
 }
 </script>
 
