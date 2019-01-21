@@ -39,12 +39,17 @@ export default {
   created() {
     this.roomInfo(this.$route.params.id);
     this.retrieveMessages(this.$route.params.id);
+    console.log(this.$route.params.id);
     this.$socket.emit('joinRoom', this.$route.params.id);
   },
   mounted() {
     this.sockets.subscribe('newUser', user => {
       this.pushUser(user);
     });
+  },
+  beforeDestroy() {
+    this.sockets.unsubscribe('newUser');
+    this.$socket.emit('leaveRoom', this.room._id);
   },
   methods: {
     ...mapActions('room', [

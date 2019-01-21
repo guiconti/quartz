@@ -55,6 +55,9 @@ export default {
       this.pushMessage(message);
     });
   },
+  beforeDestroy() {
+    this.sockets.unsubscribe('newMessage');
+  },
   computed: {
     ...mapState('user', {
       loggedUser: state => state.loggedUser
