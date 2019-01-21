@@ -17,8 +17,9 @@
 </template>
 
 <script>
-import Chat from '../chat/Chat';
 import { mapState, mapActions } from 'vuex';
+// import io from 'socket.io-client';
+import Chat from '../chat/Chat';
 
 export default {
   name: 'Room',

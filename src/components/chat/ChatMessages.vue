@@ -4,16 +4,23 @@
       <div
         v-for="(message, index) in messages"
         :key="message._id"
-        :class="{own: message.owner._id == loggedUser._id}"
+        :class="{ own: message.owner._id == loggedUser._id }"
       >
         <div
+          v-if="index > 0 && messages[index - 1].owner._id != message.owner._id"
           class="username"
-          v-if="index>0 && messages[index-1].owner._id != message.owner._id"
-        >{{message.owner.username}}</div>
-        <div class="username" v-if="index == 0">{{message.owner.username}}</div>
-        <div style="margin-top: 5px"></div>
+        >
+          {{ message.owner.username }}
+        </div>
+        <div
+          v-if="index == 0"
+          class="username"
+        >
+          {{ message.owner.username }}
+        </div>
+        <div style="margin-top: 5px"/>
         <div class="content">
-          <div v-html="message.content"></div>
+          <div v-html="message.content"/>
         </div>
       </div>
     </v-container>
@@ -22,15 +29,15 @@
       label="Type"
       style="margin-left: 20px;"
       @keydown.enter="send"
-    ></v-text-field>
+    />
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: "ChatMessages",
+  name: 'ChatMessages',
   props: {
     messages: {
       type: Array,
@@ -41,7 +48,7 @@ export default {
   data() {
     return {
       content: ''
-    }
+    };
   },
   computed: {
     ...mapState('user', {
@@ -49,11 +56,9 @@ export default {
     })
   },
   methods: {
-    ...mapActions('message', [
-      'sendMessage'
-    ]),
+    ...mapActions('message', ['sendMessage']),
     send() {
-      let messageData = {
+      const messageData = {
         parent: this.$route.params.id,
         content: this.content
       };
@@ -95,4 +100,3 @@ export default {
   word-wrap: break-word;
 }
 </style>
-

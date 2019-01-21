@@ -1,7 +1,13 @@
 <template>
   <v-container fluid>
-    <v-layout row wrap>
-      <v-flex xs2 white>
+    <v-layout 
+      row 
+      wrap
+    >
+      <v-flex 
+        xs2 
+        white
+      >
         <app-chat-users-list :users="users"/>
       </v-flex>
       <v-flex xs10>
