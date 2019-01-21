@@ -51,6 +51,14 @@ export default axios => {
           {
             _id: '5c3fc415ee6803a41dee74d7',
             username: 'teste'
+          },
+          {
+            _id: '5c3fc415ee6803a41dee74g7',
+            username: 'jamil'
+          },
+          {
+            _id: '5c3fc415ee6803a41dee71d7',
+            username: 'gibimba'
           }
         ],
         active: true,
@@ -72,6 +80,14 @@ export default axios => {
         {
           _id: '5c3fc415ee6803a41dee74d7',
           username: 'teste'
+        },
+        {
+          _id: '5c3fc415ee6803a41dee74g7',
+          username: 'jamil'
+        },
+        {
+          _id: '5c3fc415ee6803a41dee71d7',
+          username: 'gibimba'
         }
       ],
       active: true,
