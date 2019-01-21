@@ -50,13 +50,21 @@ export default {
       content: ''
     };
   },
+  mounted() {
+    this.sockets.subscribe('newMessage', message => {
+      this.pushMessage(message);
+    });
+  },
   computed: {
     ...mapState('user', {
       loggedUser: state => state.loggedUser
     })
   },
   methods: {
-    ...mapActions('message', ['sendMessage']),
+    ...mapActions('message', [
+      'sendMessage',
+      'pushMessage'
+    ]),
     send() {
       const messageData = {
         parent: this.$route.params.id,

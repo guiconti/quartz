@@ -18,7 +18,6 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-// import io from 'socket.io-client';
 import Chat from '../chat/Chat';
 
 export default {
@@ -40,6 +39,7 @@ export default {
   created() {
     this.roomInfo(this.$route.params.id);
     this.retrieveMessages(this.$route.params.id);
+    this.$socket.emit('joinRoom', this.$route.params.id);
   },
   methods: {
     ...mapActions('room', [

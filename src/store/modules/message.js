@@ -46,12 +46,18 @@ const actions = {
           return reject(err);
         });
     });
+  },
+  pushMessage({ commit }, message) {
+    return commit('pushMessage', message);
   }
 };
 
 const mutations = {
   setMessages(state, messages) {
     state.messages = messages;
+  },
+  pushMessage(state, message) {
+    state.messages.push(message);
   }
 };
 export default {

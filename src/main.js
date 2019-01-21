@@ -5,6 +5,7 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import VueCookie from 'vue-cookie';
 import AsyncComputed from 'vue-async-computed';
+import VueSocketIO from 'vue-socket.io'
 import Vuetify from 'vuetify';
 import App from './App';
 import routes from './routes';
@@ -17,6 +18,10 @@ Vue.use(Vuetify, {
     accent: "#E8DCB9"
   }
 });
+Vue.use(new VueSocketIO({
+  debug: true,
+  connection: process.env.BACKEND_HOST
+}));
 Vue.use(VueRouter);
 Vue.use(VueCookie);
 Vue.use(VueResource);
