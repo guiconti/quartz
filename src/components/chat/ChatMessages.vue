@@ -1,21 +1,27 @@
 <template>
-  <v-container fluid>
-    <div
-      v-for="(message, index) in messages"
-      :key="message._id"
-      :class="{own: message.owner._id == loggedUser._id}"
-    >
+  <div>
+    <v-container fluid>
       <div
-        class="username"
-        v-if="index>0 && messages[index-1].owner._id != message.owner._id"
-      >{{message.owner.username}}</div>
-      <div class="username" v-if="index == 0">{{message.owner.username}}</div>
-      <div style="margin-top: 5px"></div>
-      <div class="content">
-        <div v-html="message.text"></div>
+        v-for="(message, index) in messages"
+        :key="message._id"
+        :class="{own: message.owner._id == loggedUser._id}"
+      >
+        <div
+          class="username"
+          v-if="index>0 && messages[index-1].owner._id != message.owner._id"
+        >{{message.owner.username}}</div>
+        <div class="username" v-if="index == 0">{{message.owner.username}}</div>
+        <div style="margin-top: 5px"></div>
+        <div class="content">
+          <div v-html="message.text"></div>
+        </div>
       </div>
-    </div>
-  </v-container>
+    </v-container>
+    <v-text-field
+      label="Type"
+      style="margin-left: 20px;"
+    ></v-text-field>
+  </div>
 </template>
 
 <script>
@@ -40,7 +46,12 @@ export default {
 
 <style scoped>
 .container {
-  padding-top: 0px
+  padding-top: 0px;
+  box-sizing: border-box;
+  height: calc(100vh - 19.5rem);
+  overflow-y: auto;
+  padding: 10px;
+  background-color: #f2f2f2;
 }
 .own {
   text-align: right;
