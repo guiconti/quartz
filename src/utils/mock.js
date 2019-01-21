@@ -106,4 +106,93 @@ export default axios => {
       __v: 1
     }
   });
+
+  mock.onGet(/\/messages\/\w+/).reply(200, {
+    msg: [
+      {
+        owner: {
+          _id: '5c3fc415ee6803a41dee74d7',
+          username: 'Teste teste'
+        },
+        text: 'Testestestesteste'
+      },
+      {
+        owner: {
+          _id: 'zxczxczxc',
+          username: 'sadaste'
+        },
+        text: 'nxbvnxnbnxbvnxvbnbvxnxbvnbxv'
+      },
+      {
+        owner: {
+          _id: 'zxczxczxc',
+          username: 'sadaste'
+        },
+        text: 'ASDJKLASDJHLKASJDKLASJKLDAJSLKDJASKL'
+      },
+      {
+        owner: {
+          _id: 'hghghgf',
+          username: 'mmmmmmmmm'
+        },
+        text: 'asdasdas'
+      },
+      {
+        owner: {
+          _id: '5c3fc415ee6803a41dee74d7',
+          username: 'Teste teste'
+        },
+        text: 'Testestestesteste'
+      },
+      {
+        owner: {
+          _id: 'zxczxczxc',
+          username: 'sadaste'
+        },
+        text: 'nxbvnxnbnxbvnxvbnbvxnxbvnbxv'
+      },
+      {
+        owner: {
+          _id: 'zxczxczxc',
+          username: 'sadaste'
+        },
+        text: 'ASDJKLASDJHLKASJDKLASJKLDAJSLKDJASKL'
+      },
+      {
+        owner: {
+          _id: 'hghghgf',
+          username: 'mmmmmmmmm'
+        },
+        text: 'asdasdas'
+      },
+      {
+        owner: {
+          _id: '5c3fc415ee6803a41dee74d7',
+          username: 'Teste teste'
+        },
+        text: 'Testestestesteste'
+      },
+      {
+        owner: {
+          _id: 'zxczxczxc',
+          username: 'sadaste'
+        },
+        text: 'nxbvnxnbnxbvnxvbnbvxnxbvnbxv'
+      },
+      {
+        owner: {
+          _id: 'zxczxczxc',
+          username: 'sadaste'
+        },
+        text: 'ASDJKLASDJHLKASJDKLASJKLDAJSLKDJASKL'
+      },
+      {
+        owner: {
+          _id: 'hghghgf',
+          username: 'mmmmmmmmm'
+        },
+        text: 'asdasdas'
+      }
+    ]
+  });
 };
