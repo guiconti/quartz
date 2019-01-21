@@ -2,25 +2,6 @@
   <v-toolbar v-if="showNavmenu">
     <v-menu class="hidden-md-and-up">
       <v-toolbar-side-icon slot="activator"/>
-      <v-list>
-        <v-list-tile v-if="isLogged">
-          <v-list-tile-content>
-            <router-link 
-              to="/project/create"
-              class="nav-link" 
-            >
-              <v-btn 
-                flat>Create a project
-              </v-btn>
-            </router-link>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile v-else>
-          <v-list-tile-content>
-            <app-login/>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
     </v-menu>
 
     <router-link 
