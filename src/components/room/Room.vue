@@ -19,7 +19,7 @@ export default {
       messages: [
         {
           owner: {
-            _id: '12312321',
+            _id: '5c3fc415ee6803a41dee74d7',
             username: 'Teste teste'
           },
           text: 'Testestestesteste'

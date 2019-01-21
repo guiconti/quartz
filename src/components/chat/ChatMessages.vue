@@ -3,7 +3,7 @@
     <div
       v-for="(message, index) in messages"
       :key="message._id"
-      :class="{own: message.owner == loggedUser._id}"
+      :class="{own: message.owner._id == loggedUser._id}"
     >
       <div
         class="username"

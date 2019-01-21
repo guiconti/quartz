@@ -15,6 +15,13 @@ export default axios => {
     msg: 'Hi'
   });
 
+  mock.onGet('/user').reply(200, {
+    msg: {
+      _id: '5c3fc415ee6803a41dee74d7',
+      username: 'teste'
+    }
+  });
+
   mock.onPost('/rooms').reply(200, {
     msg: {
       id: '1',
