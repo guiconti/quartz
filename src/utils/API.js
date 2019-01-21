@@ -7,6 +7,7 @@ if (process.env.NODE_ENV === 'mock') {
 
 export default axios.create({
   baseURL: process.env.BACKEND_HOST,
+  withCredentials: true,
   timeout: 100000,
   headers: {
     'Content-Type': 'application/json'
