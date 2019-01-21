@@ -79,6 +79,9 @@ const actions = {
           return reject(err);
         });
     })
+  },
+  pushUser({ commit }, user) {
+    return commit('pushUser', user);
   }
 };
 
@@ -88,6 +91,9 @@ const mutations = {
   },
   setRoomsList(state, rooms) {
     state.rooms = rooms;
+  },
+  pushUser(state, user) {
+    state.currentRoom.users.push(user);
   }
 };
 

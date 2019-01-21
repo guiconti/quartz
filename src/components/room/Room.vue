@@ -41,9 +41,15 @@ export default {
     this.retrieveMessages(this.$route.params.id);
     this.$socket.emit('joinRoom', this.$route.params.id);
   },
+  mounted() {
+    this.sockets.subscribe('newUser', user => {
+      this.pushUser(user);
+    });
+  },
   methods: {
     ...mapActions('room', [
-      'roomInfo'
+      'roomInfo',
+      'pushUser'
     ]),
     ...mapActions('message', [
       'retrieveMessages'
