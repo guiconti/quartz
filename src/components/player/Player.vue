@@ -10,11 +10,14 @@
           </v-card-title>
 
           <v-container fluid>
-            <v-layout row>
+            <v-layout 
+              row
+              wrap
+            >
               <v-flex
                 v-for="crystal in crystals"
                 :key="crystal.name" 
-                xs2 
+                xs2
               >
                 <app-crystal
                   :name="crystal.name"
@@ -85,3 +88,13 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+  >>> .container {
+    padding-bottom: 0px;
+  }
+  >>> .v-card__title {
+    padding-bottom: 0px;
+  }
+</style>
+

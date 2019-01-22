@@ -74,3 +74,8 @@ export default {
 }
 </script>
 
+<style lang="stylus" scoped>
+  >>> .container {
+    padding-bottom: 0px;
+  }
+</style>

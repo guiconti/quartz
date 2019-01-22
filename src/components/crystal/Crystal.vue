@@ -5,7 +5,6 @@
       align-center
     >
       <div class="text-xs-center">
-        <!-- <v-icon :color="getCrystalColor()(name)">brightness_1</v-icon> -->
         <app-crystal-icon
           :size="50"
           :color="getCrystalColor()(name)"
@@ -16,7 +15,7 @@
       xs4 
       align-center
     >
-      <div class="text-xs-center">
+      <div class="text-xs-right">
         {{ amount }}
       </div>
     </v-flex>
