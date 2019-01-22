@@ -1,6 +1,9 @@
 <template>
   <div>
-    <v-container fluid>
+    <v-container
+      ref="chat" 
+      fluid
+    >
       <div
         v-for="(message, index) in messages"
         :key="message._id"
@@ -43,18 +46,21 @@ export default {
       content: ''
     };
   },
+  computed: {
+    ...mapState('user', {
+      loggedUser: state => state.loggedUser
+    })
+  },
   mounted() {
     this.sockets.subscribe('newMessage', message => {
       this.pushMessage(message);
     });
   },
+  updated() {
+    this.scrollBottom();
+  },
   beforeDestroy() {
     this.sockets.unsubscribe('newMessage');
-  },
-  computed: {
-    ...mapState('user', {
-      loggedUser: state => state.loggedUser
-    })
   },
   methods: {
     ...mapActions('message', [
@@ -68,6 +74,9 @@ export default {
       };
       this.sendMessage(messageData);
       this.content = '';
+    },
+    scrollBottom() {
+      this.$refs.chat.scrollTop = this.$refs.chat.scrollHeight;
     }
   }
 };
