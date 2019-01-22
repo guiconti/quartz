@@ -19,7 +19,7 @@
             ref="form" 
             v-model="valid" 
             lazy-validation
-            @submit="submit"
+            @submit.prevent
           >
             <v-layout wrap>
               <v-flex xs12>

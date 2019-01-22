@@ -56,11 +56,6 @@ export default {
       this.pushMessage(message);
     }
   },
-  mounted() {
-    // this.sockets.subscribe('newMessage', message => {
-    //   this.pushMessage(message);
-    // });
-  },
   updated() {
     this.scrollBottom();
   },
