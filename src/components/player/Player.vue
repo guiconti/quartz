@@ -1,5 +1,8 @@
 <template>
-  <v-container fluid>
+  <v-container 
+    fluid
+    class="noTopPadding"
+  >
     <v-layout>
       <v-flex xs12>
         <v-card>
@@ -92,6 +95,9 @@ export default {
 <style lang="stylus" scoped>
   >>> .container {
     padding-bottom: 0px;
+  }
+  .noTopPadding {
+    padding-top: 0px;
   }
   >>> .v-card__title {
     padding-bottom: 0px;
