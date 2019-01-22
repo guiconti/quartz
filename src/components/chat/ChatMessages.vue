@@ -7,20 +7,13 @@
         :class="{ own: message.owner._id == loggedUser._id }"
       >
         <div
-          v-if="index > 0 && messages[index - 1].owner._id != message.owner._id"
+          v-if="(index > 0 && messages[index - 1].owner._id != message.owner._id) || index == 0"
           class="username"
         >
           {{ message.owner.username }}
         </div>
-        <div
-          v-if="index == 0"
-          class="username"
-        >
-          {{ message.owner.username }}
-        </div>
-        <div style="margin-top: 5px"/>
         <div class="content">
-          <div v-html="message.content"/>
+          {{ message.content }}
         </div>
       </div>
     </v-container>
@@ -100,6 +93,7 @@ export default {
   font-weight: bold;
 }
 .content {
+  margin-top: 5px;
   padding: 8px;
   margin-bottom: 3px;
   background-color: lightgreen;
