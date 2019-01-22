@@ -195,4 +195,12 @@ export default axios => {
       }
     ]
   });
+
+  mock.onPost('/messages').reply(200, {
+    msg: 'Message sent'
+  });
+
+  mock.onPatch(/\/rooms\/\w+/).reply(200, {
+    msg: 'User joined'
+  });
 };
