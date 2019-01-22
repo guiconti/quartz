@@ -28,6 +28,7 @@
           </v-container>
           <v-card-actions>
             <v-btn 
+              :disabled="!player.currentTurn"
               flat 
               color="orange"
             >
@@ -56,6 +57,11 @@ export default {
       type: Array,
       required: false,
       default: () => []
+    },
+    player: {
+      type: Object,
+      required: false,
+      default: () => {}
     }
   }
 }

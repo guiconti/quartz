@@ -29,6 +29,7 @@
           >
             <app-cave 
               :crystals="game.cave.crystals"
+              :player="getCurrentPlayer(loggedUser._id)"
             />
           </v-flex>
         </v-layout>
@@ -38,7 +39,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 import Player from '../player/Player';
 import Cave from '../cave/Cave';
 import Chat from '../chat/Chat';
@@ -56,13 +57,18 @@ export default {
     }),
     ...mapState('user', {
       loggedUser: state => state.loggedUser
-    })
+    }),
+    ...mapGetters('game', [
+      'getCurrentPlayer'
+    ])
   },
   sockets: {
   },
   created() {
+    console.log(this.getCurrentUser);
     this.gameInfo(this.$route.params.id);
     this.$socket.emit('joinGame', this.$route.params.id);
+    console.log(this.currentUser);
   },
   beforeDestroy() {
     this.sockets.unsubscribe('newUser');
@@ -71,6 +77,9 @@ export default {
   methods: {
     ...mapActions('game', [
       'gameInfo'
+    ]),
+    ...mapActions('game', [
+      'updatePlayer'
     ])
   }
 }

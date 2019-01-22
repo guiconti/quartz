@@ -1,11 +1,13 @@
 import API from '../../utils/API';
 
 const state = {
-  currentGame: {}
+  currentGame: {},
 };
 
 const getters = {
-
+  getCurrentPlayer: state => userId => {
+    return state.currentGame.players.find(player => player.user._id === userId);
+  }
 };
 
 const actions = {
@@ -45,6 +47,9 @@ const actions = {
           return reject(err);
         });
     });
+  },
+  updatePlayer({ commit }, player) {
+    commit('setCurrentPlayer', player);
   }
 };
 
@@ -52,6 +57,9 @@ const mutations = {
   setCurrentGame(state, currentGame) {
     state.currentGame = currentGame;
   },
+  setCurrentPlayer(state, currentPlayer) {
+    state.currentPlayer = currentPlay;
+  }
 };
 export default {
   namespaced: true,
