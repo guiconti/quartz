@@ -81,6 +81,11 @@ const actions = {
     })
   },
   pushUser({ commit }, user) {
+    for (let i = 0; i < state.currentRoom.users.length; i++) {
+      if (state.currentRoom.users[i]._id === user._id) {
+        return;
+      }
+    }
     return commit('pushUser', user);
   }
 };
