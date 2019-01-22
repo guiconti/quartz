@@ -36,16 +36,16 @@ export default {
       loggedUser: state => state.loggedUser
     })
   },
+  sockets: {
+    newUser: function(user) {
+      this.pushUser(user);
+    }
+  },
   created() {
     this.roomInfo(this.$route.params.id);
     this.retrieveMessages(this.$route.params.id);
     console.log(this.$route.params.id);
     this.$socket.emit('joinRoom', this.$route.params.id);
-  },
-  mounted() {
-    this.sockets.subscribe('newUser', user => {
-      this.pushUser(user);
-    });
   },
   beforeDestroy() {
     this.sockets.unsubscribe('newUser');

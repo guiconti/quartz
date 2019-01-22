@@ -51,10 +51,15 @@ export default {
       loggedUser: state => state.loggedUser
     })
   },
-  mounted() {
-    this.sockets.subscribe('newMessage', message => {
+  sockets: {
+    newMessage: function(message) {
       this.pushMessage(message);
-    });
+    }
+  },
+  mounted() {
+    // this.sockets.subscribe('newMessage', message => {
+    //   this.pushMessage(message);
+    // });
   },
   updated() {
     this.scrollBottom();
