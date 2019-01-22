@@ -21,6 +21,15 @@ const routes = [
       default: Room
       // 'foot-compo': Footer
     }
+  },
+  {
+    path: '/games/:id',
+    name: 'Game',
+    components: {
+      'menu-top': Navmenu,
+      default: Game
+      // 'foot-compo': Footer
+    }
   }
 ];
 

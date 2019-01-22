@@ -9,7 +9,7 @@ const getters = {
 };
 
 const actions = {
-  startGame({ commit }, gameData) {
+  createGame({ commit }, gameData) {
     return new Promise((resolve, reject)  => {
       const path = '/games';
       API

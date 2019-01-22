@@ -44,7 +44,6 @@ export default {
   created() {
     this.roomInfo(this.$route.params.id);
     this.retrieveMessages(this.$route.params.id);
-    console.log(this.$route.params.id);
     this.$socket.emit('joinRoom', this.$route.params.id);
   },
   beforeDestroy() {
@@ -60,8 +59,11 @@ export default {
       'retrieveMessages'
     ]),
     ...mapActions('game', [
-      'startGame'
-    ])
+      'createGame'
+    ]),
+    startGame() {
+      this.$router.push({ path: `/games/1212` })
+    }
   }
 }
 </script>
