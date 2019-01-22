@@ -65,7 +65,7 @@ export default {
       'createGame'
     ]),
     startGame() {
-      let gameData = {
+      const gameData = {
         roomId: this.room._id
       };
       this.createGame(gameData)

@@ -3,60 +3,30 @@
     <v-layout column>
       <v-flex xs12>
         <v-layout row>
-          <v-flex 
+          <v-flex
+            v-for="player in game.players"
+            :key="player._id"
             xs12 
             sm3
           >
-            <app-player 
-              :crystals="crystals"
-              :money="100"
-              :cards="7"
-              name="Guilherme" 
-            />
-          </v-flex>
-          <v-flex 
-            xs12 
-            sm3
-          >
-            <app-player 
-              :crystals="crystals"
-              :money="100"
-              :cards="7"
-              name="Guilherme" 
-            />
-          </v-flex>
-          <v-flex 
-            xs12 
-            sm3
-          >
-            <app-player 
-              :crystals="crystals"
-              :money="100"
-              :cards="7"
-              name="Guilherme" 
-            />
-          </v-flex>
-          <v-flex 
-            xs12 
-            sm3
-          >
-            <app-player 
-              :crystals="crystals"
-              :money="100"
-              :cards="7"
-              name="Guilherme" 
+            <app-player
+              :name="player.user.username" 
+              :crystals="player.crystals"
+              :money="player.money"
+              :cards="player.cards.length"
             />
           </v-flex>
         </v-layout>
       </v-flex>
       <v-flex xs12>
         <v-layout row>
-          <v-flex 
+          <v-flex
+            v-if="game.cave" 
             xs12 
             sm3
           >
             <app-cave 
-              :crystals="crystals"
+              :crystals="game.cave.crystals"
             />
           </v-flex>
         </v-layout>
@@ -66,44 +36,40 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
 import Player from '../player/Player';
 import Cave from '../cave/Cave';
+import Chat from '../chat/Chat';
 
 export default {
-  name: 'Room',
+  name: 'Game',
   components: {
     appPlayer: Player,
-    appCave: Cave
+    appCave: Cave,
+    appChat: Chat
   },
-  data() {
-    return {
-      crystals: [
-        {
-          name: 'Quartzo',
-          amount: 3
-        },
-        {
-          name: 'Rubelita',
-          amount: 1
-        },
-        {
-          name: 'Esmeralda',
-          amount: 0
-        },
-        {
-          name: 'Safira',
-          amount: 2
-        },
-        {
-          name: 'Âmbar',
-          amount: 0
-        },
-        {
-          name: 'Autunita',
-          amount: 1
-        }
-      ]
-    }
+  computed: {
+    ...mapState('game', {
+      game: state => state.currentGame
+    }),
+    ...mapState('user', {
+      loggedUser: state => state.loggedUser
+    })
+  },
+  sockets: {
+  },
+  created() {
+    this.gameInfo(this.$route.params.id);
+    this.$socket.emit('joinGame', this.$route.params.id);
+  },
+  beforeDestroy() {
+    this.sockets.unsubscribe('newUser');
+    this.$socket.emit('leaveGame', this.game._id);
+  },
+  methods: {
+    ...mapActions('game', [
+      'gameInfo'
+    ])
   }
 }
 </script>
