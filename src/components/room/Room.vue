@@ -39,6 +39,9 @@ export default {
   sockets: {
     newUser: function(user) {
       this.pushUser(user);
+    },
+    startGame: function(game) {
+      this.$router.push({ path: `/games/${game._id}` });
     }
   },
   created() {
@@ -67,10 +70,8 @@ export default {
       };
       this.createGame(gameData)
         .then(game => {
-          this.$router.push({ path: `/games/${game._id}` })
         })
         .catch(err => {
-
         });
     }
   }
