@@ -203,4 +203,176 @@ export default axios => {
   mock.onPatch(/\/rooms\/\w+/).reply(200, {
     msg: 'User joined'
   });
+
+  mock.onGet(/\/games\/\w+/).reply(200, {
+    msg: {
+      name: 'Testando',
+      players: [
+        {
+          money: 0,
+          cards: [],
+          hasAnIdiotBook: false,
+          currentTurn: true,
+          _id: '5c474be776295e2460be203c',
+          user: {
+            _id: '5c464ee1ae18af00d0d6ea7e',
+            username: 'Fuleco'
+          },
+          crystals: [
+            {
+              name: 'Quartzo',
+              value: 1,
+              amount: 0,
+              _id: '5c474be776295e2460be2043'
+            },
+            {
+              name: 'Rubelita',
+              value: 2,
+              amount: 0,
+              _id: '5c474be776295e2460be2042'
+            },
+            {
+              name: 'Esmeralda',
+              value: 3,
+              amount: 0,
+              _id: '5c474be776295e2460be2041'
+            },
+            {
+              name: 'Safira',
+              value: 4,
+              amount: 0,
+              _id: '5c474be776295e2460be2040'
+            },
+            {
+              name: 'Rubi',
+              value: 6,
+              amount: 0,
+              _id: '5c474be776295e2460be203f'
+            },
+            {
+              name: 'Âmbar',
+              value: 8,
+              amount: 0,
+              _id: '5c474be776295e2460be203e'
+            },
+            {
+              name: 'Autunita',
+              value: 0,
+              amount: 0,
+              _id: '5c474be776295e2460be203d'
+            }
+          ],
+          __v: 0
+        },
+        {
+          money: 0,
+          cards: [],
+          hasAnIdiotBook: false,
+          currentTurn: false,
+          _id: '5c474be776295e2460be2044',
+          user: {
+            _id: '5c465456e016660483ae972b',
+            username: 'Barnabeu'
+          },
+          crystals: [
+            {
+              name: 'Quartzo',
+              value: 1,
+              amount: 0,
+              _id: '5c474be776295e2460be204b'
+            },
+            {
+              name: 'Rubelita',
+              value: 2,
+              amount: 0,
+              _id: '5c474be776295e2460be204a'
+            },
+            {
+              name: 'Esmeralda',
+              value: 3,
+              amount: 0,
+              _id: '5c474be776295e2460be2049'
+            },
+            {
+              name: 'Safira',
+              value: 4,
+              amount: 0,
+              _id: '5c474be776295e2460be2048'
+            },
+            {
+              name: 'Rubi',
+              value: 6,
+              amount: 0,
+              _id: '5c474be776295e2460be2047'
+            },
+            {
+              name: 'Âmbar',
+              value: 8,
+              amount: 0,
+              _id: '5c474be776295e2460be2046'
+            },
+            {
+              name: 'Autunita',
+              value: 0,
+              amount: 0,
+              _id: '5c474be776295e2460be2045'
+            }
+          ],
+          __v: 0
+        }
+      ],
+      _id: '5c474be776295e2460be204c',
+      cave: {
+        _id: '5c474be776295e2460be204d',
+        crystals: [
+          {
+            name: 'Quartzo',
+            value: 1,
+            amount: 15,
+            _id: '5c474be776295e2460be2054'
+          },
+          {
+            name: 'Rubelita',
+            value: 2,
+            amount: 12,
+            _id: '5c474be776295e2460be2053'
+          },
+          {
+            name: 'Esmeralda',
+            value: 3,
+            amount: 10,
+            _id: '5c474be776295e2460be2052'
+          },
+          {
+            name: 'Safira',
+            value: 4,
+            amount: 7,
+            _id: '5c474be776295e2460be2051'
+          },
+          {
+            name: 'Rubi',
+            value: 6,
+            amount: 4,
+            _id: '5c474be776295e2460be2050'
+          },
+          {
+            name: 'Âmbar',
+            value: 8,
+            amount: 2,
+            _id: '5c474be776295e2460be204f'
+          },
+          {
+            name: 'Autunita',
+            value: 0,
+            amount: 18,
+            _id: '5c474be776295e2460be204e'
+          }
+        ]
+      },
+      cardsBoard: [],
+      cardsPile: [],
+      cardsDiscarded: [],
+      __v: 0
+    }
+  });
 };
