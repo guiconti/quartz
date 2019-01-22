@@ -30,7 +30,10 @@
             </v-layout>
           </v-container>
 
-          <v-container fluid>
+          <v-container 
+            :class="{ bottomPadding: _id !== loggedUser._id }"
+            fluid
+          >
             <v-layout>
               <v-flex xs4>
                 <v-icon color="yellow lighten-1">monetization_on</v-icon>{{ money }}
@@ -41,8 +44,9 @@
             </v-layout>
           </v-container>
 
-          <v-card-actions>
+          <v-card-actions v-if="_id === loggedUser._id">
             <v-btn 
+              :disabled="!currentTurn"
               flat 
               color="orange"
             >
@@ -50,6 +54,7 @@
             </v-btn>
             <v-spacer/>
             <v-btn 
+              :disabled="!currentTurn"
               flat 
               color="orange"
             >
@@ -63,6 +68,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Crystal from '../crystal/Crystal';
 
 export default {
@@ -71,6 +77,10 @@ export default {
     appCrystal: Crystal
   },
   props: {
+    _id: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true
@@ -87,7 +97,17 @@ export default {
     cards: {
       type: Number,
       required: true
+    },
+    currentTurn: {
+      type: Boolean,
+      required: false,
+      default: false
     }
+  },
+  computed: {
+    ...mapState('user', {
+      loggedUser: state => state.loggedUser
+    })
   }
 }
 </script>
@@ -98,6 +118,9 @@ export default {
   }
   .noTopPadding {
     padding-top: 0px;
+  }
+  .bottomPadding {
+    padding-bottom: 12px;
   }
   >>> .v-card__title {
     padding-bottom: 0px;

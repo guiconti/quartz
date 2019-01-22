@@ -6,7 +6,7 @@ import Game from './components/game/Game';
 const routes = [
   {
     path: '/',
-    name: 'Game',
+    name: 'Home',
     components: {
       'menu-top': Navmenu,
       default: Home

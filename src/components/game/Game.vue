@@ -10,10 +10,12 @@
             sm3
           >
             <app-player
+              :_id="player.user._id"
               :name="player.user.username" 
               :crystals="player.crystals"
               :money="player.money"
               :cards="player.cards.length"
+              :current-turn="player.currentTurn"
             />
           </v-flex>
         </v-layout>
