@@ -62,7 +62,16 @@ export default {
       'createGame'
     ]),
     startGame() {
-      this.$router.push({ path: `/games/1212` })
+      let gameData = {
+        roomId: this.room._id
+      };
+      this.createGame(gameData)
+        .then(game => {
+          this.$router.push({ path: `/games/${game._id}` })
+        })
+        .catch(err => {
+
+        });
     }
   }
 }
