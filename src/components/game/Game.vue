@@ -35,6 +35,7 @@
         </v-layout>
       </v-flex>
     </v-layout>
+    <app-crystal-picked/>
   </v-container>
 </template>
 
@@ -43,13 +44,15 @@ import { mapState, mapGetters, mapActions } from 'vuex';
 import Player from '../player/Player';
 import Cave from '../cave/Cave';
 import Chat from '../chat/Chat';
+import CrystalPicked from '../crystal/CrystalPicked';
 
 export default {
   name: 'Game',
   components: {
     appPlayer: Player,
     appCave: Cave,
-    appChat: Chat
+    appChat: Chat,
+    appCrystalPicked: CrystalPicked
   },
   computed: {
     ...mapState('game', {

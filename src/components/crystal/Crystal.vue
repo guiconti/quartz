@@ -6,12 +6,13 @@
     >
       <div class="text-xs-center">
         <app-crystal-icon
-          :size="50"
+          :size="size"
           :color="getCrystalColor()(name)"
         />
       </div>
     </v-flex>
-    <v-flex 
+    <v-flex
+      v-if="!onlyImage"
       xs4 
       align-center
     >
@@ -37,10 +38,20 @@ export default {
       required: false,
       default: ''
     },
+    size: {
+      type: Number,
+      required: false,
+      default: 50
+    },
     amount: {
       type: Number,
       required: false,
       default: 0
+    },
+    onlyImage: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   methods: {
