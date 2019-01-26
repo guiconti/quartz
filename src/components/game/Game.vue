@@ -30,6 +30,7 @@
                   :money="player.money"
                   :cards="player.cards.length"
                   :current-turn="player.currentTurn"
+                  :is-round-active="player.isRoundActive"
                 />
               </v-flex>
             </v-layout>

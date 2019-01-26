@@ -9,6 +9,12 @@
           <v-card-title primary-title>
             <div>
               <h3 class="headline mb-0">{{ name }}</h3>
+              <h3 
+                v-if="!isRoundActive" 
+                class="headline mb-0 red--text" 
+              >
+                Closed
+              </h3>
             </div>
           </v-card-title>
 
@@ -57,6 +63,7 @@
               :disabled="!currentTurn"
               flat 
               color="orange"
+              @click="closeMine($route.params.id)"
             >
               Close mine
             </v-btn>
@@ -68,7 +75,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import Crystal from '../crystal/Crystal';
 
 export default {
@@ -102,12 +109,22 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    isRoundActive: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   computed: {
     ...mapState('user', {
       loggedUser: state => state.loggedUser
     })
+  },
+  methods: {
+    ...mapActions('game', [
+      'closeMine'
+    ])
   }
 }
 </script>
