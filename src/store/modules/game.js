@@ -1,7 +1,8 @@
 import API from '../../utils/API';
 
 const state = {
-  currentGame: {},
+  games: [],
+  currentGame: {}
 };
 
 const getters = {
@@ -21,6 +22,23 @@ const actions = {
         )
         .then(response => {
           commit('setCurrentGame', response.data.msg);
+          return resolve(response);
+        })
+        .catch(err => {
+          if (err.response) {
+            return reject(err.response.data.msg);
+          }
+          return reject(err);
+        });
+    });
+  },
+  listGames({ commit }) {
+    return new Promise ((resolve, reject) => {
+      const path = '/games?active=true&limit=8';
+      API
+        .get(path)
+        .then(response => {
+          commit('setGamesList', response.data.msg);
           return resolve(response);
         })
         .catch(err => {
@@ -89,6 +107,9 @@ const actions = {
 };
 
 const mutations = {
+  setGamesList(state, games) {
+    state.games = games;
+  },
   setCurrentGame(state, currentGame) {
     state.currentGame = currentGame;
   },

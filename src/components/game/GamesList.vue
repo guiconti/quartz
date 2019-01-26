@@ -13,20 +13,20 @@
         grid-list-md
       >
         <div class="headline">{{ title }}</div>
-        <div v-if="rooms && rooms.length > 0">
+        <div v-if="games && games.length > 0">
           <v-layout 
             row 
             wrap
           >
             <v-flex
-              v-for="room in rooms"
-              :key="room._id"
+              v-for="game in games"
+              :key="game._id"
               xs12
               sm6
               md3
             >
-              <app-room-card 
-                :room="room" 
+              <app-game-card 
+                :game="game" 
                 :reduced="reduced"
               />   
             </v-flex>
@@ -36,7 +36,7 @@
           v-else
           class="title" 
         >
-          {{ noRooms }}
+          {{ noGames }}
         </div>
       </v-container>
     </v-flex>
@@ -44,12 +44,12 @@
 </template>
 
 <script>
-import RoomCard from './RoomCard';
+import GameCard from './GameCard';
 
 export default {
-  name: 'RoomsList',
+  name: 'GamesList',
   components: {
-    appRoomCard: RoomCard
+    appGameCard: GameCard
   },
   props: {
     title: {
@@ -57,15 +57,15 @@ export default {
       required: true,
       default: ''
     },
-    rooms: {
+    games: {
       type: Array,
       required: false,
       default: () => []
     },
-    noRooms: {
+    noGames: {
       type: String,
       required: true,
-      default: 'No rooms'
+      default: 'No games'
     },
     reduced: {
       type: Boolean,
