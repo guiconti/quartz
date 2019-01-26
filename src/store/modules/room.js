@@ -32,7 +32,7 @@ const actions = {
   },
   listRooms({ commit }) {
     return new Promise ((resolve, reject) => {
-      const path = '/rooms?active=true';
+      const path = '/rooms?active=true&limit=8';
       API
         .get(path)
         .then(response => {
