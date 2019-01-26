@@ -48,6 +48,22 @@ const actions = {
         });
     });
   },
+  pickCrystal({ commit }, gameId) {
+    return new Promise((resolve, reject) => {
+      const path = `/games/${gameId}/crystal`;
+      API
+        .get(path)
+        .then(response => {
+          return resolve(response);
+        })
+        .catch(err => {
+          if (err.response) {
+            return reject(err.response.data.msg);
+          }
+          return reject(err);
+        });
+    });
+  },
   updatePlayer({ commit }, player) {
     commit('setCurrentPlayer', player);
   }

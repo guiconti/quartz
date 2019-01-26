@@ -31,6 +31,7 @@
               :disabled="!player || !player.currentTurn"
               flat 
               color="orange"
+              @click="pickCrystal($route.params.id)"
             >
               <app-pickaxe-icon :size="30"/>
               Pick a crystal
@@ -43,6 +44,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Crystal from '../crystal/Crystal';
 import PickaxeIcon from '../icons/PickaxeIcon';
 
@@ -63,6 +65,11 @@ export default {
       required: false,
       default: () => {}
     }
+  },
+  methods: {
+    ...mapActions('game', [
+      'pickCrystal'
+    ])
   }
 }
 </script>
