@@ -63,6 +63,9 @@ export default {
     ])
   },
   sockets: {
+    updateGame: function(updatedGame) {
+      this.updateGame(updatedGame);
+    }
   },
   created() {
     this.gameInfo(this.$route.params.id);
@@ -74,9 +77,8 @@ export default {
   },
   methods: {
     ...mapActions('game', [
-      'gameInfo'
-    ]),
-    ...mapActions('game', [
+      'gameInfo',
+      'updateGame',
       'updatePlayer'
     ])
   }

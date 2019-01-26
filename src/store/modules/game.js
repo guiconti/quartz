@@ -64,6 +64,9 @@ const actions = {
         });
     });
   },
+  updateGame({ commit }, game) {
+    commit('setCurrentGame', game);
+  },
   updatePlayer({ commit }, player) {
     commit('setCurrentPlayer', player);
   }
