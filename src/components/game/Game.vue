@@ -65,10 +65,8 @@ export default {
   sockets: {
   },
   created() {
-    console.log(this.getCurrentUser);
     this.gameInfo(this.$route.params.id);
     this.$socket.emit('joinGame', this.$route.params.id);
-    console.log(this.currentUser);
   },
   beforeDestroy() {
     this.sockets.unsubscribe('newUser');

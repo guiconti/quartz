@@ -28,7 +28,7 @@
           </v-container>
           <v-card-actions>
             <v-btn 
-              :disabled="!player.currentTurn"
+              :disabled="!player || !player.currentTurn"
               flat 
               color="orange"
             >
