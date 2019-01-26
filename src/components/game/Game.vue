@@ -39,8 +39,10 @@
             <v-layout row>
               <v-flex
                 v-if="game.cave" 
-                xs12 
-                sm3
+                xs12
+                sm12
+                md3 
+                lg3
               >
                 <app-cave 
                   :crystals="game.cave.crystals"

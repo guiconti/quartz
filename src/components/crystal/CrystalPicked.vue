@@ -73,6 +73,7 @@ export default {
   },
   methods: {
     crystalAnimation(index) {
+      this.finished = false;
       if (index > 40) {
         this.crystal = this.realCrystal;
         this.finished = true;
