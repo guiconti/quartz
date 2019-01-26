@@ -8,9 +8,15 @@
         xs2 
         white
       >
-        <app-chat-users-list :users="users"/>
+        <app-chat-users-list
+          v-if="showUsers"
+          :users="users"
+        />
       </v-flex>
-      <v-flex xs10>
+      <v-flex 
+        :xs10="showUsers"
+        :xs12="!showUsers"
+      >
         <app-chat-messages :messages="messages"/>
       </v-flex>
     </v-layout>
@@ -37,6 +43,11 @@ export default {
       type: Array,
       required: true,
       default: () => []
+    },
+    showUsers: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   }
 }

@@ -1,38 +1,65 @@
 <template>
   <v-container fluid>
-    <v-layout column>
-      <v-flex xs12>
-        <v-layout row>
-          <v-flex
-            v-for="player in game.players"
-            :key="player._id"
-            xs12 
-            sm3
-          >
-            <app-player
-              :_id="player.user._id"
-              :name="player.user.username" 
-              :crystals="player.crystals"
-              :money="player.money"
-              :cards="player.cards.length"
-              :current-turn="player.currentTurn"
-            />
+    <v-layout 
+      row
+      wrap
+    >
+      <v-flex
+        sm12
+        md10
+        lg10
+      >
+        <v-layout column>
+          <v-flex xs12>
+            <v-layout 
+              row
+              wrap
+            >
+              <v-flex
+                v-for="player in game.players"
+                :key="player._id"
+                xs12
+                sm12
+                md3 
+                lg3
+              >
+                <app-player
+                  :_id="player.user._id"
+                  :name="player.user.username" 
+                  :crystals="player.crystals"
+                  :money="player.money"
+                  :cards="player.cards.length"
+                  :current-turn="player.currentTurn"
+                />
+              </v-flex>
+            </v-layout>
+          </v-flex>
+          <v-flex xs12>
+            <v-layout row>
+              <v-flex
+                v-if="game.cave" 
+                xs12 
+                sm3
+              >
+                <app-cave 
+                  :crystals="game.cave.crystals"
+                  :player="getCurrentPlayer(loggedUser._id)"
+                />
+              </v-flex>
+            </v-layout>
           </v-flex>
         </v-layout>
       </v-flex>
-      <v-flex xs12>
-        <v-layout row>
-          <v-flex
-            v-if="game.cave" 
-            xs12 
-            sm3
-          >
-            <app-cave 
-              :crystals="game.cave.crystals"
-              :player="getCurrentPlayer(loggedUser._id)"
-            />
-          </v-flex>
-        </v-layout>
+      <v-flex
+        sm12
+        md2
+        lg2
+      >
+        <app-chat 
+          :users="game.players"
+          :messages="messages"
+          :show-users="false"
+        />
       </v-flex>
     </v-layout>
     <app-crystal-picked/>
@@ -61,6 +88,9 @@ export default {
     ...mapState('user', {
       loggedUser: state => state.loggedUser
     }),
+    ...mapState('message', {
+      messages: state => state.messages
+    }),
     ...mapGetters('game', [
       'getCurrentPlayer'
     ])
@@ -72,6 +102,7 @@ export default {
   },
   created() {
     this.gameInfo(this.$route.params.id);
+    this.retrieveMessages(this.$route.params.id);
     this.$socket.emit('joinGame', this.$route.params.id);
   },
   beforeDestroy() {
@@ -83,7 +114,10 @@ export default {
       'gameInfo',
       'updateGame',
       'updatePlayer'
-    ])
+    ]),
+    ...mapActions('message', [
+      'retrieveMessages'
+    ]),
   }
 }
 </script>
