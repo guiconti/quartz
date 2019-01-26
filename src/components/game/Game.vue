@@ -66,6 +66,11 @@
       </v-flex>
     </v-layout>
     <app-crystal-picked/>
+    <app-sell-crystals
+      v-if="game.players"
+      :player="getCurrentPlayer(loggedUser._id)"
+      :is-selling="game.isSelling"
+    />
   </v-container>
 </template>
 
@@ -75,6 +80,7 @@ import Player from '../player/Player';
 import Cave from '../cave/Cave';
 import Chat from '../chat/Chat';
 import CrystalPicked from '../crystal/CrystalPicked';
+import SellCrystals from '../crystal/SellCrystals';
 
 export default {
   name: 'Game',
@@ -82,7 +88,8 @@ export default {
     appPlayer: Player,
     appCave: Cave,
     appChat: Chat,
-    appCrystalPicked: CrystalPicked
+    appCrystalPicked: CrystalPicked,
+    appSellCrystals: SellCrystals
   },
   computed: {
     ...mapState('game', {
