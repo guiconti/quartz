@@ -1,10 +1,10 @@
 <template>
   <v-dialog 
-    v-model="dialog" 
+    v-model="isSelling" 
     full-width 
     persistent
   >
-    <v-card>
+    <v-card v-if="player && !player.soldCrystals">
       <v-container>
         <v-layout 
           row 
@@ -112,8 +112,16 @@
         >
           Selling and keep options are not valid.
         </h3>
-        <v-btn @click="send"> Finish </v-btn>
+        <v-btn 
+          :disabled="!enableSelling"
+          @click="send"
+        > Finish </v-btn>
       </v-container>
+    </v-card>
+    <v-card v-else>
+      <v-card-title>
+        <span class="headline">Waiting for others to finish selling</span>
+      </v-card-title>
     </v-card>
   </v-dialog>
 </template>
@@ -150,8 +158,8 @@ export default {
   },
   data() {
     return {
-      dialog: false,
       validSelling: true,
+      enableSelling: true,
       keepCrystals: [0, 0, 0, 0, 0, 0],
       combo: {
         type: -1
@@ -159,9 +167,6 @@ export default {
     };
   },
   computed: {
-    activateDialog: function() {
-      if (this.isSelling) this.dialog = true;
-    },
     keepCrystalsValues: function() {
       let keepCrystalsValues = [[0], [0], [0], [0], [0], [0]];
       if (this.player) {
@@ -177,9 +182,6 @@ export default {
     }
   },
   created() {
-    if (this.isSelling) {
-      this.dialog = true;
-    }
     EventBus.$on('combo-filled', comboData => {
       this.combo = comboData;
     });
@@ -234,13 +236,18 @@ export default {
           break;
       }
       if (this.validSelling) {
+        this.enableSelling = false;
         const sellingData = {
           keepCrystals: this.keepCrystals,
           combo: this.combo
         };
         const gameId = this.$route.params.id;
-        this.sell({ gameId, sellingData });
-        this.dialog = false;
+        this.sell({ gameId, sellingData })
+          .then()
+          .catch(err => {
+            this.validSelling = false;
+            this.enableSelling = true;
+          });
       }
     }
   }

@@ -99,7 +99,6 @@ const actions = {
     });
   },
   sell({ commit }, { gameId, sellingData }) {
-    console.log(sellingData);
     return new Promise((resolve, reject) => {
       const path = `/games/${gameId}/sell`;
       API
