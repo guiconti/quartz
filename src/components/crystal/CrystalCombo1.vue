@@ -5,7 +5,9 @@
       align-center
     >
       <v-flex xs1>
-        <v-radio/>
+        <v-checkbox
+          :disabled="!enabled"
+        />
       </v-flex>
       <v-flex xs1>
         <app-crystal
@@ -69,6 +71,20 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    crystals: {
+      type: Array,
+      required: false,
+      default: () => []
+    }
+  },
+  computed: {
+    enabled: function() {
+      for (let i = 0; i < this.crystals.length - 1; i++) {
+        if (this.crystals[i].amount >= 3)
+          return true;
+      }
+      return false;
     }
   }
 }

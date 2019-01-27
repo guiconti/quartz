@@ -25,12 +25,14 @@
                 >
                   <v-flex xs12>
                     <app-crystal-combo1
+                      :crystals="player.crystals"
                       from="Quartzo"
                       to="Safira"
                     />
                   </v-flex>
                   <v-flex xs12>
                     <app-crystal-combo2
+                      :crystals="player.crystals"
                       from="Quartzo"
                       to-first="Safira"
                       to-second="Rubi"
@@ -38,6 +40,7 @@
                   </v-flex>
                   <v-flex xs12>
                     <app-crystal-combo3
+                      :crystals="player.crystals"
                       from-first="Quartzo"
                       from-second="Rubelita"
                       from-third="Esmeralda"
@@ -47,6 +50,7 @@
                   </v-flex>
                   <v-flex xs12>
                     <app-crystal-combo4
+                      :crystals="player.crystals"
                       from-first="Quartzo"
                       from-second="Rubelita"
                       from-third="Esmeralda"
