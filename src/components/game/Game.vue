@@ -71,6 +71,11 @@
       :player="getCurrentPlayer(loggedUser._id)"
       :is-selling="game.isSelling"
     />
+    <app-game-over
+      v-if="game.players"
+      :players="game.players"
+      :is-game-over="!game.active"
+    />
   </v-container>
 </template>
 
@@ -81,6 +86,7 @@ import Cave from '../cave/Cave';
 import Chat from '../chat/Chat';
 import CrystalPicked from '../crystal/CrystalPicked';
 import SellCrystals from '../crystal/SellCrystals';
+import GameOver from './GameOver';
 
 export default {
   name: 'Game',
@@ -89,7 +95,8 @@ export default {
     appCave: Cave,
     appChat: Chat,
     appCrystalPicked: CrystalPicked,
-    appSellCrystals: SellCrystals
+    appSellCrystals: SellCrystals,
+    appGameOver: GameOver
   },
   computed: {
     ...mapState('game', {
