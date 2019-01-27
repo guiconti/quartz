@@ -32,12 +32,18 @@
                   <v-flex xs12>
                     <app-crystal-combo2
                       from="Quartzo"
-                      toFirst="Safira"
-                      toSecond="Rubi"
+                      to-first="Safira"
+                      to-second="Rubi"
                     />
                   </v-flex>
                   <v-flex xs12>
-                    <v-radio/>
+                    <app-crystal-combo3
+                      from-first="Quartzo"
+                      from-second="Rubelita"
+                      from-third="Esmeralda"
+                      from-forth="Safira"
+                      from-fifth="Rubi"
+                    />
                   </v-flex>
                   <v-flex xs12>
                     <v-radio/>
@@ -100,13 +106,15 @@ import { mapState } from 'vuex';
 import Crystal from './Crystal';
 import CrystalCombo1 from './CrystalCombo1';
 import CrystalCombo2 from './CrystalCombo2';
+import CrystalCombo3 from './CrystalCombo3';
 
 export default {
   name: 'SellCrystals',
   components: {
     appCrystal: Crystal,
     appCrystalCombo1: CrystalCombo1,
-    appCrystalCombo2: CrystalCombo2
+    appCrystalCombo2: CrystalCombo2,
+    appCrystalCombo3: CrystalCombo3
   },
   props: {
     player: {
