@@ -67,7 +67,7 @@
         <v-select
           v-model="fromSelected"
           :items="fromCandidates"
-          @change="change"
+          @change="changeFrom"
         />
       </v-flex>
       <v-flex 
@@ -83,6 +83,7 @@
         <v-select
           v-model="toSelected"
           :items="toCandidates"
+          @change="changeTo"
         />
       </v-flex>
     </v-layout>
@@ -143,7 +144,7 @@ export default {
     select() {
       EventBus.$emit('combo-selected', this.$options.name);
       const comboData = {
-        type: 1,
+        type: 0,
         conversion: {
           from: this.fromSelected,
           toFirst: this.toSelected
@@ -165,16 +166,26 @@ export default {
         }
       }
     },
-    change(currentSelected) {
+    changeFrom(currentSelected) {
       this.fillChoices();
       const index = this.toCandidates.indexOf(currentSelected);
       if (index >= 0)
         this.toCandidates.splice(index, 1);
       const comboData = {
-        type: 1,
+        type: 0,
+        conversion: {
+          from: currentSelected,
+          toFirst: this.toSelected
+        }
+      };
+      EventBus.$emit('combo-filled', comboData);
+    },
+    changeTo(currentSelected) {
+      const comboData = {
+        type: 0,
         conversion: {
           from: this.fromSelected,
-          toFirst: this.toSelected
+          toFirst: currentSelected
         }
       };
       EventBus.$emit('combo-filled', comboData);

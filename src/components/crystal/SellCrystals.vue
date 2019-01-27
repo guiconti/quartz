@@ -106,7 +106,13 @@
             </v-card-text>
           </v-flex>
         </v-layout>
-        <v-btn @click="dialog = false"> Finish </v-btn>
+        <h3 
+          v-if="!validSelling"
+          class="headline red--text"
+        >
+          Selling and keep options are not valid.
+        </h3>
+        <v-btn @click="send"> Finish </v-btn>
       </v-container>
     </v-card>
   </v-dialog>
@@ -144,6 +150,7 @@ export default {
   data() {
     return {
       dialog: false,
+      validSelling: true,
       keepCrystals: [0, 0, 0, 0, 0, 0],
       combo: {}
     };
@@ -174,7 +181,57 @@ export default {
       this.combo = comboData;
     });
   },
-  methods: {}
+  methods: {
+    send() {
+      this.validSelling = true;
+      let amountOfValidCrystals = 0;
+      switch (this.combo.type) {
+        case 0:
+          for (let i = 0; i < this.player.crystals.length - 1; i++) {
+            if (this.player.crystals[i].name === this.combo.conversion.from) {
+              if (this.player.crystals[i].amount - this.keepCrystals[i] < 3) {
+                this.validSelling = false;
+                break;
+              }
+            }
+          }
+          break;
+        case 1:
+          for (let i = 0; i < this.player.crystals.length - 1; i++) {
+            if (this.player.crystals[i].name === this.combo.conversion.from) {
+              if (this.player.crystals[i].amount - this.keepCrystals[i] < 4) {
+                this.validSelling = false;
+                break;
+              }
+            }
+          }
+          break;
+        case 2:
+          amountOfValidCrystals = 0;
+          for (let i = 0; i < this.player.crystals.length - 1; i++) {
+            if (this.player.crystals[i].amount - this.keepCrystals[i] > 0)
+              amountOfValidCrystals++;
+          }
+          if (amountOfValidCrystals < 5)
+            this.validSelling = false;
+          break;
+        case 3:
+          amountOfValidCrystals = 0;
+          for (let i = 0; i < this.player.crystals.length - 1; i++) {
+            if (this.player.crystals[i].amount - this.keepCrystals[i] > 0)
+              amountOfValidCrystals++;
+          }
+          if (amountOfValidCrystals < 6)
+            this.validSelling = false
+          break;
+        default:
+          break;
+      }
+      if (this.validSelling) {
+        console.log('Vendendo de boa');
+      }
+    }
+  }
 };
 </script>
 

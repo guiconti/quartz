@@ -122,7 +122,7 @@ export default {
         if (this.crystals[i].amount > 0)
           amountOfDifferentCrystals++;
       }
-      return amountOfDifferentCrystals >= 4;
+      return amountOfDifferentCrystals >= 5;
     }
   },
   created() {
