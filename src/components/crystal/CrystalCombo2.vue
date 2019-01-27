@@ -115,22 +115,12 @@
 
 <script>
 import Crystal from './Crystal';
+import EventBus from '../../utils/event-bus';
 
 export default {
   name: 'CrystalCombo2',
   components: {
     appCrystal: Crystal
-  },
-  data() {
-    return {
-      selected: false,
-      fromCandidates: [],
-      toCandidatesFirst: [],
-      toCandidatesSecond: [],
-      fromSelected: null,
-      toSelectedFirst: null,
-      toSelectedSecond: null,
-    }
   },
   props: {
     from: {
@@ -154,6 +144,17 @@ export default {
       default: () => []
     }
   },
+  data() {
+    return {
+      selected: false,
+      fromCandidates: [],
+      toCandidatesFirst: [],
+      toCandidatesSecond: [],
+      fromSelected: null,
+      toSelectedFirst: null,
+      toSelectedSecond: null,
+    }
+  },
   computed: {
     enabled: function() {
       for (let i = 0; i < this.crystals.length - 1; i++) {
@@ -163,8 +164,15 @@ export default {
       return false;
     }
   },
+  created() {
+    EventBus.$on('combo-selected', componentName => {
+      if (componentName !== this.$options.name)
+        this.selected = false;
+    });
+  },
   methods: {
     select() {
+      EventBus.$emit('combo-selected', this.$options.name);
       this.fillChoices();
       this.selected = !this.selected;
     },

@@ -6,8 +6,10 @@
     >
       <v-flex xs1>
         <v-checkbox
+          v-model="selected"
           :disabled="!enabled"
           color="blue"
+          @click.stop="select"
         />
       </v-flex>
       <v-flex xs1>
@@ -76,6 +78,7 @@
 
 <script>
 import Crystal from './Crystal';
+import EventBus from '../../utils/event-bus';
 
 export default {
   name: 'CrystalCombo4',
@@ -119,14 +122,31 @@ export default {
       default: () => []
     }
   },
+  data() {
+    return {
+      selected: false
+    }
+  },
   computed: {
     enabled: function() {
       let amountOfDifferentCrystals = 0;
-      this.crystals.forEach(crystal => {
-        if (crystal.amount > 0)
+      for (let i ; i < this.crystals.length - 1; i++) {
+        if (this.crystals[i].amount > 0)
           amountOfDifferentCrystals++;
-      });
-      return amountOfDifferentCrystals >= 6;
+      }
+      return amountOfDifferentCrystals >= 5;
+    }
+  },
+  created() {
+    EventBus.$on('combo-selected', componentName => {
+      if (componentName !== this.$options.name)
+        this.selected = false;
+    });
+  },
+  methods: {
+    select() {
+      EventBus.$emit('combo-selected', this.$options.name);
+      this.selected = !this.selected;
     }
   }
 }

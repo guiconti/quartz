@@ -91,6 +91,7 @@
 
 <script>
 import Crystal from './Crystal';
+import EventBus from '../../utils/event-bus';
 
 export default {
   name: 'CrystalCombo1',
@@ -132,8 +133,15 @@ export default {
       return false;
     }
   },
+  created() {
+    EventBus.$on('combo-selected', componentName => {
+      if (componentName !== this.$options.name)
+        this.selected = false;
+    });
+  },
   methods: {
     select() {
+      EventBus.$emit('combo-selected', this.$options.name);
       this.fillChoices();
       this.selected = !this.selected;
     },
