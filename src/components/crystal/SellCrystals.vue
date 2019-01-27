@@ -113,7 +113,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import EventBus from '../../utils/event-bus';
 import Crystal from './Crystal';
 import CrystalCombo1 from './CrystalCombo1';
 import CrystalCombo2 from './CrystalCombo2';
@@ -144,7 +144,8 @@ export default {
   data() {
     return {
       dialog: false,
-      keepCrystals: [0, 0, 0, 0, 0, 0]
+      keepCrystals: [0, 0, 0, 0, 0, 0],
+      combo: {}
     };
   },
   computed: {
@@ -169,6 +170,9 @@ export default {
     if (this.isSelling) {
       this.dialog = true;
     }
+    EventBus.$on('combo-filled', comboData => {
+      this.combo = comboData;
+    });
   },
   methods: {}
 };

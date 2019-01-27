@@ -134,6 +134,10 @@ export default {
   methods: {
     select() {
       EventBus.$emit('combo-selected', this.$options.name);
+      const comboData = {
+        type: 2
+      };
+      EventBus.$emit('combo-filled', comboData);
       this.selected = !this.selected;
     }
   }

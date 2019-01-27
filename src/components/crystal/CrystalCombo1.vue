@@ -142,6 +142,14 @@ export default {
   methods: {
     select() {
       EventBus.$emit('combo-selected', this.$options.name);
+      const comboData = {
+        type: 1,
+        conversion: {
+          from: this.fromSelected,
+          toFirst: this.toSelected
+        }
+      };
+      EventBus.$emit('combo-filled', comboData);
       this.fillChoices();
       this.selected = !this.selected;
     },
@@ -162,6 +170,14 @@ export default {
       const index = this.toCandidates.indexOf(currentSelected);
       if (index >= 0)
         this.toCandidates.splice(index, 1);
+      const comboData = {
+        type: 1,
+        conversion: {
+          from: this.fromSelected,
+          toFirst: this.toSelected
+        }
+      };
+      EventBus.$emit('combo-filled', comboData);
     }
   }
 }

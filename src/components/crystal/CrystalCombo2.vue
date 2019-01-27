@@ -173,6 +173,15 @@ export default {
   methods: {
     select() {
       EventBus.$emit('combo-selected', this.$options.name);
+      const comboData = {
+        type: 1,
+        conversion: {
+          from: this.fromSelected,
+          toFirst: this.toSelectedFirst,
+          toSecond: this.toSelectedSecond
+        }
+      };
+      EventBus.$emit('combo-filled', comboData);
       this.fillChoices();
       this.selected = !this.selected;
     },
@@ -205,6 +214,15 @@ export default {
         this.toCandidatesFirst.splice(indexFirst, 1);
       if (indexSecond >= 0)
         this.toCandidatesSecond.splice(indexSecond, 1);
+      const comboData = {
+        type: 1,
+        conversion: {
+          from: this.fromSelected,
+          toFirst: this.toSelectedFirst,
+          toSecond: this.toSelectedSecond
+        }
+      };
+      EventBus.$emit('combo-filled', comboData);
     },
     changeSelectedFirst(currentSelected) {
       this.fillChoices();
@@ -220,6 +238,15 @@ export default {
       indexFirst = this.toCandidatesFirst.indexOf(this.toSelectedSecond);
       if (indexFirst >= 0)
         this.toCandidatesFirst.splice(indexFirst, 1);
+      const comboData = {
+        type: 1,
+        conversion: {
+          from: this.fromSelected,
+          toFirst: this.toSelectedFirst,
+          toSecond: this.toSelectedSecond
+        }
+      };
+      EventBus.$emit('combo-filled', comboData);
     },
     changeSelectedSecond(currentSelected) {
       this.fillChoices();
@@ -235,6 +262,15 @@ export default {
       indexSecond = this.toCandidatesSecond.indexOf(this.toSelectedFirst);
       if (indexSecond >= 0)
         this.toCandidatesSecond.splice(indexSecond, 1);
+      const comboData = {
+        type: 1,
+        conversion: {
+          from: this.fromSelected,
+          toFirst: this.toSelectedFirst,
+          toSecond: this.toSelectedSecond
+        }
+      };
+      EventBus.$emit('combo-filled', comboData);
     }
   }
 }
