@@ -6,8 +6,10 @@
     >
       <v-flex xs1>
         <v-checkbox
+          v-model="selected"
           :disabled="!enabled"
           color="blue"
+          @click.stop="select"
         />
       </v-flex>
       <v-flex xs1>
@@ -65,6 +67,49 @@
         />
       </v-flex>
     </v-layout>
+    <v-layout
+      v-if="selected"
+      row
+      wrap
+      align-center
+    >
+      <v-flex 
+        xs3
+        style="padding-right: 20px; padding-left: 20px;"
+      >
+        <v-select
+          v-model="fromSelected"
+          :items="fromCandidates"
+          @change="changeSelected"
+        />
+      </v-flex>
+      <v-flex 
+        xs1
+        class="text-xs-center"
+      >
+        <v-icon>arrow_forward</v-icon>
+      </v-flex>
+      <v-flex 
+        xs3
+        style="padding-right: 20px; padding-left: 20px;"
+      >
+        <v-select
+          v-model="toSelectedFirst"
+          :items="toCandidatesFirst"
+          @change="changeSelectedFirst"
+        />
+      </v-flex>
+      <v-flex 
+        xs3
+        style="padding-right: 20px; padding-left: 20px;"
+      >
+        <v-select
+          v-model="toSelectedSecond"
+          :items="toCandidatesSecond"
+          @change="changeSelectedSecond"
+        />
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
@@ -75,6 +120,17 @@ export default {
   name: 'CrystalCombo2',
   components: {
     appCrystal: Crystal
+  },
+  data() {
+    return {
+      selected: false,
+      fromCandidates: [],
+      toCandidatesFirst: [],
+      toCandidatesSecond: [],
+      fromSelected: null,
+      toSelectedFirst: null,
+      toSelectedSecond: null,
+    }
   },
   props: {
     from: {
@@ -105,6 +161,72 @@ export default {
           return true;
       }
       return false;
+    }
+  },
+  methods: {
+    select() {
+      this.fillChoices();
+      this.selected = !this.selected;
+    },
+    fillChoices() {
+      this.fromCandidates = [];
+      this.toCandidatesFirst = [];
+      this.toCandidatesSecond = [];
+      for (let i = 0; i < this.crystals.length - 1; i++) {
+        if (this.crystals[i].amount >= 4) {
+          this.fromCandidates.push(this.crystals[i].name);
+          this.toCandidatesFirst.push(this.crystals[i].name);
+          this.toCandidatesSecond.push(this.crystals[i].name);
+        } else if (this.crystals[i].amount > 0) {
+          this.toCandidatesFirst.push(this.crystals[i].name);
+          this.toCandidatesSecond.push(this.crystals[i].name);
+        }
+      }
+    },
+    changeSelected(currentSelected) {
+      this.fillChoices();
+      let indexFirst = this.toCandidatesFirst.indexOf(currentSelected);
+      let indexSecond = this.toCandidatesSecond.indexOf(currentSelected);
+      if (indexFirst >= 0)
+        this.toCandidatesFirst.splice(indexFirst, 1);
+      if (indexSecond >= 0)
+        this.toCandidatesSecond.splice(indexSecond, 1);
+      indexFirst = this.toCandidatesFirst.indexOf(this.toSelectedSecond);
+      indexSecond = this.toCandidatesSecond.indexOf(this.toSelectedFirst);
+      if (indexFirst >= 0)
+        this.toCandidatesFirst.splice(indexFirst, 1);
+      if (indexSecond >= 0)
+        this.toCandidatesSecond.splice(indexSecond, 1);
+    },
+    changeSelectedFirst(currentSelected) {
+      this.fillChoices();
+      let indexSecond = this.toCandidatesSecond.indexOf(currentSelected);
+      if (indexSecond >= 0)
+        this.toCandidatesSecond.splice(indexSecond, 1);
+      let indexFirst = this.toCandidatesFirst.indexOf(this.fromSelected);
+      indexSecond = this.toCandidatesSecond.indexOf(this.fromSelected);
+      if (indexFirst >= 0)
+        this.toCandidatesFirst.splice(indexFirst, 1);
+      if (indexSecond >= 0)
+        this.toCandidatesSecond.splice(indexSecond, 1);
+      indexFirst = this.toCandidatesFirst.indexOf(this.toSelectedSecond);
+      if (indexFirst >= 0)
+        this.toCandidatesFirst.splice(indexFirst, 1);
+    },
+    changeSelectedSecond(currentSelected) {
+      this.fillChoices();
+      let indexFirst = this.toCandidatesFirst.indexOf(currentSelected);
+      if (indexFirst >= 0)
+        this.toCandidatesFirst.splice(indexFirst, 1);
+      indexFirst = this.toCandidatesFirst.indexOf(this.fromSelected);
+      let indexSecond = this.toCandidatesSecond.indexOf(this.fromSelected);
+      if (indexFirst >= 0)
+        this.toCandidatesFirst.splice(indexFirst, 1);
+      if (indexSecond >= 0)
+        this.toCandidatesSecond.splice(indexSecond, 1);
+      indexSecond = this.toCandidatesSecond.indexOf(this.toSelectedFirst);
+      if (indexSecond >= 0)
+        this.toCandidatesSecond.splice(indexSecond, 1);
     }
   }
 }

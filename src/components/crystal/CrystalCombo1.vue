@@ -134,6 +134,10 @@ export default {
   },
   methods: {
     select() {
+      this.fillChoices();
+      this.selected = !this.selected;
+    },
+    fillChoices() {
       this.fromCandidates = [];
       this.toCandidates = [];
       for (let i = 0; i < this.crystals.length - 1; i++) {
@@ -144,11 +148,12 @@ export default {
           this.toCandidates.push(this.crystals[i].name);
         }
       }
-      this.selected = !this.selected;
     },
     change(currentSelected) {
+      this.fillChoices();
       const index = this.toCandidates.indexOf(currentSelected);
-      this.toCandidates.splice(index, 1);
+      if (index >= 0)
+        this.toCandidates.splice(index, 1);
     }
   }
 }
