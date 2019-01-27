@@ -98,6 +98,22 @@ const actions = {
         });
     });
   },
+  sell({ commit }, gameId) {
+    return new Promise((resolve, reject) => {
+      const path = `/games/${gameId}/sell`;
+      API
+        .patch(path)
+        .then(response => {
+          return resolve(response);
+        })
+        .catch(err => {
+          if (err.response) {
+            return reject(err.response.data.msg);
+          }
+          return reject(err);
+        });
+    });
+  },
   updateGame({ commit }, game) {
     commit('setCurrentGame', game);
   },

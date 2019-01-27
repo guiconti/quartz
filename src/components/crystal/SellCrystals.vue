@@ -119,6 +119,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import EventBus from '../../utils/event-bus';
 import Crystal from './Crystal';
 import CrystalCombo1 from './CrystalCombo1';
@@ -182,6 +183,9 @@ export default {
     });
   },
   methods: {
+    ...mapActions('game', [
+      'sell'
+    ]),
     send() {
       this.validSelling = true;
       let amountOfValidCrystals = 0;
@@ -228,7 +232,8 @@ export default {
           break;
       }
       if (this.validSelling) {
-        console.log('Vendendo de boa');
+        this.sell();
+        this.dialog = false;
       }
     }
   }
