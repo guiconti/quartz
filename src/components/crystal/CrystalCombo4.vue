@@ -7,6 +7,7 @@
       <v-flex xs1>
         <v-checkbox
           :disabled="!enabled"
+          color="blue"
         />
       </v-flex>
       <v-flex xs1>
