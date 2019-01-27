@@ -118,11 +118,11 @@ export default {
   computed: {
     enabled: function() {
       let amountOfDifferentCrystals = 0;
-      for (let i ; i < this.crystals.length - 1; i++) {
+      for (let i = 0; i < this.crystals.length - 1; i++) {
         if (this.crystals[i].amount > 0)
           amountOfDifferentCrystals++;
       }
-      return amountOfDifferentCrystals >= 5;
+      return amountOfDifferentCrystals >= 4;
     }
   },
   created() {
