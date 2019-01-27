@@ -92,3 +92,9 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+  .container {
+    padding: 0px !important
+  }
+</style>

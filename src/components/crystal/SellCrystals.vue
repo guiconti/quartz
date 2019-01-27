@@ -46,7 +46,14 @@
                     />
                   </v-flex>
                   <v-flex xs12>
-                    <v-radio/>
+                    <app-crystal-combo4
+                      from-first="Quartzo"
+                      from-second="Rubelita"
+                      from-third="Esmeralda"
+                      from-forth="Safira"
+                      from-fifth="Rubi"
+                      from-sixth="Âmbar"
+                    />
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -107,6 +114,7 @@ import Crystal from './Crystal';
 import CrystalCombo1 from './CrystalCombo1';
 import CrystalCombo2 from './CrystalCombo2';
 import CrystalCombo3 from './CrystalCombo3';
+import CrystalCombo4 from './CrystalCombo4';
 
 export default {
   name: 'SellCrystals',
@@ -114,7 +122,8 @@ export default {
     appCrystal: Crystal,
     appCrystalCombo1: CrystalCombo1,
     appCrystalCombo2: CrystalCombo2,
-    appCrystalCombo3: CrystalCombo3
+    appCrystalCombo3: CrystalCombo3,
+    appCrystalCombo4: CrystalCombo4
   },
   props: {
     player: {
