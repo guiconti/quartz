@@ -76,3 +76,6 @@ typings/
 
 #reference purpose
 _references/
+
+# Credentials
+.credentials/
