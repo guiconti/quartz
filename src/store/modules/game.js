@@ -98,11 +98,15 @@ const actions = {
         });
     });
   },
-  sell({ commit }, gameId) {
+  sell({ commit }, { gameId, sellingData }) {
+    console.log(sellingData);
     return new Promise((resolve, reject) => {
       const path = `/games/${gameId}/sell`;
       API
-        .patch(path)
+        .patch(
+          path,
+          sellingData
+        )
         .then(response => {
           return resolve(response);
         })

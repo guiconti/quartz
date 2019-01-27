@@ -153,7 +153,9 @@ export default {
       dialog: false,
       validSelling: true,
       keepCrystals: [0, 0, 0, 0, 0, 0],
-      combo: {}
+      combo: {
+        type: -1
+      }
     };
   },
   computed: {
@@ -162,7 +164,7 @@ export default {
     },
     keepCrystalsValues: function() {
       let keepCrystalsValues = [[0], [0], [0], [0], [0], [0]];
-      if (this.player.crystals) {
+      if (this.player) {
         for (let i = 0; i < this.player.crystals.length - 1; i++) {
           if (this.player.crystals[i].amount < 2) {
             keepCrystalsValues[i] = this.player.crystals[i].amount > 0 ? [0, 1] : [0];
@@ -232,7 +234,12 @@ export default {
           break;
       }
       if (this.validSelling) {
-        this.sell();
+        const sellingData = {
+          keepCrystals: this.keepCrystals,
+          combo: this.combo
+        };
+        const gameId = this.$route.params.id;
+        this.sell({ gameId, sellingData });
         this.dialog = false;
       }
     }
