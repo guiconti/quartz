@@ -193,6 +193,12 @@ export default {
       this.combo = comboData;
     });
   },
+  mounted() {
+    this.keepCrystals = [0, 0, 0, 0, 0, 0],
+    this.combo = {
+      type: -1
+    }
+  },
   methods: {
     ...mapActions('game', [
       'sell'
