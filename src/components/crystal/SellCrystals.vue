@@ -184,7 +184,7 @@ export default {
   watch: {
     isSelling: function(val) {
       if (val) {
-        enableSelling = true;
+        this.enableSelling = true;
       }
     }
   },
