@@ -187,7 +187,7 @@ export default {
         enableSelling = true;
       }
     }
-  }
+  },
   created() {
     EventBus.$on('combo-filled', comboData => {
       this.combo = comboData;
