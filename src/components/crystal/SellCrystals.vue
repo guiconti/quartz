@@ -181,6 +181,13 @@ export default {
       return keepCrystalsValues;
     }
   },
+  watch: {
+    isSelling: function(val) {
+      if (val) {
+        enableSelling = true;
+      }
+    }
+  }
   created() {
     EventBus.$on('combo-filled', comboData => {
       this.combo = comboData;
