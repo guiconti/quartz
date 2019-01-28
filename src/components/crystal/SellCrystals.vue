@@ -206,6 +206,11 @@ export default {
     send() {
       this.validSelling = true;
       let amountOfValidCrystals = 0;
+      let amountOfKeepCrystals = 0;
+      for (let i = 0; i < this.keepCrystals.length; i++) {
+        amountOfKeepCrystals += this.keepCrystals[i];
+      }
+      this.isValidSelling = amountOfKeepCrystals >= 0 && amountOfKeepCrystals <= 2;
       switch (this.combo.type) {
         case 0:
           for (let i = 0; i < this.player.crystals.length - 1; i++) {
