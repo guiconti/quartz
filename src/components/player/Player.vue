@@ -77,11 +77,13 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import Crystal from '../crystal/Crystal';
+import CoinIcon from '../icons/CoinIcon';
 
 export default {
   name: 'Player',
   components: {
-    appCrystal: Crystal
+    appCrystal: Crystal,
+    appCoinIcon: CoinIcon
   },
   props: {
     _id: {
