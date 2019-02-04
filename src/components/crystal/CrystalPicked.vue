@@ -74,7 +74,7 @@ export default {
   methods: {
     crystalAnimation(index) {
       this.finished = false;
-      if (index > 40) {
+      if (index > 25) {
         this.crystal = this.realCrystal;
         this.finished = true;
       } else {
@@ -92,8 +92,8 @@ export default {
 
 </script>
 
-<style lang="stylus" scoped>
-  >>> .v-dialog__activator {
-    height: 100%
+<style>
+  .v-overlay--active:before {
+    opacity: 1 !important
   }
 </style>

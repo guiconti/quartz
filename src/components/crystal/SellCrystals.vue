@@ -181,10 +181,23 @@ export default {
       return keepCrystalsValues;
     }
   },
+  watch: {
+    isSelling: function(val) {
+      if (val) {
+        this.enableSelling = true;
+      }
+    }
+  },
   created() {
     EventBus.$on('combo-filled', comboData => {
       this.combo = comboData;
     });
+  },
+  mounted() {
+    this.keepCrystals = [0, 0, 0, 0, 0, 0],
+    this.combo = {
+      type: -1
+    }
   },
   methods: {
     ...mapActions('game', [
@@ -193,6 +206,11 @@ export default {
     send() {
       this.validSelling = true;
       let amountOfValidCrystals = 0;
+      let amountOfKeepCrystals = 0;
+      for (let i = 0; i < this.keepCrystals.length; i++) {
+        amountOfKeepCrystals += this.keepCrystals[i];
+      }
+      this.isValidSelling = amountOfKeepCrystals >= 0 && amountOfKeepCrystals <= 2;
       switch (this.combo.type) {
         case 0:
           for (let i = 0; i < this.player.crystals.length - 1; i++) {

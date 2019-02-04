@@ -35,9 +35,9 @@ export default {
   name: 'GameOver',
   props: {
     players: {
-      type: Object,
+      type: Array,
       required: false,
-      default: () => {}
+      default: () => []
     },
     isGameOver: {
       type: Boolean,

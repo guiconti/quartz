@@ -67,7 +67,7 @@
     </v-layout>
     <app-crystal-picked/>
     <app-sell-crystals
-      v-if="game.players"
+      v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
       :is-selling="game.isSelling"
     />
