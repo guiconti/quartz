@@ -45,19 +45,16 @@
                 <v-icon color="yellow lighten-1">monetization_on</v-icon>{{ money }}
               </v-flex>
               <v-flex xs4>
-                <v-icon color="indigo">class</v-icon>{{ cards }}
+                <v-icon color="indigo">class</v-icon>{{ cards.length }}
               </v-flex>
             </v-layout>
           </v-container>
 
           <v-card-actions v-if="_id === loggedUser._id">
-            <v-btn 
-              :disabled="!currentTurn"
-              flat 
-              color="orange"
-            >
-              Use a card
-            </v-btn>
+            <app-pick-card
+              :current-turn="currentTurn"
+              :cards="cards"
+            />
             <v-spacer/>
             <v-btn 
               :disabled="!currentTurn"
@@ -78,12 +75,14 @@
 import { mapState, mapActions } from 'vuex';
 import Crystal from '../crystal/Crystal';
 import CoinIcon from '../icons/CoinIcon';
+import PickCard from '../card/PickCard';
 
 export default {
   name: 'Player',
   components: {
     appCrystal: Crystal,
-    appCoinIcon: CoinIcon
+    appCoinIcon: CoinIcon,
+    appPickCard: PickCard
   },
   props: {
     _id: {
@@ -104,7 +103,7 @@ export default {
       required: true
     },
     cards: {
-      type: Number,
+      type: Array,
       required: true
     },
     currentTurn: {
