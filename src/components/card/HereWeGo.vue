@@ -63,7 +63,6 @@ export default {
   sockets: {
     hereWeGo: function(data) {
       this.dialog = true;
-      console.log(data);
       this.username = data.player.username;
       this.realCrystals = data.crystals;
       this.crystals = ['', '', ''];
@@ -102,7 +101,6 @@ export default {
       for (let i = 0; i < this.crystals.length; i++) {
         this.crystals[i] = Object.keys(this.colors)[Math.floor(Math.random() * (Object.keys(this.colors).length - 1))];
       }
-      console.log(this.crystals);
     }          
   }
 }
