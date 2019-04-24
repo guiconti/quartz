@@ -1,28 +1,36 @@
 <template>
-  <v-card>
-    <v-img 
-      :src="image"
-      :alt="description"
-      contain="true"
-      height="250"
-      width="150"
-    />
-    <v-card-title primary-title>
-      <div>
-        <h3 class="headline mb-0">{{ name }}</h3>
-      </div>
-    </v-card-title>
-    <v-card-actions>
-      <v-btn icon @click="show = !show">
-        <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-      </v-btn>
-    </v-card-actions>
-    <v-slide-y-transition>
-      <v-card-text v-show="show">
-        {{ description }}
-      </v-card-text>
-    </v-slide-y-transition>
-  </v-card>
+  <v-container fluid>
+    <v-card>
+      <v-img 
+        :src="image"
+        :alt="description"
+        contain="true"
+        height="250"
+        width="150"
+      />
+      <v-card-title 
+        primary-title 
+        class="pt-0 pb-0"
+      >
+        <div>
+          <h3 class="subheadline pt-0">{{ name }}</h3>
+        </div>
+      </v-card-title>
+      <v-card-actions>
+        <v-btn 
+          icon 
+          @click="show = !show"
+        >
+          <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+        </v-btn>
+      </v-card-actions>
+      <v-slide-y-transition>
+        <v-card-text v-show="show">
+          {{ description }}
+        </v-card-text>
+      </v-slide-y-transition>
+    </v-card>
+  </v-container>
 </template>
 
 <script>

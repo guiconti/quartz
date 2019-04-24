@@ -26,7 +26,7 @@
               :key="card._id"
               xs12
               sm12
-              lg2
+              lg3
             >
               <app-card       
                 :name="card.name"
