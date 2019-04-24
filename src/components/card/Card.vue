@@ -1,7 +1,10 @@
 <template>
   <v-container fluid>
     <v-card>
-      <v-layout align-center justify-center>
+      <v-layout 
+        align-center 
+        ustify-center
+      >
         <v-img 
           :src="image"
           :alt="description"
@@ -20,7 +23,7 @@
         <v-btn 
           flat
           color="orange"
-          @click="show = !show"
+          @click="useCard()"
         >
           Usar
         </v-btn>
@@ -79,6 +82,11 @@ export default {
     return {
       show: false
     };
+  },
+  methods: {
+    useCard() {
+      this.$emit('use-card', this.action);
+    }
   }
 }
 </script>

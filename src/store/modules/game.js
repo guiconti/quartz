@@ -82,6 +82,25 @@ const actions = {
         });
     });
   },
+  useCard({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      const path = `/games/${data.param}/use_card`;
+      API
+        .patch(
+          path,
+          data.body
+        )
+        .then(response => {
+          return resolve(response);
+        })
+        .catch(err => {
+          if (err.response) {
+            return reject(err.response.data.msg);
+          }
+          return reject(err);
+        });
+    });
+  },
   closeMine({ commit }, gameId) {
     return new Promise((resolve, reject) => {
       const path = `/games/${gameId}/close_mine`;

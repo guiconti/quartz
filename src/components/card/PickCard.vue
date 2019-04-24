@@ -16,7 +16,7 @@
         flat
         color="white"
       >
-        <v-btn 
+        <v-btn
           flat 
           icon 
           @click="dialog = false"
@@ -48,6 +48,7 @@
                 :type="card.type"
                 :value="card.value"
                 :image="card.image"
+                @use-card="cardPicked"
               />
             </v-flex>
           </v-layout>
@@ -58,6 +59,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Card from './Card';
 
 export default {
@@ -80,6 +82,26 @@ export default {
   data() {
     return {
       dialog: false
+    }
+  },
+  methods: {
+    ...mapActions('game', [
+      'useCard'
+    ]),
+    cardPicked(card) {
+      this.dialog = false;
+      const data = {
+        param: this.$route.params.id,
+        body: {
+          action: card
+        }
+      };
+      this.useCard(data)
+        .then(() => {
+        })
+        .catch(err => {
+
+        });
     }
   }
 }
