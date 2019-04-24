@@ -28,7 +28,7 @@
                   :name="player.user.username" 
                   :crystals="player.crystals"
                   :money="player.money"
-                  :cards="player.cards.length"
+                  :cards="player.cards"
                   :current-turn="player.currentTurn"
                   :is-round-active="player.isRoundActive"
                 />
