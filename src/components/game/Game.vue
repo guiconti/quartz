@@ -66,6 +66,7 @@
       </v-flex>
     </v-layout>
     <app-crystal-picked/>
+    <app-here-we-go/>
     <app-sell-crystals
       v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
@@ -85,6 +86,7 @@ import Player from '../player/Player';
 import Cave from '../cave/Cave';
 import Chat from '../chat/Chat';
 import CrystalPicked from '../crystal/CrystalPicked';
+import HereWeGo from '../card/HereWeGo';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -95,6 +97,7 @@ export default {
     appCave: Cave,
     appChat: Chat,
     appCrystalPicked: CrystalPicked,
+    appHereWeGo: HereWeGo,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
   },
