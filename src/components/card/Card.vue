@@ -1,28 +1,35 @@
 <template>
   <v-container fluid>
     <v-card>
-      <v-img 
-        :src="image"
-        :alt="description"
-        contain="true"
-        height="250"
-        width="150"
-      />
-      <v-card-title 
+      <v-layout align-center justify-center>
+        <v-img 
+          :src="image"
+          :alt="description"
+          :contain="false"
+        />
+      </v-layout>
+      <!-- <v-card-title 
         primary-title 
         class="pt-0 pb-0"
       >
         <div>
           <h3 class="subheadline pt-0">{{ name }}</h3>
         </div>
-      </v-card-title>
+      </v-card-title> -->
       <v-card-actions>
         <v-btn 
+          flat
+          color="orange"
+          @click="show = !show"
+        >
+          Usar
+        </v-btn>
+        <!-- <v-btn 
           icon 
           @click="show = !show"
         >
           <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-        </v-btn>
+        </v-btn> -->
       </v-card-actions>
       <v-slide-y-transition>
         <v-card-text v-show="show">

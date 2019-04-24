@@ -12,9 +12,21 @@
       Use a card
     </v-btn>
     <v-card>
-      <v-card-title>
-        <span class="headline">Use a card</span>
-      </v-card-title>
+      <v-toolbar
+        flat
+        color="white"
+      >
+        <v-btn 
+          flat 
+          icon 
+          @click="dialog = false"
+        >
+          <v-icon>close</v-icon>
+        </v-btn>
+        <v-toolbar-title>
+          Use a card
+        </v-toolbar-title>
+      </v-toolbar>
       <v-card-text>
         <v-container fluid>
           <v-layout 
@@ -26,6 +38,7 @@
               :key="card._id"
               xs12
               sm12
+              md3
               lg3
             >
               <app-card       
