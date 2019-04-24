@@ -10,9 +10,18 @@
     <v-card-title primary-title>
       <div>
         <h3 class="headline mb-0">{{ name }}</h3>
-        <div>{{ description }}</div>
       </div>
     </v-card-title>
+    <v-card-actions>
+      <v-btn icon @click="show = !show">
+        <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+      </v-btn>
+    </v-card-actions>
+    <v-slide-y-transition>
+      <v-card-text v-show="show">
+        {{ description }}
+      </v-card-text>
+    </v-slide-y-transition>
   </v-card>
 </template>
 
@@ -50,6 +59,11 @@ export default {
       required: false,
       default: ''
     }
+  },
+  data() {
+    return {
+      show: false
+    };
   }
 }
 </script>
