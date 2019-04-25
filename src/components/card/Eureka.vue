@@ -81,7 +81,10 @@
           </div>
           <div v-if="!finished">
             <div v-if="isCurrentPlayerOnCardAnswer(loggedUser._id)">
-              <v-btn @click="dialog = false">
+              <v-btn
+                :loading="loading" 
+                @click="trade()"
+              >
                 Trade
               </v-btn>
             </div>
@@ -104,7 +107,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 import Crystal from '../crystal/Crystal';
 
 export default {
@@ -115,6 +118,7 @@ export default {
   data() {
     return {
       dialog: false,
+      loading: false,
       username: '',
       player: {},
       crystals: ['', '', '', '', '', '', ''],
@@ -140,6 +144,7 @@ export default {
       this.username = data.player.username;
       this.givenCrystal = data.given;
       this.pickedCrystal = data.taken;
+      this.finished = true;
     }
   },
   computed: {
@@ -160,7 +165,9 @@ export default {
         this.crystals = ['', '', '', '', '', '', ''];
         this.realCrystals = ['', '', '', '', '', '', ''];
         this.givenCrystal = '';
+        this.givenCrystalIndex = 0;
         this.pickedCrystal = '';
+        this.pickedCrystalIndex = 0;
         this.animationFinished = true;
         this.finished = false;
       }
@@ -169,6 +176,9 @@ export default {
   methods: {
     ...mapGetters('game', [
       'getCurrentPlayer'
+    ]),
+    ...mapActions('card', [
+      'answerEureka'
     ]),
     crystalAnimation(index) {
       this.finished = false;
@@ -187,7 +197,18 @@ export default {
       // for (let i = 0; i < this.crystals.length; i++) {
       //   this.crystals[i] = Object.keys(this.colors)[Math.floor(Math.random() * (Object.keys(this.colors).length - 1))];
       // }
-    }          
+    },
+    trade() {
+      this.loading = true;
+      const data ={
+        param: this.$route.params.id,
+        body: {
+          given: this.player.crystals[this.givenCrystalIndex].name,
+          taken: this.crystals[this.pickedCrystalIndex]
+        }
+      };
+      this.answerEureka(data);
+    }   
   }
 }
 
