@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { mapState, install } from 'vuex';
+import { mapState } from 'vuex';
 import Crystal from '../crystal/Crystal';
 
 export default {
@@ -98,9 +98,9 @@ export default {
       }
     },
     changeCrystalColor() {
-      for (let i = 0; i < this.crystals.length; i++) {
-        this.crystals[i] = Object.keys(this.colors)[Math.floor(Math.random() * (Object.keys(this.colors).length - 1))];
-      }
+      // for (let i = 0; i < this.crystals.length; i++) {
+      //   this.crystals[i] = Object.keys(this.colors)[Math.floor(Math.random() * (Object.keys(this.colors).length - 1))];
+      // }
     }          
   }
 }

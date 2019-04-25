@@ -8,6 +8,12 @@ const state = {
 const getters = {
   getCurrentPlayer: state => userId => {
     return state.currentGame.players.find(player => player.user._id === userId);
+  },
+  isCurrentPlayerOnCardAnswer: state => userId => {
+    if (state.currentGame.players) {
+      let player = state.currentGame.players.find(player => player.user._id === userId);
+      return player.hasToAnswerCard !== '';
+    }
   }
 };
 
