@@ -139,7 +139,7 @@ export default {
       this.realCrystals = data.crystals;
       this.crystals = this.realCrystals;
     },
-    eureka_answer: function(data) {
+    eurekaAnswer: function(data) {
       this.dialog = true;
       this.username = data.player.username;
       this.givenCrystal = data.given;

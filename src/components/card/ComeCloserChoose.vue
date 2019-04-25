@@ -4,9 +4,21 @@
     full-width
   >
     <v-card>
-      <v-card-title>
-        <span class="headline">Trade one crystal with another player's crystal</span>
-      </v-card-title>
+      <v-toolbar
+        flat
+        color="white"
+      >
+        <v-btn
+          flat 
+          icon 
+          @click="dialog = false"
+        >
+          <v-icon>close</v-icon>
+        </v-btn>
+        <v-toolbar-title>
+          Trade one crystal with another player's crystal
+        </v-toolbar-title>
+      </v-toolbar>
       <v-card-text>
         <v-container 
           fluid

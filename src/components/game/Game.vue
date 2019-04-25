@@ -70,6 +70,7 @@
     <app-here-we-go />
     <app-eureka />
     <app-come-closer-choose :dialog="comeCloserDialog" @close="comeCloserDialog = false" />
+    <app-come-closer />
     <app-sell-crystals
       v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
@@ -92,6 +93,7 @@ import CrystalPicked from '../crystal/CrystalPicked';
 import HereWeGo from '../card/HereWeGo';
 import Eureka from '../card/Eureka';
 import ComeCloserChoose from '../card/ComeCloserChoose';
+import ComeCloser from '../card/ComeCloser';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -105,6 +107,7 @@ export default {
     appHereWeGo: HereWeGo,
     appEureka: Eureka,
     appComeCloserChoose: ComeCloserChoose,
+    appComeCloser: ComeCloser,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
   },
