@@ -136,6 +136,9 @@ export default {
       'signIn',
       'signUp'
     ]),
+     ...mapActions('game', [
+      'listGames'
+    ]),
     submit () {
       if (this.$refs.form.validate()) {
         this.error = false;
@@ -145,6 +148,7 @@ export default {
           this.signUp(body)
             .then(() => {
               this.dialog = false;
+              this.listGames();
             })
             .catch(err => {
               this.error = err;
@@ -153,6 +157,7 @@ export default {
           this.signIn(body)
             .then(() => {
               this.dialog = false;
+              this.listGames();
             })
             .catch(err => {
               this.error = err;
