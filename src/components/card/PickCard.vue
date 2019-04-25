@@ -61,6 +61,7 @@
 <script>
 import { mapActions } from 'vuex';
 import Card from './Card';
+import constants from '../../utils/constants';
 
 export default {
   name: 'PickCard',
@@ -90,18 +91,22 @@ export default {
     ]),
     cardPicked(card) {
       this.dialog = false;
-      const data = {
-        param: this.$route.params.id,
-        body: {
-          action: card
-        }
-      };
-      this.useCard(data)
-        .then(() => {
-        })
-        .catch(err => {
+      if (constants.cards_with_preparation.includes(card)) {
+        this.$emit('come-closer');
+      } else {
+        const data = {
+          param: this.$route.params.id,
+          body: {
+            action: card
+          }
+        };
+        this.useCard(data)
+          .then(() => {
+          })
+          .catch(err => {
 
-        });
+          });
+      }
     }
   }
 }

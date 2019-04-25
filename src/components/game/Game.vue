@@ -31,6 +31,7 @@
                   :cards="player.cards"
                   :current-turn="player.currentTurn"
                   :is-round-active="player.isRoundActive"
+                  @come-closer="comeCloserDialog = true"
                 />
               </v-flex>
             </v-layout>
@@ -65,9 +66,10 @@
         />
       </v-flex>
     </v-layout>
-    <app-crystal-picked/>
-    <app-here-we-go/>
-    <app-eureka/>
+    <app-crystal-picked />
+    <app-here-we-go />
+    <app-eureka />
+    <app-come-closer-choose :dialog="comeCloserDialog" @close="comeCloserDialog = false" />
     <app-sell-crystals
       v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
@@ -89,6 +91,7 @@ import Chat from '../chat/Chat';
 import CrystalPicked from '../crystal/CrystalPicked';
 import HereWeGo from '../card/HereWeGo';
 import Eureka from '../card/Eureka';
+import ComeCloserChoose from '../card/ComeCloserChoose';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -101,8 +104,14 @@ export default {
     appCrystalPicked: CrystalPicked,
     appHereWeGo: HereWeGo,
     appEureka: Eureka,
+    appComeCloserChoose: ComeCloserChoose,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
+  },
+  data() {
+    return {
+      comeCloserDialog: false
+    };
   },
   computed: {
     ...mapState('game', {

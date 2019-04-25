@@ -54,6 +54,7 @@
             <app-pick-card
               :current-turn="currentTurn"
               :cards="cards"
+              @come-closer="$emit('come-closer')"
             />
             <v-spacer/>
             <v-btn 
