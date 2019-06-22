@@ -57,6 +57,7 @@
               :list-card="listCardDialog"
               @come-closer="$emit('come-closer')"
               @crystal-what-crystal="$emit('crystal-what-crystal')"
+              @this-isnt-mine="$emit('this-isnt-mine')"
               @close="listCardDialog = false"
             />
             <v-spacer/>

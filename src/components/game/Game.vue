@@ -33,6 +33,7 @@
                   :is-round-active="player.isRoundActive"
                   @come-closer="comeCloserDialog = true"
                   @crystal-what-crystal="crystalWhatCrystalDialog = true"
+                  @this-isnt-mine="thisIsntMineDialog = true"
                 />
               </v-flex>
             </v-layout>
@@ -75,6 +76,7 @@
     <app-out-of-my-way />
     <app-crystal-what-crystal-choose :dialog="crystalWhatCrystalDialog" @close="crystalWhatCrystalDialog = false" />
     <app-crystal-what-crystal />
+    <app-this-isnt-mine-choose :dialog="thisIsntMineDialog" @close="thisIsntMineDialog = false" />
     <app-sell-crystals
       v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
@@ -101,6 +103,7 @@ import ComeCloser from '../card/ComeCloser';
 import OutOfMyWay from '../card/OutOfMyWay';
 import CrystalWhatCrystalChoose from '../card/CrystalWhatCrystalChoose';
 import CrystalWhatCrystal from '../card/CrystalWhatCrystal';
+import ThisIsntMineChoose from '../card/ThisIsntMineChoose';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -118,6 +121,7 @@ export default {
     appOutOfMyWay: OutOfMyWay,
     appCrystalWhatCrystalChoose: CrystalWhatCrystalChoose,
     appCrystalWhatCrystal: CrystalWhatCrystal,
+    appThisIsntMineChoose: ThisIsntMineChoose,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
   },
@@ -125,6 +129,7 @@ export default {
     return {
       comeCloserDialog: false,
       crystalWhatCrystalDialog: false,
+      thisIsntMineDialog: false,
     };
   },
   computed: {
