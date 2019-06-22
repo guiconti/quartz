@@ -32,6 +32,7 @@
                   :current-turn="player.currentTurn"
                   :is-round-active="player.isRoundActive"
                   @come-closer="comeCloserDialog = true"
+                  @crystal-what-crystal="crystalWhatCrystalDialog = true"
                 />
               </v-flex>
             </v-layout>
@@ -69,9 +70,11 @@
     <app-crystal-picked />
     <app-here-we-go />
     <app-eureka />
-    <app-out-of-my-way />
     <app-come-closer-choose :dialog="comeCloserDialog" @close="comeCloserDialog = false" />
     <app-come-closer />
+    <app-out-of-my-way />
+    <app-crystal-what-crystal-choose :dialog="crystalWhatCrystalDialog" @close="crystalWhatCrystalDialog = false" />
+    <app-crystal-what-crystal />
     <app-sell-crystals
       v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
@@ -96,6 +99,8 @@ import Eureka from '../card/Eureka';
 import ComeCloserChoose from '../card/ComeCloserChoose';
 import ComeCloser from '../card/ComeCloser';
 import OutOfMyWay from '../card/OutOfMyWay';
+import CrystalWhatCrystalChoose from '../card/CrystalWhatCrystalChoose';
+import CrystalWhatCrystal from '../card/CrystalWhatCrystal';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -111,12 +116,15 @@ export default {
     appComeCloserChoose: ComeCloserChoose,
     appComeCloser: ComeCloser,
     appOutOfMyWay: OutOfMyWay,
+    appCrystalWhatCrystalChoose: CrystalWhatCrystalChoose,
+    appCrystalWhatCrystal: CrystalWhatCrystal,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
   },
   data() {
     return {
-      comeCloserDialog: false
+      comeCloserDialog: false,
+      crystalWhatCrystalDialog: false,
     };
   },
   computed: {

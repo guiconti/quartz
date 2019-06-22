@@ -92,7 +92,10 @@ export default {
     cardPicked(card) {
       this.dialog = false;
       if (constants.cards_with_preparation.includes(card)) {
-        this.$emit('come-closer');
+        const event = card.split('').map(char => {
+          return char !== char.toLowerCase() ? '-' + char.toLowerCase() : char;
+        }).join('');
+        this.$emit(event);
       } else {
         const data = {
           param: this.$route.params.id,

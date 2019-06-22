@@ -55,6 +55,7 @@
               :current-turn="currentTurn"
               :cards="cards"
               @come-closer="$emit('come-closer')"
+              @crystal-what-crystal="$emit('crystal-what-crystal')"
             />
             <v-spacer/>
             <v-btn 
