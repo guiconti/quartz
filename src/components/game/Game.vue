@@ -69,6 +69,7 @@
     <app-crystal-picked />
     <app-here-we-go />
     <app-eureka />
+    <app-out-of-my-way />
     <app-come-closer-choose :dialog="comeCloserDialog" @close="comeCloserDialog = false" />
     <app-come-closer />
     <app-sell-crystals
@@ -94,6 +95,7 @@ import HereWeGo from '../card/HereWeGo';
 import Eureka from '../card/Eureka';
 import ComeCloserChoose from '../card/ComeCloserChoose';
 import ComeCloser from '../card/ComeCloser';
+import OutOfMyWay from '../card/OutOfMyWay';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -108,6 +110,7 @@ export default {
     appEureka: Eureka,
     appComeCloserChoose: ComeCloserChoose,
     appComeCloser: ComeCloser,
+    appOutOfMyWay: OutOfMyWay,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
   },
