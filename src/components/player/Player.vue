@@ -45,7 +45,7 @@
                 <v-icon color="yellow lighten-1">monetization_on</v-icon>{{ money }}
               </v-flex>
               <v-flex xs4>
-                <v-icon color="indigo">class</v-icon>{{ cards.length }}
+                <v-icon color="indigo" @click="listCardDialog = true">class</v-icon>{{ cards.length }}
               </v-flex>
             </v-layout>
           </v-container>
@@ -54,8 +54,10 @@
             <app-pick-card
               :current-turn="currentTurn"
               :cards="cards"
+              :list-card="listCardDialog"
               @come-closer="$emit('come-closer')"
               @crystal-what-crystal="$emit('crystal-what-crystal')"
+              @close="listCardDialog = false"
             />
             <v-spacer/>
             <v-btn 
@@ -118,6 +120,11 @@ export default {
       required: false,
       default: true
     }
+  },
+  data() {
+    return {
+      listCardDialog: false,
+    };
   },
   computed: {
     ...mapState('user', {

@@ -3,7 +3,7 @@
     <v-card>
       <v-layout 
         align-center 
-        ustify-center
+        justify-center
       >
         <v-img 
           :src="image"
@@ -11,28 +11,14 @@
           :contain="false"
         />
       </v-layout>
-      <!-- <v-card-title 
-        primary-title 
-        class="pt-0 pb-0"
-      >
-        <div>
-          <h3 class="subheadline pt-0">{{ name }}</h3>
-        </div>
-      </v-card-title> -->
-      <v-card-actions>
-        <v-btn 
+      <v-card-actions v-if="!listOnly">
+        <v-btn
           flat
           color="orange"
           @click="useCard()"
         >
           Usar
         </v-btn>
-        <!-- <v-btn 
-          icon 
-          @click="show = !show"
-        >
-          <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-        </v-btn> -->
       </v-card-actions>
       <v-slide-y-transition>
         <v-card-text v-show="show">
@@ -76,6 +62,11 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    listOnly: {
+      type: Boolean,
+      required: false,
+      default: false,
     }
   },
   data() {

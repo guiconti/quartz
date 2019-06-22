@@ -4,8 +4,8 @@
     full-width
   >
     <v-btn 
-      :disabled="!currentTurn"
       slot="activator"
+      :disabled="!currentTurn"
       flat 
       color="orange"
     >
@@ -48,6 +48,7 @@
                 :type="card.type"
                 :value="card.value"
                 :image="card.image"
+                :list-only="listCard"
                 @use-card="cardPicked"
               />
             </v-flex>
@@ -78,11 +79,28 @@ export default {
       type: Array,
       required: false,
       default: () => []
+    },
+    listCard: {
+      type: Boolean,
+      required: false,
+      default: false,
     }
   },
   data() {
     return {
       dialog: false
+    }
+  },
+  watch: {
+    dialog(val) {
+      if (!val) {
+        this.$emit('close');
+      }
+    },
+    listCard(val) {
+      if (val) {
+        this.dialog = true;
+      }
     }
   },
   methods: {
