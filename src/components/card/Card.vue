@@ -11,7 +11,7 @@
           :contain="false"
         />
       </v-layout>
-      <v-card-actions v-if="!listOnly">
+      <v-card-actions v-if="!listOnly && type !== 'REACTION'">
         <v-btn
           flat
           color="orange"
