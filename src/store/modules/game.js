@@ -9,13 +9,13 @@ const getters = {
   getCurrentPlayer: state => userId => {
     return state.currentGame.players.find(player => player.user._id === userId);
   },
-  getOtherPlayers: state => userId => {
-    return state.currentGame.players.filter(player => player.user._id !== userId && player.isRoundActive);
+  getOtherPlayers: state => userIds => {
+    return state.currentGame.players.filter(player => !userIds.includes(player.user._id) && player.isRoundActive);
   },
   isCurrentPlayerOnCardAnswer: state => userId => {
     if (state.currentGame.players) {
       let player = state.currentGame.players.find(player => player.user._id === userId);
-      return player.hasToAnswerCard !== '';
+      return player && player.hasToAnswerCard !== '';
     }
   }
 };

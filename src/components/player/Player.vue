@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 import Crystal from '../crystal/Crystal';
 import CoinIcon from '../icons/CoinIcon';
 import PickCard from '../card/PickCard';
@@ -124,6 +124,7 @@ export default {
   },
   data() {
     return {
+      player: {},
       listCardDialog: false,
     };
   },
@@ -132,10 +133,22 @@ export default {
       loggedUser: state => state.loggedUser
     })
   },
+  created() {
+    this.player = this.getCurrentPlayer()(this._id);
+    if (this._id === this.loggedUser._id) {
+      this.$socket.emit('joinPlayerRoom', this.player._id);
+    }
+  },
+  beforeDestroy() {
+    this.$socket.emit('leavePlayerRoom', this.player._id);
+  },
   methods: {
     ...mapActions('game', [
       'closeMine'
-    ])
+    ]),
+    ...mapGetters('game', [
+      'getCurrentPlayer'
+    ]),
   }
 }
 </script>

@@ -142,7 +142,7 @@ export default {
         this.$emit('close');
       } else {
         this.player = this.getCurrentPlayer()(this.loggedUser._id);
-        this.targets = this.getOtherPlayers()(this.loggedUser._id);
+        this.targets = this.getOtherPlayers()([this.loggedUser._id]);
       }
     }
   },

@@ -15,12 +15,11 @@
         >
           <v-icon>close</v-icon>
         </v-btn>
-        <v-toolbar-title v-if="player.crystals[player.crystals.length - 1].amount > 0">
-          Send an Obsidian to another player
-        </v-toolbar-title>
-        <v-toolbar-title v-else>
-          You don't have an Autunita to send to someone
-        </v-toolbar-title>
+        <h3 class="subtitle">
+          {{ attacker.username }} used This isn't mine and sent you an Obsidian. You have This isn't mine either
+            and can send this crystal to another player. Select the player which you want to resend this Obsidian,
+            if there's not a player to resend it it will go to the cave. If you don't want to use your card just click "Cancel".
+        </h3>
       </v-toolbar>
       <v-card-text>
         <v-container 
@@ -28,13 +27,12 @@
           class="pt-0"
         >
           <v-layout
-            v-if="player.crystals[player.crystals.length - 1].amount > 0"
             row
             wrap
           >
             <v-flex xs12>
               <h3 class="title">
-                Give
+                Resend
               </h3>
             </v-flex>
             <v-flex 
@@ -47,25 +45,21 @@
                 item-text="user.username"
                 return-object
                 label="Select target"
-              />
+              ></v-select>
             </v-flex>
           </v-layout>
-          <div v-if="player.crystals[player.crystals.length - 1].amount > 0">
-            <v-btn
-              v-if="target !== {}"
-              :loading="loading" 
-              @click="send()"
-            >
-              Send
-            </v-btn>
-          </div>
-          <div v-else>
-            <v-btn
-              @click="dialog = false"
-            >
-              Cancel
-            </v-btn>
-          </div>
+          <v-btn
+            :loading="loading" 
+            @click="resend(true)"
+          >
+            Resend
+          </v-btn>
+          <v-btn
+            :loading="loading" 
+            @click="resend(false)"
+          >
+            Cancel
+          </v-btn>
         </v-container>
       </v-card-text>
     </v-card>
@@ -76,7 +70,7 @@
 import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
-  name: 'ThisIsntMineChoose',
+  name: 'ThisIsntMineEither',
   props: {
     dialog: {
       type: Boolean,
@@ -87,9 +81,15 @@ export default {
   data() {
     return {
       loading: false,
-      player: {},
+      attacker: {},
       targets: [],
-      target: {}
+      target: null
+    }
+  },
+  sockets: {
+    thisIsntMineEither: function(data) {
+      this.attacker = data.player;
+      this.dialog = true;
     }
   },
   computed: {
@@ -100,13 +100,13 @@ export default {
   watch: {
     dialog (val) {
       if (!val) {
-        this.target = {};
+        this.attacker = {};
+        this.target = null;
         this.targets = [];
         this.loading = false;
         this.$emit('close');
       } else {
-        this.player = this.getCurrentPlayer()(this.loggedUser._id);
-        this.targets = this.getOtherPlayers()([this.loggedUser._id]);
+        this.targets = this.getOtherPlayers()([this.loggedUser._id, this.attacker._id]);
       }
     }
   },
@@ -118,14 +118,15 @@ export default {
     ...mapActions('game', [
       'useCard'
     ]),
-    send() {
+    resend(used) {
       this.loading = true;
       const data ={
         param: this.$route.params.id,
         body: {
-          action: 'thisIsntMine',
+          action: 'notMineEither',
           info: {
-            target: this.target.user._id
+            used,
+            target: this.target ? this.target.user._id : ''
           }
         }
       };

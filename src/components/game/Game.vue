@@ -77,6 +77,8 @@
     <app-crystal-what-crystal-choose :dialog="crystalWhatCrystalDialog" @close="crystalWhatCrystalDialog = false" />
     <app-crystal-what-crystal />
     <app-this-isnt-mine-choose :dialog="thisIsntMineDialog" @close="thisIsntMineDialog = false" />
+    <app-this-isnt-mine />
+    <app-this-isnt-mine-either />
     <app-sell-crystals
       v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
@@ -104,6 +106,8 @@ import OutOfMyWay from '../card/OutOfMyWay';
 import CrystalWhatCrystalChoose from '../card/CrystalWhatCrystalChoose';
 import CrystalWhatCrystal from '../card/CrystalWhatCrystal';
 import ThisIsntMineChoose from '../card/ThisIsntMineChoose';
+import ThisIsntMine from '../card/ThisIsntMine';
+import ThisIsntMineEither from '../card/ThisIsntMineEither';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -122,6 +126,8 @@ export default {
     appCrystalWhatCrystalChoose: CrystalWhatCrystalChoose,
     appCrystalWhatCrystal: CrystalWhatCrystal,
     appThisIsntMineChoose: ThisIsntMineChoose,
+    appThisIsntMine: ThisIsntMine,
+    appThisIsntMineEither: ThisIsntMineEither,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
   },
