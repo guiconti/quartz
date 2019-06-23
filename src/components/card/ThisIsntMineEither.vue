@@ -71,19 +71,13 @@ import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'ThisIsntMineEither',
-  props: {
-    dialog: {
-      type: Boolean,
-      required: false,
-      default: false
-    }
-  },
   data() {
     return {
       loading: false,
       attacker: {},
       targets: [],
-      target: null
+      target: null,
+      dialog: false,
     }
   },
   sockets: {

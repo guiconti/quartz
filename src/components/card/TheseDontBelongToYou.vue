@@ -15,9 +15,18 @@
         >
           <v-icon>close</v-icon>
         </v-btn>
-        <v-toolbar-title>
+        <h3 
+          v-if="!counter" 
+          class="subtitle"
+        >
           {{ username }} used these don't belong to you and took {{ took }} from {{ target }}.
-        </v-toolbar-title>
+        </h3>
+        <h3 
+          v-else
+          class="subtitle"
+        >
+          {{ username }} tried to rob from {{ target }} but got countered and lost {{ took }}.
+        </h3>
       </v-toolbar>
       <v-btn
         @click="dialog = false"
@@ -37,6 +46,7 @@ export default {
       username: '',
       target: '',
       took: '',
+      counter: false,
     };
   },
   sockets: {
@@ -44,6 +54,7 @@ export default {
       this.username = data.player.username;
       this.target = data.from.username;
       this.took = data.took;
+      this.counter = data.counter;
       this.dialog = true;
     }
   },
@@ -53,6 +64,7 @@ export default {
         this.username = '';
         this.keptCrystal = '';
         this.took = '';
+        this.counter = false;
       }
     }
   }

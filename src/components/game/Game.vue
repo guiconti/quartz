@@ -94,6 +94,7 @@
       @close="theseDontBelongToYouDialog = false"
     />
     <app-these-dont-belong-to-you />
+    <app-thievery-unacceptable />
     <app-sell-crystals
       v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
@@ -125,6 +126,7 @@ import ThisIsntMine from '../card/ThisIsntMine';
 import ThisIsntMineEither from '../card/ThisIsntMineEither';
 import TheseDontBelongToYouChoose from '../card/TheseDontBelongToYouChoose';
 import TheseDontBelongToYou from '../card/TheseDontBelongToYou';
+import ThieveryUnacceptable from '../card/ThieveryUnacceptable';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -147,6 +149,7 @@ export default {
     appThisIsntMineEither: ThisIsntMineEither,
     appTheseDontBelongToYouChoose: TheseDontBelongToYouChoose,
     appTheseDontBelongToYou: TheseDontBelongToYou,
+    appThieveryUnacceptable: ThieveryUnacceptable,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
   },
