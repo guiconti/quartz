@@ -33,7 +33,8 @@
                 Keep
               </h3>
             </v-flex>
-            <v-radio-group 
+            <v-radio-group
+              v-if="player"
               v-model="pickedCrystalIndex"
               row
             >
@@ -43,8 +44,8 @@
               >
                 <div v-if="crystal.amount > 0 && crystal.name !== 'Autunita'">
                   <v-radio
-                    color="orange" 
                     :value="index"
+                    color="orange"
                   />
                   <app-crystal
                     :name="crystal.name"
@@ -86,6 +87,7 @@ export default {
   data() {
     return {
       loading: false,
+      player: null,
       pickedCrystalIndex: -1
     }
   },
@@ -97,6 +99,7 @@ export default {
   watch: {
     dialog (val) {
       if (!val) {
+        this.player = null;
         this.pickedCrystalIndex = -1;
         this.loading = false;
         this.$emit('close');

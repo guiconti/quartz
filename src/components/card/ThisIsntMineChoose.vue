@@ -15,7 +15,7 @@
         >
           <v-icon>close</v-icon>
         </v-btn>
-        <v-toolbar-title v-if="player.crystals[player.crystals.length - 1].amount > 0">
+        <v-toolbar-title v-if="player && player.crystals[player.crystals.length - 1].amount > 0">
           Send an Obsidian to another player
         </v-toolbar-title>
         <v-toolbar-title v-else>
@@ -28,7 +28,7 @@
           class="pt-0"
         >
           <v-layout
-            v-if="player.crystals[player.crystals.length - 1].amount > 0"
+            v-if="player && player.crystals[player.crystals.length - 1].amount > 0"
             row
             wrap
           >
@@ -50,7 +50,7 @@
               />
             </v-flex>
           </v-layout>
-          <div v-if="player.crystals[player.crystals.length - 1].amount > 0">
+          <div v-if="player && player.crystals[player.crystals.length - 1].amount > 0">
             <v-btn
               v-if="target !== {}"
               :loading="loading" 
@@ -87,7 +87,7 @@ export default {
   data() {
     return {
       loading: false,
-      player: {},
+      player: null,
       targets: [],
       target: {}
     }
@@ -100,6 +100,7 @@ export default {
   watch: {
     dialog (val) {
       if (!val) {
+        this.player = null;
         this.target = {};
         this.targets = [];
         this.loading = false;

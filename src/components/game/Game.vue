@@ -34,6 +34,7 @@
                   @come-closer="comeCloserDialog = true"
                   @crystal-what-crystal="crystalWhatCrystalDialog = true"
                   @this-isnt-mine="thisIsntMineDialog = true"
+                  @these-dont-belong-to-you="theseDontBelongToYouDialog = true"
                 />
               </v-flex>
             </v-layout>
@@ -71,14 +72,28 @@
     <app-crystal-picked />
     <app-here-we-go />
     <app-eureka />
-    <app-come-closer-choose :dialog="comeCloserDialog" @close="comeCloserDialog = false" />
+    <app-come-closer-choose
+      :dialog="comeCloserDialog"
+      @close="comeCloserDialog = false"
+    />
     <app-come-closer />
     <app-out-of-my-way />
-    <app-crystal-what-crystal-choose :dialog="crystalWhatCrystalDialog" @close="crystalWhatCrystalDialog = false" />
+    <app-crystal-what-crystal-choose
+      :dialog="crystalWhatCrystalDialog"
+      @close="crystalWhatCrystalDialog = false"
+    />
     <app-crystal-what-crystal />
-    <app-this-isnt-mine-choose :dialog="thisIsntMineDialog" @close="thisIsntMineDialog = false" />
+    <app-this-isnt-mine-choose 
+      :dialog="thisIsntMineDialog"
+      @close="thisIsntMineDialog = false" 
+    />
     <app-this-isnt-mine />
     <app-this-isnt-mine-either />
+    <app-these-dont-belong-to-you-choose 
+      :dialog="theseDontBelongToYouDialog" 
+      @close="theseDontBelongToYouDialog = false"
+    />
+    <app-these-dont-belong-to-you />
     <app-sell-crystals
       v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
@@ -108,6 +123,8 @@ import CrystalWhatCrystal from '../card/CrystalWhatCrystal';
 import ThisIsntMineChoose from '../card/ThisIsntMineChoose';
 import ThisIsntMine from '../card/ThisIsntMine';
 import ThisIsntMineEither from '../card/ThisIsntMineEither';
+import TheseDontBelongToYouChoose from '../card/TheseDontBelongToYouChoose';
+import TheseDontBelongToYou from '../card/TheseDontBelongToYou';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -128,6 +145,8 @@ export default {
     appThisIsntMineChoose: ThisIsntMineChoose,
     appThisIsntMine: ThisIsntMine,
     appThisIsntMineEither: ThisIsntMineEither,
+    appTheseDontBelongToYouChoose: TheseDontBelongToYouChoose,
+    appTheseDontBelongToYou: TheseDontBelongToYou,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
   },
@@ -136,6 +155,7 @@ export default {
       comeCloserDialog: false,
       crystalWhatCrystalDialog: false,
       thisIsntMineDialog: false,
+      theseDontBelongToYouDialog: false,
     };
   },
   computed: {

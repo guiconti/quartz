@@ -16,7 +16,7 @@
           <v-icon>close</v-icon>
         </v-btn>
         <v-toolbar-title>
-          {{ username }} used This isn't mine and sent an Obsidian to {{ target }}.
+          {{ username }} used these don't belong to you and took {{ took }} from {{ target }}.
         </v-toolbar-title>
       </v-toolbar>
       <v-btn
@@ -30,19 +30,20 @@
 
 <script>
 export default {
-  name: 'ThisIsntMine',
+  name: 'TheseDontBelongToYou',
   data() {
     return {
       dialog: false,
       username: '',
       target: '',
-      keptCrystal: '',
+      took: '',
     };
   },
   sockets: {
-    thisIsntMine: function(data) {
+    theseDontBelongToYou: function(data) {
       this.username = data.player.username;
-      this.target = data.target.username;
+      this.target = data.from.username;
+      this.took = data.took;
       this.dialog = true;
     }
   },
@@ -50,7 +51,8 @@ export default {
     dialog (val) {
       if (!val) {
         this.username = '';
-        this.target = '';
+        this.keptCrystal = '';
+        this.took = '';
       }
     }
   }

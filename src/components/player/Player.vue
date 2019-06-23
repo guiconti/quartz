@@ -58,6 +58,7 @@
               @come-closer="$emit('come-closer')"
               @crystal-what-crystal="$emit('crystal-what-crystal')"
               @this-isnt-mine="$emit('this-isnt-mine')"
+              @these-dont-belong-to-you="$emit('these-dont-belong-to-you')"
               @close="listCardDialog = false"
             />
             <v-spacer/>
