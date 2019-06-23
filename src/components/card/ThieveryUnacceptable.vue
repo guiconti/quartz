@@ -2,19 +2,13 @@
   <v-dialog
     v-model="dialog"
     full-width
+    persistent
   >
     <v-card>
       <v-toolbar
         flat
         color="white"
       >
-        <v-btn
-          flat 
-          icon 
-          @click="dialog = false"
-        >
-          <v-icon>close</v-icon>
-        </v-btn>
         <h3 class="subtitle">
           {{ attacker.username }} tryed to use These dont belong to you to steal {{ crystalsTook }}. You have the 
           Thievery unacceptable card and can counter this taking one crystal from him/her. Choose your crystal

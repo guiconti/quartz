@@ -20,7 +20,7 @@
           {{ username }} got {{ took }} and {{ target }} got {{ given }}.
         </h3>
         <h3 v-else>
-          {{ username }} usedGive me a hand here to make {{ target }} mine two crystals.
+          {{ username }} used Give me a hand here to make {{ target }} mine two crystals.
           But {{ target }} was on a break and no crystals were taken.
         </h3>
       </v-toolbar>

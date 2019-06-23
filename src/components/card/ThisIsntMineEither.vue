@@ -2,19 +2,13 @@
   <v-dialog
     v-model="dialog"
     full-width
+    persistent
   >
     <v-card>
       <v-toolbar
         flat
         color="white"
       >
-        <v-btn
-          flat 
-          icon 
-          @click="dialog = false"
-        >
-          <v-icon>close</v-icon>
-        </v-btn>
         <h3 class="subtitle">
           {{ attacker.username }} used This isn't mine and sent you an Obsidian. You have This isn't mine either
             and can send this crystal to another player. Select the player which you want to resend this Obsidian,

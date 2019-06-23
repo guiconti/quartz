@@ -102,6 +102,7 @@
     />
     <app-give-me-a-hand-here-answer />
     <app-give-me-a-hand-here />
+    <app-nope-i-am-on-a-break />
     <app-sell-crystals
       v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
@@ -137,6 +138,7 @@ import ThieveryUnacceptable from '../card/ThieveryUnacceptable';
 import GiveMeAHandHereChoose from '../card/GiveMeAHandHereChoose';
 import GiveMeAHandHereAnswer from '../card/GiveMeAHandHereAnswer';
 import GiveMeAHandHere from '../card/GiveMeAHandHere';
+import NopeIAmOnABreak from '../card/NopeIAmOnABreak';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -163,6 +165,7 @@ export default {
     appGiveMeAHandHereChoose: GiveMeAHandHereChoose,
     appGiveMeAHandHereAnswer: GiveMeAHandHereAnswer,
     appGiveMeAHandHere: GiveMeAHandHere,
+    appNopeIAmOnABreak: NopeIAmOnABreak,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
   },
