@@ -75,6 +75,22 @@ const actions = {
         });
     });
   },
+  getSockets({ commit }, gameId) {
+    return new Promise ((resolve, reject) => {
+      const path = `/games/${gameId}/sockets`;
+      API
+        .get(path)
+        .then(response => {
+          return resolve(response);
+        })
+        .catch(err => {
+          if (err.response) {
+            return reject(err.response.data.msg);
+          }
+          return reject(err);
+        });
+    });
+  },
   pickCrystal({ commit }, gameId) {
     return new Promise((resolve, reject) => {
       const path = `/games/${gameId}/crystal`;

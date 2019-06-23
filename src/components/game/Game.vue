@@ -181,7 +181,10 @@ export default {
     }
   },
   created() {
-    this.gameInfo(this.$route.params.id);
+    this.gameInfo(this.$route.params.id)
+      .then(response => {
+        this.getSockets(this.$route.params.id)
+      });
     this.retrieveMessages(this.$route.params.id);
     this.$socket.emit('joinGame', this.$route.params.id);
   },
@@ -192,6 +195,7 @@ export default {
   methods: {
     ...mapActions('game', [
       'gameInfo',
+      'getSockets',
       'updateGame',
       'updatePlayer'
     ]),
