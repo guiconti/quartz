@@ -7,15 +7,23 @@
       <v-flex xs12>
         <v-card>
           <v-card-title primary-title>
-            <div>
-              <h3 class="headline mb-0">{{ name }}</h3>
-              <h3 
-                v-if="!isRoundActive" 
-                class="headline mb-0 red--text" 
-              >
-                Closed
-              </h3>
-            </div>
+            <v-layout
+              row
+              wrap
+            >
+              <v-flex xs10>
+                <h3 class="headline mb-0">{{ name }}</h3>
+                <h3 
+                  v-if="!isRoundActive" 
+                  class="headline mb-0 red--text" 
+                >
+                  Closed
+                </h3>
+              </v-flex>
+              <v-flex xs2 v-if="currentTurn">
+                <v-icon color="yellow lighten-1">stars</v-icon>
+              </v-flex>
+            </v-layout>
           </v-card-title>
 
           <v-container fluid>
