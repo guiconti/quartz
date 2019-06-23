@@ -35,6 +35,7 @@
                   @crystal-what-crystal="crystalWhatCrystalDialog = true"
                   @this-isnt-mine="thisIsntMineDialog = true"
                   @these-dont-belong-to-you="theseDontBelongToYouDialog = true"
+                  @give-me-a-hand-here="giveMeAHandHereDialog = true"
                 />
               </v-flex>
             </v-layout>
@@ -95,6 +96,12 @@
     />
     <app-these-dont-belong-to-you />
     <app-thievery-unacceptable />
+    <app-give-me-a-hand-here-choose 
+      :dialog="giveMeAHandHereDialog" 
+      @close="giveMeAHandHereDialog = false"
+    />
+    <app-give-me-a-hand-here-answer />
+    <app-give-me-a-hand-here />
     <app-sell-crystals
       v-if="game.isSelling && game.players"
       :player="getCurrentPlayer(loggedUser._id)"
@@ -127,6 +134,9 @@ import ThisIsntMineEither from '../card/ThisIsntMineEither';
 import TheseDontBelongToYouChoose from '../card/TheseDontBelongToYouChoose';
 import TheseDontBelongToYou from '../card/TheseDontBelongToYou';
 import ThieveryUnacceptable from '../card/ThieveryUnacceptable';
+import GiveMeAHandHereChoose from '../card/GiveMeAHandHereChoose';
+import GiveMeAHandHereAnswer from '../card/GiveMeAHandHereAnswer';
+import GiveMeAHandHere from '../card/GiveMeAHandHere';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
 
@@ -150,6 +160,9 @@ export default {
     appTheseDontBelongToYouChoose: TheseDontBelongToYouChoose,
     appTheseDontBelongToYou: TheseDontBelongToYou,
     appThieveryUnacceptable: ThieveryUnacceptable,
+    appGiveMeAHandHereChoose: GiveMeAHandHereChoose,
+    appGiveMeAHandHereAnswer: GiveMeAHandHereAnswer,
+    appGiveMeAHandHere: GiveMeAHandHere,
     appSellCrystals: SellCrystals,
     appGameOver: GameOver
   },
@@ -159,6 +172,7 @@ export default {
       crystalWhatCrystalDialog: false,
       thisIsntMineDialog: false,
       theseDontBelongToYouDialog: false,
+      giveMeAHandHereDialog: false,
     };
   },
   computed: {

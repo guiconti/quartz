@@ -59,6 +59,7 @@
               @crystal-what-crystal="$emit('crystal-what-crystal')"
               @this-isnt-mine="$emit('this-isnt-mine')"
               @these-dont-belong-to-you="$emit('these-dont-belong-to-you')"
+              @give-me-a-hand-here="$emit('give-me-a-hand-here')"
               @close="listCardDialog = false"
             />
             <v-spacer/>

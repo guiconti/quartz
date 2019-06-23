@@ -1,3 +1,3 @@
 module.exports = {
-  cards_with_preparation: ['comeCloser', 'crystalWhatCrystal', 'thisIsntMine', 'theseDontBelongToYou']
+  cards_with_preparation: ['comeCloser', 'crystalWhatCrystal', 'thisIsntMine', 'theseDontBelongToYou', 'giveMeAHandHere']
 };
