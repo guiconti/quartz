@@ -29,6 +29,7 @@
                   :crystals="player.crystals"
                   :money="player.money"
                   :cards="player.cards"
+                  :has-an-idiot-book="player.hasAnIdiotBook"
                   :current-turn="player.currentTurn"
                   :is-round-active="player.isRoundActive"
                   @come-closer="comeCloserDialog = true"

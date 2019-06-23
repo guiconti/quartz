@@ -55,6 +55,12 @@
               <v-flex xs4>
                 <v-icon color="indigo" @click="listCardDialog = true">class</v-icon>{{ cards.length }}
               </v-flex>
+              <v-flex
+                v-if="hasAnIdiotBook" 
+                xs4
+              >
+                <v-icon color="red lighten-2">child_care</v-icon>
+              </v-flex>
             </v-layout>
           </v-container>
 
@@ -120,6 +126,11 @@ export default {
     cards: {
       type: Array,
       required: true
+    },
+    hasAnIdiotBook: {
+      type: Boolean,
+      required: false,
+      default: false
     },
     currentTurn: {
       type: Boolean,
