@@ -10,6 +10,32 @@
           row 
           wrap
         >
+          <v-flex
+            sm12
+            md1
+          >
+            <v-layout 
+              column 
+              wrap
+            >
+              <v-flex
+                v-for="(crystal, index) in player.crystals"
+                :key="crystal.name"
+                xs12
+                sm12
+                md2
+                lg2
+              >
+                <div v-if="index < player.crystals.length - 1">
+                  <app-crystal
+                    :name="crystal.name"
+                    :amount="crystal.amount"
+                    :only-image="false"
+                  />
+                </div>
+              </v-flex>
+            </v-layout>
+          </v-flex>
           <v-flex 
             sm12 
             md6
@@ -65,7 +91,7 @@
           </v-flex>
           <v-flex 
             sm12 
-            md6
+            md5
           >
             <v-card-title>
               <span class="headline">Choose crystals to keep (2 max total)</span>
