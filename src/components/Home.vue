@@ -35,10 +35,24 @@ export default {
   created() {
     this.listRooms();
     this.listGames();
+    this.$socket.emit('joinLobby', null);
+  },
+  sockets: {
+    newRoom: function(data) {
+      console.log(data);
+      this.pushRoom(data);
+    },
+    newGame: function(data) {
+      console.log(data);
+    }
+  },
+  beforeDestroy() {
+    this.$socket.emit('leaveLobby', null);
   },
   methods: {
     ...mapActions('room', [
-      'listRooms'
+      'listRooms',
+      'pushRoom',
     ]),
     ...mapActions('game', [
       'listGames'
