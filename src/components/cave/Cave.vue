@@ -25,6 +25,9 @@
                 />
               </v-flex>
             </v-layout>
+            <v-flex xs4>
+              <v-icon color="indigo" @click="listCardDialog = true">class</v-icon>{{ cards.length }}
+            </v-flex>
           </v-container>
           <v-card-actions>
             <v-btn 
@@ -40,6 +43,12 @@
         </v-card>
       </v-flex>
     </v-layout>
+    <app-pick-card
+      :current-turn="false"
+      :cards="cards"
+      :list-card="listCardDialog"
+      @close="listCardDialog = false"
+    />
   </v-container>
 </template>
 
@@ -47,12 +56,14 @@
 import { mapActions } from 'vuex';
 import Crystal from '../crystal/Crystal';
 import PickaxeIcon from '../icons/PickaxeIcon';
+import PickCard from '../card/PickCard';
 
 export default {
   name: 'Cave',
   components: {
     appCrystal: Crystal,
-    appPickaxeIcon: PickaxeIcon
+    appPickaxeIcon: PickaxeIcon,
+    appPickCard: PickCard
   },
   props: {
     crystals: {
@@ -64,6 +75,16 @@ export default {
       type: Object,
       required: false,
       default: () => {}
+    },
+    cards: {
+      type: Array,
+      required: false,
+      default: () => []
+    }
+  },
+  data() {
+    return {
+      listCardDialog: false,
     }
   },
   methods: {

@@ -53,6 +53,7 @@
                 <app-cave 
                   :crystals="game.cave.crystals"
                   :player="getCurrentPlayer(loggedUser._id)"
+                  :cards="game.cardsBoard"
                 />
               </v-flex>
             </v-layout>
