@@ -166,6 +166,9 @@ const actions = {
   },
   updatePlayer({ commit }, player) {
     commit('setCurrentPlayer', player);
+  },
+  pushGame({ commit }, game) {
+    commit('pushGame', game);
   }
 };
 
@@ -178,6 +181,9 @@ const mutations = {
   },
   setCurrentPlayer(state, currentPlayer) {
     state.currentPlayer = currentPlay;
+  },
+  pushGame(state, game) {
+    state.games = [game].concat(state.games);
   }
 };
 export default {

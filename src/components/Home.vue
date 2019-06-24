@@ -39,11 +39,10 @@ export default {
   },
   sockets: {
     newRoom: function(data) {
-      console.log(data);
       this.pushRoom(data);
     },
     newGame: function(data) {
-      console.log(data);
+      this.pushGame(data);
     }
   },
   beforeDestroy() {
@@ -55,7 +54,8 @@ export default {
       'pushRoom',
     ]),
     ...mapActions('game', [
-      'listGames'
+      'listGames',
+      'pushGame',
     ])
   }
 }
