@@ -18,13 +18,13 @@
     "HOST": "0.0.0.0",
     "PORT": 3331,
     "BACKEND_HOST": "'\"http://quartz.backend.tiimus.com\"'",
-    "GATEWAY_HOST": "'\"https://gateway.tiimus.com/quartz/\"'"
+    "GATEWAY_HOST": "'\"http://gateway.tiimus.com/quartz/\"'"
   },
   "production":{
     "NODE_ENV": "'\"production\"'",
     "HOST": "0.0.0.0",
     "PORT": 3332,
     "BACKEND_HOST": "'\"http://quartz.backend.tiimus.com\"'",
-    "GATEWAY_HOST": "'\"https://gateway.tiimus.com/quartz/\"'"
+    "GATEWAY_HOST": "'\"http://gateway.tiimus.com/quartz/\"'"
   }
 }
