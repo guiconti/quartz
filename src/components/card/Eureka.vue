@@ -82,6 +82,7 @@
           <div v-if="!finished">
             <div v-if="isCurrentPlayerOnCardAnswer(loggedUser._id)">
               <v-btn
+                v-if="pickedCrystalIndex !== -1 && givenCrystalIndex !== -1"
                 :loading="loading" 
                 @click="trade()"
               >
@@ -124,9 +125,9 @@ export default {
       crystals: ['', '', '', '', '', '', ''],
       realCrystals: ['', '', '', '', '', '', ''],
       givenCrystal: '',
-      givenCrystalIndex: 0,
+      givenCrystalIndex: -1,
       pickedCrystal: '',
-      pickedCrystalIndex: 0,
+      pickedCrystalIndex: -1,
       animationFinished: false,
       finished: false
     }
@@ -141,6 +142,8 @@ export default {
     },
     eurekaAnswer: function(data) {
       this.dialog = true;
+      this.player = this.getCurrentPlayer()(this.loggedUser._id);
+      console.log(this.player);
       this.username = data.player.username;
       this.givenCrystal = data.given;
       this.pickedCrystal = data.taken;
@@ -161,13 +164,14 @@ export default {
   watch: {
     dialog (val) {
       if (!val) {
+        this.player = {};
         this.username = '';
         this.crystals = ['', '', '', '', '', '', ''];
         this.realCrystals = ['', '', '', '', '', '', ''];
         this.givenCrystal = '';
-        this.givenCrystalIndex = 0;
+        this.givenCrystalIndex = -1;
         this.pickedCrystal = '';
-        this.pickedCrystalIndex = 0;
+        this.pickedCrystalIndex = -1;
         this.animationFinished = true;
         this.finished = false;
       }
@@ -180,24 +184,6 @@ export default {
     ...mapActions('card', [
       'answerEureka'
     ]),
-    crystalAnimation(index) {
-      this.finished = false;
-      this.animationFinished = false;
-      if (index > 25) {
-        this.crystals = this.realCrystals;
-        this.animationFinished = true;
-      } else {
-        index++;
-        this.changeCrystalColor();
-        let crystalAnimation = this.crystalAnimation;
-        setTimeout(function() { crystalAnimation(index) }, 100);
-      }
-    },
-    changeCrystalColor() {
-      // for (let i = 0; i < this.crystals.length; i++) {
-      //   this.crystals[i] = Object.keys(this.colors)[Math.floor(Math.random() * (Object.keys(this.colors).length - 1))];
-      // }
-    },
     trade() {
       this.loading = true;
       const data ={
@@ -207,7 +193,8 @@ export default {
           taken: this.crystals[this.pickedCrystalIndex]
         }
       };
-      this.answerEureka(data);
+      console.log(data);
+      // this.answerEureka(data);
     }   
   }
 }
