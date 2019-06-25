@@ -117,6 +117,7 @@
       :players="game.players"
       :is-game-over="!game.active"
     />
+    <app-informative />
   </v-container>
 </template>
 
@@ -145,6 +146,7 @@ import GiveMeAHandHere from '../card/GiveMeAHandHere';
 import NopeIAmOnABreak from '../card/NopeIAmOnABreak';
 import SellCrystals from '../crystal/SellCrystals';
 import GameOver from './GameOver';
+import Informative from './Informative'
 
 export default {
   name: 'Game',
@@ -171,7 +173,8 @@ export default {
     appGiveMeAHandHere: GiveMeAHandHere,
     appNopeIAmOnABreak: NopeIAmOnABreak,
     appSellCrystals: SellCrystals,
-    appGameOver: GameOver
+    appGameOver: GameOver,
+    appInformative: Informative,
   },
   data() {
     return {
