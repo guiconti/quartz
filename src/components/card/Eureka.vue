@@ -143,7 +143,6 @@ export default {
     eurekaAnswer: function(data) {
       this.dialog = true;
       this.player = this.getCurrentPlayer()(this.loggedUser._id);
-      console.log(this.player);
       this.username = data.player.username;
       this.givenCrystal = data.given;
       this.pickedCrystal = data.taken;
@@ -193,8 +192,7 @@ export default {
           taken: this.crystals[this.pickedCrystalIndex]
         }
       };
-      console.log(data);
-      // this.answerEureka(data);
+      this.answerEureka(data);
     }   
   }
 }
