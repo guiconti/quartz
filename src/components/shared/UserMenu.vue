@@ -13,6 +13,13 @@
         {{ user.username }}
       </v-list-tile-content>
     </v-list-tile>
+    <v-list-tile
+      v-for="(item, index) in items"
+      :key="index"
+      @click="item.click"
+    >
+      <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+    </v-list-tile>
   </div>
   <div v-else>
     <v-menu offset-y>
