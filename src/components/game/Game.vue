@@ -32,6 +32,7 @@
                   :has-an-idiot-book="player.hasAnIdiotBook"
                   :current-turn="player.currentTurn"
                   :is-round-active="player.isRoundActive"
+                  :waiting-player-for-defensive-response="game.waitingPlayerForDefensiveResponse"
                   @come-closer="comeCloserDialog = true"
                   @crystal-what-crystal="crystalWhatCrystalDialog = true"
                   @this-isnt-mine="thisIsntMineDialog = true"
@@ -54,6 +55,7 @@
                   :crystals="game.cave.crystals"
                   :player="getCurrentPlayer(loggedUser._id)"
                   :cards="game.cardsBoard"
+                  :waiting-player-for-defensive-response="game.waitingPlayerForDefensiveResponse"
                 />
               </v-flex>
             </v-layout>

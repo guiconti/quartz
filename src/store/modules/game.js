@@ -15,7 +15,7 @@ const getters = {
   isCurrentPlayerOnCardAnswer: state => userId => {
     if (state.currentGame.players) {
       let player = state.currentGame.players.find(player => player.user._id === userId);
-      return player && player.hasToAnswerCard !== '';
+      return player && player.hasToAnswerCard !== '' && game.waitingPlayerForDefensiveResponse !== '';
     }
   }
 };

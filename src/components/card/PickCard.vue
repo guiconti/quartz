@@ -5,7 +5,7 @@
   >
     <v-btn 
       slot="activator"
-      :disabled="!currentTurn"
+      :disabled="!currentTurn || waitingPlayerForDefensiveResponse !== ''"
       flat 
       color="orange"
     >
@@ -84,6 +84,11 @@ export default {
       type: Boolean,
       required: false,
       default: false,
+    },
+    waitingPlayerForDefensiveResponse: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
   data() {

@@ -69,6 +69,7 @@
               :current-turn="currentTurn"
               :cards="cards"
               :list-card="listCardDialog"
+              :waiting-player-for-defensive-response=waitingPlayerForDefensiveResponse
               @come-closer="$emit('come-closer')"
               @crystal-what-crystal="$emit('crystal-what-crystal')"
               @this-isnt-mine="$emit('this-isnt-mine')"
@@ -78,7 +79,7 @@
             />
             <v-spacer/>
             <v-btn 
-              :disabled="!currentTurn"
+              :disabled="!currentTurn || waitingPlayerForDefensiveResponse !== ''"
               flat 
               color="orange"
               @click="closeMine($route.params.id)"
@@ -141,6 +142,11 @@ export default {
       type: Boolean,
       required: false,
       default: true
+    },
+    waitingPlayerForDefensiveResponse: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
   data() {

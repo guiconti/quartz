@@ -31,7 +31,7 @@
           </v-container>
           <v-card-actions>
             <v-btn 
-              :disabled="!player || !player.currentTurn"
+              :disabled="!player || !player.currentTurn || waitingPlayerForDefensiveResponse !== ''"
               flat 
               color="orange"
               @click="pickCrystal($route.params.id)"
@@ -80,6 +80,11 @@ export default {
       type: Array,
       required: false,
       default: () => []
+    },
+    waitingPlayerForDefensiveResponse: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
   data() {
