@@ -1,25 +1,45 @@
 <template>
-  <v-toolbar v-if="showNavmenu">
-    <v-menu class="hidden-md-and-up">
-      <v-toolbar-side-icon slot="activator"/>
-    </v-menu>
-
-    <router-link 
-      to="/" 
-      class="nav-link"
+  <div>
+    <v-navigation-drawer
+      persistent
+      v-model="drawer"
+      fixed
+      app
     >
-      <v-toolbar-title>
-        Tiimus
-      </v-toolbar-title>
-    </router-link>
+      <v-list>
+        <app-user-menu 
+          v-if="isLogged"
+          :drawer="true"
+        />
+        <app-create-room 
+          v-if="isLogged"
+          :drawer="true"
+        />
+        <app-login v-else/>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar v-if="showNavmenu">
+      <v-menu class="hidden-md-and-up">
+        <v-toolbar-side-icon slot="activator" @click.stop="drawer = !drawer"/>
+      </v-menu>
 
-    <v-spacer/>
-    <v-toolbar-items class="hidden-sm-and-down">
-      <app-create-room v-if="isLogged"/>
-      <app-user-menu v-if="isLogged"/>
-      <app-login v-else/>
-    </v-toolbar-items>
-  </v-toolbar>
+      <router-link 
+        to="/" 
+        class="nav-link"
+      >
+        <v-toolbar-title>
+          Tiimus
+        </v-toolbar-title>
+      </router-link>
+
+      <v-spacer/>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <app-create-room v-if="isLogged"/>
+        <app-user-menu v-if="isLogged"/>
+        <app-login v-else/>
+      </v-toolbar-items>
+    </v-toolbar>
+  </div>
 </template>
 
 <script>
@@ -34,6 +54,11 @@ export default {
     appLogin: Login,
     appUserMenu: UserMenu,
     appCreateRoom: CreateRoom
+  },
+  data() {
+    return {
+      drawer: false,
+    }
   },
   computed: {
     ...mapState('auth', {

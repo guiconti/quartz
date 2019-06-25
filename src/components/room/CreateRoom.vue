@@ -3,7 +3,15 @@
     v-model="dialog"
     max-width="500px"
   >
+    <v-list-tile slot="activator" v-if="drawer">
+      <v-list-tile-content>
+        <v-btn flat>
+          Create room
+        </v-btn>
+      </v-list-tile-content>
+    </v-list-tile>
     <v-btn
+      v-else
       slot="activator"
       flat
     >
@@ -75,6 +83,13 @@ import { mapActions } from 'vuex';
 
 export default {
   name: 'CreateRoom',
+  props: {
+    drawer: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
   data() {
     return {
       dialog: false,
@@ -113,6 +128,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  .v-dialog__container {
+    width: 100% !important
+  }
   >>> .v-dialog__activator {
     height: 100%
   }

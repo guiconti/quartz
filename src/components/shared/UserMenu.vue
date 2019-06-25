@@ -1,28 +1,45 @@
 <template>
-  <v-menu offset-y>
-    <v-btn 
-      slot="activator"
-      flat
-    >
-      <v-avatar
+  <div v-if="drawer">
+    <v-list-tile>
+      <v-list-tile-avatar
         color="grey lighten-4"
       >
         <img 
           src="../../../static/miner-avatar.png" 
           alt="avatar"
         >
-      </v-avatar>
-    </v-btn>
-    <v-list>
-      <v-list-tile
-        v-for="(item, index) in items"
-        :key="index"
-        @click="item.click"
+      </v-list-tile-avatar>
+      <v-list-tile-content>
+        {{ user.username }}
+      </v-list-tile-content>
+    </v-list-tile>
+  </div>
+  <div v-else>
+    <v-menu offset-y>
+      <v-btn 
+        slot="activator"
+        flat
       >
-        <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-      </v-list-tile>
-    </v-list>
-  </v-menu>
+        <v-avatar
+          color="grey lighten-4"
+        >
+          <img 
+            src="../../../static/miner-avatar.png" 
+            alt="avatar"
+          >
+        </v-avatar>
+      </v-btn>
+      <v-list>
+        <v-list-tile
+          v-for="(item, index) in items"
+          :key="index"
+          @click="item.click"
+        >
+          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-menu>
+  </div>
 </template>
 
 <script>
@@ -30,6 +47,13 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'UserMenu',
+  props: {
+    drawer: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
   data() {
     return {
       items: [
