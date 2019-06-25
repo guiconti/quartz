@@ -47,6 +47,7 @@
       :current-turn="false"
       :cards="cards"
       :list-card="listCardDialog"
+      :cave="true"
       @close="listCardDialog = false"
     />
   </v-container>

@@ -1,33 +1,34 @@
 <template>
-  <v-dialog
-    v-model="dialog"
-    full-width
-  >
-    <v-card>
-      <v-toolbar
-        flat
-        color="white"
-      >
-        <v-btn
-          flat 
-          icon 
-          @click="dialog = false"
+  <div class="text-xs-center">
+    <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      <v-card>
+        <v-card-title
+          v-if="title && title !== ''"
+          class="headline grey lighten-2"
+          primary-title
         >
-          <v-icon>close</v-icon>
-        </v-btn>
+          {{ title }}
+        </v-card-title>
         <v-card-text>
-        <h3 class="subtitle">
           {{ message }}
-        </h3>
         </v-card-text>
-      </v-toolbar>
-      <v-btn
-        @click="dialog = false"
-      >
-        Close
-      </v-btn>
-    </v-card>
-  </v-dialog>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+              color="primary"
+              flat
+              @click="dialog = false"
+            >
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <script>
@@ -36,11 +37,13 @@ export default {
   data() {
     return {
       dialog: false,
+      title: '',
       message: ''
     };
   },
   sockets: {
     informative: function(data) {
+      this.title = data.title;
       this.message = data.message;
       this.dialog = true;
     }
@@ -48,6 +51,7 @@ export default {
   watch: {
     dialog (val) {
       if (!val) {
+        this.title = ''
         this.message = '';
       }
     }

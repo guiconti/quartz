@@ -3,7 +3,8 @@
     v-model="dialog"
     full-width
   >
-    <v-btn 
+    <v-btn
+      v-if="!cave"
       slot="activator"
       :disabled="!currentTurn || waitingPlayerForDefensiveResponse !== ''"
       flat 
@@ -81,6 +82,11 @@ export default {
       default: () => []
     },
     listCard: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    cave: {
       type: Boolean,
       required: false,
       default: false,

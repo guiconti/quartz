@@ -1,7 +1,7 @@
 <template>
   <v-dialog
     v-model="dialog"
-    full-width
+    width="500"
   >
     <v-card>
       <v-card-title>
