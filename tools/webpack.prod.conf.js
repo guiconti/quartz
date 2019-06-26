@@ -13,6 +13,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const SWPrecache = require('sw-precache-webpack-plugin')
 
 const env = process.env;
 
@@ -118,7 +119,23 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+
+    // service worker caching
+    new SWPrecache({
+      cacheId: 'quartz',
+      filename: 'service-worker.js',
+      staticFileGlobs: [
+        'index.html',
+        'manifest.json',
+        'dist/*.{js,css,json}',
+        'dist/static/*.{json}',
+        'static/*.{json}',
+        'dist/**/*.{js,html,css,json,png}'
+      ],
+      minify: false,
+      stripPrefix: 'dist/'
+    })
   ]
 })
 
