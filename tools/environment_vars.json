@@ -24,7 +24,7 @@
     "NODE_ENV": "'\"production\"'",
     "HOST": "0.0.0.0",
     "PORT": 3332,
-    "BACKEND_HOST": "'\"https://quartz.backend.tiimus.com\"'",
+    "BACKEND_HOST": "'\"https://gateway.tiimus.com\"'",
     "GATEWAY_HOST": "'\"https://gateway.tiimus.com/quartz/\"'"
   }
 }
