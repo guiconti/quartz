@@ -44,7 +44,7 @@
             </v-layout>
           </v-flex>
           <v-flex xs12>
-            <v-layout row>
+            <v-layout row wrap>
               <v-flex
                 v-if="game.cave" 
                 xs12
@@ -59,20 +59,21 @@
                   :waiting-player-for-defensive-response="game.waitingPlayerForDefensiveResponse"
                 />
               </v-flex>
+              <v-flex
+                sm12
+                md9
+                lg9
+              >
+                <app-chat 
+                  :users="game.players"
+                  :messages="messages"
+                  :show-users="false"
+                  :size="57"
+                />
+              </v-flex>
             </v-layout>
           </v-flex>
         </v-layout>
-      </v-flex>
-      <v-flex
-        sm12
-        md2
-        lg2
-      >
-        <app-chat 
-          :users="game.players"
-          :messages="messages"
-          :show-users="false"
-        />
       </v-flex>
     </v-layout>
     <app-crystal-picked />

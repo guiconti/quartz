@@ -3,6 +3,7 @@
     <v-container
       ref="chat" 
       fluid
+      :style="`height: calc(${size}vh - 19.5rem);`"
     >
       <div
         v-for="(message, index) in messages"
@@ -39,7 +40,12 @@ export default {
       type: Array,
       required: true,
       default: () => []
-    }
+    },
+    size: {
+      type: Number,
+      required: false,
+      default: 100
+    },
   },
   data() {
     return {
@@ -86,7 +92,7 @@ export default {
 .container {
   padding-top: 0px;
   box-sizing: border-box;
-  height: calc(100vh - 19.5rem);
+  /* height: calc(45vh - 19.5rem); */
   overflow-y: auto;
   padding: 10px;
   background-color: #f2f2f2;

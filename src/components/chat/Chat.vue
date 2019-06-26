@@ -17,7 +17,10 @@
         :xs10="showUsers"
         :xs12="!showUsers"
       >
-        <app-chat-messages :messages="messages"/>
+        <app-chat-messages 
+          :messages="messages"
+          :size="size"
+        />
       </v-flex>
     </v-layout>
   </v-container>
@@ -48,7 +51,12 @@ export default {
       type: Boolean,
       required: false,
       default: true
-    }
+    },
+    size: {
+      type: Number,
+      required: false,
+      default: 100,
+    },
   }
 }
 </script>
