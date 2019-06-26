@@ -49,15 +49,32 @@
             fluid
           >
             <v-layout>
-              <v-flex xs4>
+              <v-flex xs3>
                 <v-icon color="yellow lighten-1">monetization_on</v-icon>{{ money }}
               </v-flex>
-              <v-flex xs4>
+              <v-flex xs3>
                 <v-icon color="indigo" @click="listCardDialog = true">class</v-icon>{{ cards.length }}
               </v-flex>
               <v-flex
+                v-if="keptCrystal !== ''"
+                xs3
+              >
+                <v-layout row>
+                  <v-flex xs4>
+                    <v-icon color="grey">lock</v-icon>
+                  </v-flex>
+                  <v-flex xs6>
+                    <app-crystal
+                      :name="keptCrystal"
+                      :size="35"
+                      :onlyImage="true"
+                    />
+                  </v-flex>
+                </v-layout>
+              </v-flex>
+              <v-flex
                 v-if="hasAnIdiotBook" 
-                xs4
+                xs3
               >
                 <v-icon color="red lighten-2">child_care</v-icon>
               </v-flex>
@@ -127,6 +144,11 @@ export default {
     cards: {
       type: Array,
       required: true
+    },
+    keptCrystal: {
+      type: String,
+      required: false,
+      default: ''
     },
     hasAnIdiotBook: {
       type: Boolean,
