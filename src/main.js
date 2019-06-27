@@ -28,11 +28,11 @@ Vue.use(VueResource);
 Vue.use(Vuex);
 Vue.use(AsyncComputed);
 
-if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-  navigator.serviceWorker.register('/service-worker.js').then(() => {
-    console.log("Service Worker Registered!")
-  });
-}
+// if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+//   navigator.serviceWorker.register('/service-worker.js').then(() => {
+//     console.log("Service Worker Registered!")
+//   });
+// }
 
 const router = new VueRouter({
   routes,
