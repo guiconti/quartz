@@ -27,11 +27,12 @@
               xs12
               md4
             >
-            <v-btn
-              @click="$router.push({ path: `/` })"
-            >
-              Voltar para o lobby
-            </v-btn>
+              <v-btn
+                @click="$router.push({ path: `/` })"
+              >
+                Voltar para o lobby
+              </v-btn>
+            </v-flex>
           </v-layout>
         </v-container>
       </v-card-text>
