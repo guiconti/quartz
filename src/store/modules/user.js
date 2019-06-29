@@ -3,10 +3,23 @@ import API from '../../utils/API';
 const state = {
   loggedUser: {},
   currentUser: {},
+  notificationSettings: {},
   navmenu: true
 };
 
-const getters = {};
+const getters = {
+  loggedUserContainsSubscription: state => subscription => {
+    if (!this.loggedUser || !this.loggedUser.notificationSettings || !this.loggedUser.notificationSettings[0]) {
+      return false;
+    }
+    for (let i = 0; i < this.loggedUser.notificationSettings.length; i++) {
+      if (this.loggedUser.notificationSettings[i].keys.auth === subscription.keys.auth) {
+        return true;
+      }
+    }
+    return false;
+  },
+};
 
 const actions = {
   toggleNavmenu({ commit }, payload) {
@@ -48,6 +61,24 @@ const actions = {
       .catch(error => {
         //  TODO: Handle the error
       });
+  },
+  registerNotification({ commit }, notificationSettings) {
+    return new Promise((resolve, reject) => {
+      API.post(
+        `/user/notification`,
+        notificationSettings
+      )
+      .then(response => {
+        commit('setNotificationSettings', notificationSettings);
+        return resolve(response);
+      })
+      .catch(err => {
+        return reject(err)
+      });
+    })
+  },
+  setNotificationSettings({ commit }, notificationSettings) {
+    commit('setCurrentNotificationSettings', notificationSettings);
   }
 };
 
@@ -58,8 +89,17 @@ const mutations = {
   setLoggedUser(state, user) {
     state.loggedUser = user;
   },
+  setNotificationSettings(state, notificationSettings) {
+    if (!state.loggedUser.notificationSettings) {
+      state.loggedUser.notificationSettings = [];
+    }
+    state.loggedUser.notificationSettings.push(notificationSettings);
+  },
   setCurrentUser(state, user) {
     state.currentUser = user;
+  },
+  setCurrentNotificationSettings(state, notificationSettings) {
+    state.notificationSettings = notificationSettings;
   }
 };
 

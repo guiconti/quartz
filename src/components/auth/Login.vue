@@ -117,7 +117,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'Login',
@@ -146,6 +146,14 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState('user', {
+      loggedUser: state => state.loggedUser,
+    }),
+    ...mapGetters('user', [
+      'loggedUserContainsSubscription'
+    ])
+  },
   methods: {
     ...mapActions('auth', [
       'signIn',
@@ -162,6 +170,9 @@ export default {
         if (this.isSignUp) {
           this.signUp(body)
             .then(() => {
+              if (!this.loggedUserContainsSubscription()(subscription)) {
+                this.registerNotification(subscription);
+              }
               this.dialog = false;
               this.listGames();
             })
@@ -171,6 +182,9 @@ export default {
         } else {
           this.signIn(body)
             .then(() => {
+              if (!this.loggedUserContainsSubscription()(subscription)) {
+                this.registerNotification(subscription);
+              }
               this.dialog = false;
               this.listGames();
             })

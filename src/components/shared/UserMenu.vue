@@ -73,18 +73,28 @@ export default {
   },
   computed: {
     ...mapState('user', {
-      user: state => state.loggedUser
+      user: state => state.loggedUser,
+      notificationSettings: state => state.notificationSettings
     })
   },
   mounted() {
-    this.loggedInfo();
+    this
+      .loggedInfo()
+      .then(() => {
+        if (state.notificationSettings.endpoint 
+          && !this.loggedUserContainsSubscription()(state.notificationSettings)
+        ) {
+          this.registerNotification(subscription);
+        }
+      });
   },
   methods: {
     ...mapActions('auth', [
       'signOut'
     ]),
     ...mapActions('user', [
-      'loggedInfo'
+      'loggedInfo',
+      'registerNotification'
     ])
   }
 }

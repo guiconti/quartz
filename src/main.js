@@ -28,9 +28,6 @@ Vue.use(VueResource);
 Vue.use(Vuex);
 Vue.use(AsyncComputed);
 
-import serviceWorker from './utils/serviceWorker';
-serviceWorker();
-
 const router = new VueRouter({
   routes,
   mode: 'history'

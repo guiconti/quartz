@@ -1,44 +1,48 @@
 let setupServiceWorker = () => {
-  if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-    navigator.serviceWorker.register('/service-worker.js').then((serviceWorker) => {
-      console.log("Service Worker Registered!");
-      if (!('PushManager' in window)) {
-        console.log('Browser don`t support push notification.');
-        return;
-      }
-      serviceWorker.pushManager.getSubscription()
-        .then(subscription => {
-          if (subscription === null) {
-            console.log('Not subscribed');
-            askPermission()
-            .then(permission => {
-              if (permission) {
-                console.log('Subscribing')
-                const subscribeOptions = {
-                  userVisibleOnly: true,
-                  applicationServerKey: urlBase64ToUint8Array(
-                    'BBDfJvzAcS7CCnavWWzExpePOyHM3-CES_L6lUtc4bsneCJKf-Ot6Cur_pIVsWIhh3POyyd1g39liZzdp6lUDoc'
-                  )
-                };
-                // const applicationServerPublicKey = urlB64ToUint8Array('BBDfJvzAcS7CCnavWWzExpePOyHM3-CES_L6lUtc4bsneCJKf-Ot6Cur_pIVsWIhh3POyyd1g39liZzdp6lUDoc');
-                console.log(subscribeOptions);
-                serviceWorker.pushManager.subscribe(subscribeOptions)
-                .then(subscription => {
-                  console.log('User is subscribed:', subscription);
-                })
-                .catch(err => {
-                  console.log('Failed to subscribe the user: ', err);
-                });
-              }
-            })
-            .catch(err => { return });
-          } else {
-            console.log('Subscribed')
-            console.log(JSON.stringify(subscription));
-          }
-        })
-    });
-  }
+  return new Promise((resolve, reject) => {
+    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+      navigator.serviceWorker.register('/service-worker.js').then((serviceWorker) => {
+        console.log("Service Worker Registered!");
+        if (!('PushManager' in window)) {
+          console.log('Browser don`t support push notification.');
+          return;
+        }
+        serviceWorker.pushManager.getSubscription()
+          .then(subscription => {
+            if (subscription === null) {
+              console.log('Not subscribed');
+              askPermission()
+              .then(permission => {
+                if (permission) {
+                  console.log('Subscribing')
+                  const subscribeOptions = {
+                    userVisibleOnly: true,
+                    applicationServerKey: urlBase64ToUint8Array(
+                      'BBDfJvzAcS7CCnavWWzExpePOyHM3-CES_L6lUtc4bsneCJKf-Ot6Cur_pIVsWIhh3POyyd1g39liZzdp6lUDoc'
+                    )
+                  };
+                  // const applicationServerPublicKey = urlB64ToUint8Array('BBDfJvzAcS7CCnavWWzExpePOyHM3-CES_L6lUtc4bsneCJKf-Ot6Cur_pIVsWIhh3POyyd1g39liZzdp6lUDoc');
+                  console.log(subscribeOptions);
+                  serviceWorker.pushManager.subscribe(subscribeOptions)
+                  .then(subscription => {
+                    console.log('User is subscribed:', subscription);
+                    return resolve(subscription);
+                  })
+                  .catch(err => {
+                    console.log('Failed to subscribe the user: ', err);
+                    return reject(err);
+                  });
+                }
+              })
+              .catch(err => { return reject(err) });
+            } else {
+              console.log('Subscribed')
+              return resolve(subscription);
+            }
+          })
+      });
+    }
+  })
 }
 
 function askPermission() {
