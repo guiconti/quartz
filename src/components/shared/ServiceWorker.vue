@@ -1,6 +1,6 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import serviceWorker from '../../utils/serviceWorker';
+import { setupServiceWorker, setupSubscription } from '../../utils/serviceWorker';
 
 let installEvent;
 export default {
@@ -8,10 +8,15 @@ export default {
   data() {
     return {
       showInstallBanner: false,
+      serviceWorker: {},
     };
   },
   created() {
-    serviceWorker()
+    setupServiceWorker()
+      .then(serviceWorker => {
+        this.serviceWorker = serviceWorker;
+        return setupSubscription(serviceWorker)
+      })
       .then(subscription => {
         if (!this.loggedUserContainsSubscription(subscription)) {
           this.registerNotification(subscription);
@@ -26,21 +31,6 @@ export default {
       e.preventDefault();
       installEvent = e;
       this.showInstallBanner = true;
-    });
-    window.addEventListener('push', e => {
-      console.log(0);
-      var options = {
-        body: 'This notification was generated from a push!',
-        icon: '/static/icon-192x192.png',
-        vibrate: [100, 50, 100],
-        data: {
-          dateOfArrival: Date.now(),
-          primaryKey: '2'
-        }
-      };
-      e.waitUntil(
-        serviceWorker.registration.showNotification('Sua vez!', options)
-      );
     });
   },
   computed: {

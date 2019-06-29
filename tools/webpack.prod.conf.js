@@ -122,13 +122,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]),
 
     // service worker caching
-    new SWPrecache({
-      cacheId: 'quartz',
-      filename: 'service-worker.js',
-      staticFileGlobs: [],
-      minify: false,
-      stripPrefix: 'dist/'
-    })
+    // new SWPrecache({
+    //   cacheId: 'quartz',
+    //   filename: 'service-worker.js',
+    //   staticFileGlobs: [],
+    //   minify: false,
+    //   stripPrefix: 'dist/'
+    // })
   ]
 })
 
