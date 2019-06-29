@@ -181,6 +181,7 @@ export default {
           toSecond: this.toSelectedSecond
         }
       };
+      console.log(JSON.stringify(comboData));
       EventBus.$emit('combo-filled', comboData);
       this.fillChoices();
       this.selected = !this.selected;
@@ -202,6 +203,9 @@ export default {
     },
     changeSelected(currentSelected) {
       this.fillChoices();
+      this.fromSelected = currentSelected;
+      this.toSelectedFirst = this.fromSelected == this.toSelectedFirst ? null : this.toSelectedFirst;
+      this.toSelectedSecond = this.fromSelected == this.toSelectedSecond ? null : this.toSelectedSecond;
       let indexFirst = this.toCandidatesFirst.indexOf(currentSelected);
       let indexSecond = this.toCandidatesSecond.indexOf(currentSelected);
       if (indexFirst >= 0)
@@ -226,6 +230,7 @@ export default {
     },
     changeSelectedFirst(currentSelected) {
       this.fillChoices();
+      this.toSelectedFirst = currentSelected;
       let indexSecond = this.toCandidatesSecond.indexOf(currentSelected);
       if (indexSecond >= 0)
         this.toCandidatesSecond.splice(indexSecond, 1);
@@ -250,6 +255,7 @@ export default {
     },
     changeSelectedSecond(currentSelected) {
       this.fillChoices();
+      this.toSelectedSecond = currentSelected;
       let indexFirst = this.toCandidatesFirst.indexOf(currentSelected);
       if (indexFirst >= 0)
         this.toCandidatesFirst.splice(indexFirst, 1);
