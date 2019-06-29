@@ -125,14 +125,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     new SWPrecache({
       cacheId: 'quartz',
       filename: 'service-worker.js',
-      staticFileGlobs: [
-        'index.html',
-        'manifest.json',
-        'dist/*.{js,css,json}',
-        'dist/static/*.{json}',
-        'static/*.{json}',
-        'dist/**/*.{js,html,css,json,png}'
-      ],
+      staticFileGlobs: [],
       minify: false,
       stripPrefix: 'dist/'
     })

@@ -23,6 +23,15 @@
                 {{ index + 1 }} - {{ player.user.username }} <v-icon color="yellow lighten-1">monetization_on</v-icon>{{ player.money }}
               </h3>
             </v-flex>
+            <v-flex 
+              xs12
+              md4
+            >
+            <v-btn
+              @click="$router.push({ path: `/` })"
+            >
+              Voltar para o lobby
+            </v-btn>
           </v-layout>
         </v-container>
       </v-card-text>
