@@ -21,7 +21,6 @@ let setupServiceWorker = () => {
                       'BBDfJvzAcS7CCnavWWzExpePOyHM3-CES_L6lUtc4bsneCJKf-Ot6Cur_pIVsWIhh3POyyd1g39liZzdp6lUDoc'
                     )
                   };
-                  // const applicationServerPublicKey = urlB64ToUint8Array('BBDfJvzAcS7CCnavWWzExpePOyHM3-CES_L6lUtc4bsneCJKf-Ot6Cur_pIVsWIhh3POyyd1g39liZzdp6lUDoc');
                   console.log(subscribeOptions);
                   serviceWorker.pushManager.subscribe(subscribeOptions)
                   .then(subscription => {
@@ -36,6 +35,10 @@ let setupServiceWorker = () => {
               })
               .catch(err => { return reject(err) });
             } else {
+              // const options = {
+              //   body: 'Teste'
+              // };
+              // serviceWorker.showNotification('Teste', options);
               console.log('Subscribed')
               return resolve(subscription);
             }

@@ -81,10 +81,10 @@ export default {
     this
       .loggedInfo()
       .then(() => {
-        if (state.notificationSettings.endpoint 
-          && !this.loggedUserContainsSubscription()(state.notificationSettings)
+        if (this.notificationSettings.endpoint 
+          && !this.loggedUserContainsSubscription(this.notificationSettings)
         ) {
-          this.registerNotification(subscription);
+          this.registerNotification(this.notificationSettings);
         }
       });
   },

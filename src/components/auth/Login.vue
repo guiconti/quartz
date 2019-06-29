@@ -149,6 +149,7 @@ export default {
   computed: {
     ...mapState('user', {
       loggedUser: state => state.loggedUser,
+      notificationSettings: state => state.notificationSettings
     }),
     ...mapGetters('user', [
       'loggedUserContainsSubscription'
@@ -170,8 +171,8 @@ export default {
         if (this.isSignUp) {
           this.signUp(body)
             .then(() => {
-              if (!this.loggedUserContainsSubscription()(subscription)) {
-                this.registerNotification(subscription);
+              if (!this.loggedUserContainsSubscription(this.notificationSettings)) {
+                this.registerNotification(this.notificationSettings);
               }
               this.dialog = false;
               this.listGames();
@@ -182,8 +183,8 @@ export default {
         } else {
           this.signIn(body)
             .then(() => {
-              if (!this.loggedUserContainsSubscription()(subscription)) {
-                this.registerNotification(subscription);
+              if (!this.loggedUserContainsSubscription(this.notificationSettings)) {
+                this.registerNotification(this.notificationSettings);
               }
               this.dialog = false;
               this.listGames();
