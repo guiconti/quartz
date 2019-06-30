@@ -33,7 +33,7 @@
           :only-image="true"
         />
       </v-flex>
-      <v-flex xs1>
+      <v-flex xs2 md1>
         <app-crystal
           :name="from"
           :amount="0"

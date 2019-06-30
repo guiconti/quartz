@@ -12,25 +12,28 @@
         >
           <v-flex
             sm12
-            md1
+            md3
           >
+            <v-card-title>
+              <span class="headline">Your crystals</span>
+            </v-card-title>
             <v-layout 
-              column 
+              row 
               wrap
             >
               <v-flex
                 v-for="(crystal, index) in player.crystals"
                 :key="crystal.name"
-                xs12
-                sm12
-                md2
-                lg2
+                xs4
+                md4
               >
                 <div v-if="index < player.crystals.length - 1">
                   <app-crystal
                     :name="crystal.name"
                     :amount="crystal.amount"
                     :only-image="false"
+                    :center-text="true"
+                    :value="crystal.value"
                   />
                 </div>
               </v-flex>
@@ -38,7 +41,7 @@
           </v-flex>
           <v-flex 
             sm12 
-            md6
+            md5
           >
             <v-card-title>
               <span class="headline">Choose a sell combo</span>
@@ -91,7 +94,7 @@
           </v-flex>
           <v-flex 
             sm12 
-            md5
+            md4
           >
             <v-card-title>
               <span class="headline">Choose crystals to keep (2 max total)</span>
@@ -105,10 +108,7 @@
                   <v-flex
                     v-for="(crystal, index) in player.crystals"
                     :key="crystal.name"
-                    xs12
-                    sm12
-                    md2
-                    lg2
+                    xs4
                   >
                     <div v-if="index < player.crystals.length - 1">
                       <app-crystal

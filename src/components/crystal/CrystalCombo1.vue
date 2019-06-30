@@ -27,7 +27,7 @@
           :only-image="true"
         />
       </v-flex>
-      <v-flex xs1>
+      <v-flex xs2 md1>
         <app-crystal
           :name="from"
           :amount="0"
@@ -35,7 +35,7 @@
         />
       </v-flex>
       <v-flex 
-        xs1
+        xs2 md1
         class="text-xs-center"
       >
         <v-icon>arrow_forward</v-icon>
@@ -46,7 +46,7 @@
       >
         <h3> 2X </h3>
       </v-flex>
-      <v-flex xs1>
+      <v-flex xs2 md1>
         <app-crystal
           :name="to"
           :amount="0"
@@ -61,7 +61,7 @@
       align-center
     >
       <v-flex 
-        xs3
+        xs2
         style="padding-right: 20px; padding-left: 20px;"
       >
         <v-select
@@ -71,13 +71,13 @@
         />
       </v-flex>
       <v-flex 
-        xs1
+        xs2 md1
         class="text-xs-center"
       >
         <v-icon>arrow_forward</v-icon>
       </v-flex>
       <v-flex 
-        xs3
+        xs2
         style="padding-right: 20px; padding-left: 20px;"
       >
         <v-select

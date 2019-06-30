@@ -20,7 +20,7 @@
               xs12
             >
               <h3 class="headline">
-                {{ index + 1 }} - {{ player.user.username }} <v-icon color="yellow lighten-1">monetization_on</v-icon>{{ player.money }}
+                {{ index + 1 }} - {{ player.user.username }} <v-icon color="primary">monetization_on</v-icon>{{ player.money }}
               </h3>
             </v-flex>
             <v-flex 

@@ -40,7 +40,7 @@
           :only-image="true"
         />
       </v-flex>
-      <v-flex xs1>
+      <v-flex xs2 md1>
         <app-crystal
           :name="fromFifth"
           :amount="0"
@@ -48,7 +48,7 @@
         />
       </v-flex>
       <v-flex 
-        xs1
+        xs2 md1
         class="text-xs-center"
       >
         <v-icon>arrow_forward</v-icon>

@@ -16,8 +16,22 @@
       xs4 
       align-center
     >
-      <div class="text-xs-right">
-        {{ amount }}
+      <div
+        class="text-xs-center"
+      >
+        <v-layout
+          row
+          wrap
+        >
+          <v-flex xs12>
+            <div class="font-weight-bold">{{ amount }}</div>
+          </v-flex>
+          <div v-if="value > -1">
+            <v-flex xs12>
+              {{ value }}<v-icon small color="primary">monetization_on</v-icon> each
+            </v-flex>
+          </div>
+        </v-layout>
       </div>
     </v-flex>
   </v-layout>
@@ -52,6 +66,16 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    centerText: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    value: {
+      type: Number,
+      required: false,
+      default: -1
     }
   },
   methods: {

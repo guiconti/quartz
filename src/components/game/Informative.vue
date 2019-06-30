@@ -19,7 +19,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-              color="primary"
+              color="secondary"
               flat
               @click="dialog = false"
             >

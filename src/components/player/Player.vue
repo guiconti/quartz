@@ -21,7 +21,7 @@
                 </h3>
               </v-flex>
               <v-flex xs2 v-if="currentTurn">
-                <v-icon color="yellow lighten-1">stars</v-icon>
+                <v-icon color="primary">stars</v-icon>
               </v-flex>
             </v-layout>
           </v-card-title>
@@ -50,7 +50,7 @@
           >
             <v-layout>
               <v-flex xs3>
-                <v-icon color="yellow lighten-1">monetization_on</v-icon>{{ money }}
+                <v-icon color="primary">monetization_on</v-icon>{{ money }}
               </v-flex>
               <v-flex xs3>
                 <v-icon color="indigo" @click="listCardDialog = true">class</v-icon>{{ cards.length }}
