@@ -207,12 +207,19 @@ export default {
     }
   },
   created() {
+    const vue = this;
     this.gameInfo(this.$route.params.id)
       .then(response => {
-        this.getSockets(this.$route.params.id)
+        vue.getSockets(vue.$route.params.id)
       });
     this.retrieveMessages(this.$route.params.id);
     this.$socket.emit('joinGame', this.$route.params.id);
+    window.onfocus = () => {
+      vue.gameInfo(vue.$route.params.id)
+        .then(response => {
+          vue.getSockets(vue.$route.params.id)
+        });
+    }
   },
   beforeDestroy() {
     this.sockets.unsubscribe('newUser');
