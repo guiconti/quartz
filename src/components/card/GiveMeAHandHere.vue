@@ -1,34 +1,30 @@
 <template>
   <v-dialog
     v-model="dialog"
-    full-width
+    width="500"
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
       >
+        {{ username }} used Give me a hand here
+      </v-card-title>
+      <v-card-text v-if="!counter">
+        To make {{ target }} mine two crystals. {{ username }} got {{ took }} and {{ target }} got {{ given }}.
+      </v-card-text>
+      <v-card-text v-else>
+        To make {{ target }} mine two crystals. But {{ target }} was on a break and no crystals were taken.
+      </v-card-text>
+      <v-divider></v-divider>
+      <v-card-actions>
+        <v-spacer></v-spacer>
         <v-btn
-          flat 
-          icon 
           @click="dialog = false"
         >
-          <v-icon>close</v-icon>
+          Cancel
         </v-btn>
-        <h3 class="subtitle" v-if="!counter">
-          {{ username }} used Give me a hand here to make {{ target }} mine two crystals.
-          {{ username }} got {{ took }} and {{ target }} got {{ given }}.
-        </h3>
-        <h3 v-else>
-          {{ username }} used Give me a hand here to make {{ target }} mine two crystals.
-          But {{ target }} was on a break and no crystals were taken.
-        </h3>
-      </v-toolbar>
-      <v-btn
-        @click="dialog = false"
-      >
-        Close
-      </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

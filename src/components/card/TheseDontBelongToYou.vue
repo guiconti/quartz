@@ -1,38 +1,30 @@
 <template>
   <v-dialog
     v-model="dialog"
-    full-width
+    width="500"
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
       >
+        {{ username }} used These don't belong to you
+      </v-card-title>
+      <v-card-text v-if="!counter">
+        Took {{ took }} from {{ target }}.
+      </v-card-text>
+      <v-card-text v-else>
+        Tried to rob from {{ target }} but got countered and lost {{ took }}.
+      </v-card-text>
+      <v-divider></v-divider>
+      <v-card-actions>
+        <v-spacer></v-spacer>
         <v-btn
-          flat 
-          icon 
           @click="dialog = false"
         >
-          <v-icon>close</v-icon>
+          Cancel
         </v-btn>
-        <h3 
-          v-if="!counter" 
-          class="subtitle"
-        >
-          {{ username }} used these don't belong to you and took {{ took }} from {{ target }}.
-        </h3>
-        <h3 
-          v-else
-          class="subtitle"
-        >
-          {{ username }} tried to rob from {{ target }} but got countered and lost {{ took }}.
-        </h3>
-      </v-toolbar>
-      <v-btn
-        @click="dialog = false"
-      >
-        Close
-      </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

@@ -5,58 +5,57 @@
     persistent
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
       >
-        <h3 class="subtitle">
-          {{ attacker.username }} used This isn't mine and sent you an Obsidian. You have This isn't mine either
-            and can send this crystal to another player. Select the player which you want to resend this Obsidian,
-            if there's not a player to resend it it will go to the cave. If you don't want to use your card just click "Cancel".
-        </h3>
-      </v-toolbar>
+        {{ attacker.username }} used This isn't mine and sent you an Obsidian
+      </v-card-title>
       <v-card-text>
-        <v-container 
-          fluid
-          class="pt-0"
-        >
-          <v-layout
-            row
-            wrap
-          >
-            <v-flex xs12>
-              <h3 class="title">
-                Resend
-              </h3>
-            </v-flex>
-            <v-flex 
-              xs12 
-              md4
-            >
-              <v-select
-                v-model="target"
-                :items="targets"
-                item-text="user.username"
-                return-object
-                label="Select target"
-              ></v-select>
-            </v-flex>
-          </v-layout>
-          <v-btn
-            :loading="loading" 
-            color="secondary"
-            @click="resend(true)"
-          >
-            Resend
-          </v-btn>
-          <v-btn
-            :loading="loading" 
-            @click="resend(false)"
-          >
-            Cancel
-          </v-btn>
-        </v-container>
+        You have This isn't mine either
+        and can send this crystal to another player. Select the player which you want to resend this Obsidian,
+        if there's not a player to resend it it will go to the cave. If you don't want to use your card just click "Cancel".
       </v-card-text>
+      <v-card-text>
+        <v-layout
+          row
+          wrap
+        >
+          <v-flex xs12>
+            <h3 class="title">
+              Resend
+            </h3>
+          </v-flex>
+          <v-flex 
+            xs12 
+            md4
+          >
+            <v-select
+              v-model="target"
+              :items="targets"
+              item-text="user.username"
+              return-object
+              label="Select target"
+            />
+          </v-flex>
+        </v-layout>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn
+          :loading="loading" 
+          color="secondary"
+          @click="resend(true)"
+        >
+          Resend
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn
+          :loading="loading" 
+          @click="resend(false)"
+        >
+          Cancel
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

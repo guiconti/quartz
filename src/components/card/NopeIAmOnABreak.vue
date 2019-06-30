@@ -1,40 +1,38 @@
 <template>
   <v-dialog
     v-model="dialog"
-    full-width
+    width="500"
     persistent
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
       >
-        <h3 class="subtitle">
-          {{ attacker }} used Give me a hand here to make you mine two crystals for him/her.
-            You have Nope i am on a break and is able to defend youself by not mining anything.
-            If you don't want to use your card just click "Cancel".
-        </h3>
-      </v-toolbar>
+        {{ attacker }} used Give me a hand here
+      </v-card-title>
       <v-card-text>
-        <v-container 
-          fluid
-          class="pt-0"
-        >
-          <v-btn
-            :loading="loading"
-            color="secondary"
-            @click="defend(true)"
-          >
-            Defend
-          </v-btn>
-          <v-btn
-            :loading="loading" 
-            @click="defend(false)"
-          >
-            Cancel
-          </v-btn>
-        </v-container>
+        And tried to make you mine two crystals for him/her.
+        You have Nope i am on a break and is able to defend youself by not mining anything.
+        If you don't want to use your card just click "Cancel".
       </v-card-text>
+      <v-divider></v-divider>
+      <v-card-actions>
+        <v-btn
+          :loading="loading" 
+          color="secondary"
+          @click="defend(true)"
+        >
+          Defend
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn
+          :loading="loading" 
+          @click="defend(false)"
+        >
+          Cancel
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

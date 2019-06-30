@@ -5,82 +5,79 @@
     persistent
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
       >
-        <h3 class="subtitle">
-          {{ attacker.username }} tryed to use These dont belong to you to steal {{ crystalsTook }}. You have the 
+        {{ attacker.username }} used These dont belong to you to steal {{ crystalsTook }}
+      </v-card-title>
+      <v-card-text>
+        You have the 
           Thievery unacceptable card and can counter this taking one crystal from him/her. Choose your crystal
           and take it. If you don't want to use your card click "Cancel"
-        </h3>
-      </v-toolbar>
-      <v-card-text>
-        <v-container 
-          fluid
-          class="pt-0"
-        >
-          <v-layout
-            row
-            wrap
-          >
-            <v-flex xs12>
-              <h3 class="title">
-                Take
-              </h3>
-            </v-flex>
-            <v-flex
-              v-if="target" 
-              xs12
-            >
-              <v-layout 
-                row 
-                wrap
-              >
-                <v-flex
-                  v-for="(crystal, index) in target.crystals"
-                  :key="crystal.name"
-                  xs12
-                  sm12
-                  md2
-                  lg2
-                >
-                  <div v-if="index < target.crystals.length - 1">
-                    <app-crystal
-                      :name="crystal.name"
-                      :amount="crystal.amount"
-                      :only-image="true"
-                    />
-                    <div 
-                      class="text-xs-center" 
-                      style="padding-right: 20px; padding-left: 20px;"
-                    >
-                      <v-select
-                        v-model="pickedCrystals[index]"
-                        :items="pickedCrystalsValues[index]"
-                      />
-                    </div>
-                  </div>
-                </v-flex>
-              </v-layout>
-            </v-flex>
-          </v-layout>
-          <v-btn
-            v-if="pickedCrystals.reduce((a, b) => a + b) >= 0 && pickedCrystals.reduce((a, b) => a + b) <= 1"
-            :loading="loading"
-            color="secondary"
-            @click="counter(true)"
-          >
-            Counter
-          </v-btn>
-          <v-btn
-            :loading="loading" 
-            @click="counter(false)"
-          >
-            Cancel
-          </v-btn>
-        </v-container>
       </v-card-text>
+      <v-card-text>
+        <v-layout
+          row
+          wrap
+        >
+          <v-flex xs12>
+            <h3 class="title">
+              Take
+            </h3>
+          </v-flex>
+          <v-flex
+            v-if="target" 
+            xs12
+          >
+            <v-layout 
+              row 
+              wrap
+            >
+              <v-flex
+                v-for="(crystal, index) in target.crystals"
+                :key="crystal.name"
+                xs4
+                md2
+                lg2
+              >
+                <div v-if="index < target.crystals.length - 1">
+                  <app-crystal
+                    :name="crystal.name"
+                    :amount="crystal.amount"
+                    :only-image="true"
+                  />
+                  <div 
+                    class="text-xs-center" 
+                    style="padding-right: 20px; padding-left: 20px;"
+                  >
+                    <v-select
+                      v-model="pickedCrystals[index]"
+                      :items="pickedCrystalsValues[index]"
+                    />
+                  </div>
+                </div>
+              </v-flex>
+            </v-layout>
+          </v-flex>
+        </v-layout>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn
+          :loading="loading" 
+          color="secondary"
+          @click="counter(true)"
+        >
+          Counter
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn
+          :loading="loading" 
+          @click="counter(false)"
+        >
+          Cancel
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

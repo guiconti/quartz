@@ -1,29 +1,27 @@
 <template>
   <v-dialog
     v-model="dialog"
-    full-width
+    width="500"
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
       >
+        {{ username }} used Crystal what crystal?
+      </v-card-title>
+      <v-card-text>
+        Kept his/hers {{ keptCrystal }} safe until the end of the day
+      </v-card-text>
+      <v-divider></v-divider>
+      <v-card-actions>
+        <v-spacer></v-spacer>
         <v-btn
-          flat 
-          icon 
           @click="dialog = false"
         >
-          <v-icon>close</v-icon>
+          Cancel
         </v-btn>
-        <v-toolbar-title>
-          {{ username }} used crystal what crystal and kept his/hers {{ keptCrystal }} safe until the end of the day.
-        </v-toolbar-title>
-      </v-toolbar>
-      <v-btn
-        @click="dialog = false"
-      >
-        Close
-      </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

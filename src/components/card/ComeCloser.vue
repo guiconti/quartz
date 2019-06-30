@@ -1,32 +1,31 @@
 <template>
-  <v-dialog
-    v-model="dialog"
-    full-width
-  >
-    <v-card>
-      <v-toolbar
-        flat
-        color="white"
-      >
-        <v-btn
-          flat 
-          icon
-          color="secondary"
-          @click="dialog = false"
+  <div class="text-xs-center">
+    <v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      <v-card>
+        <v-card-title
+          class="headline grey lighten-2"
+          primary-title
         >
-          <v-icon>close</v-icon>
-        </v-btn>
-        <v-toolbar-title>
-          {{ username }} used come closer and changed his/hers {{ givenCrystal }} for {{ target }}'s {{ takenCrystal }}
-        </v-toolbar-title>
-      </v-toolbar>
-      <v-btn
-        @click="dialog = false"
-      >
-        Close
-      </v-btn>
-    </v-card>
-  </v-dialog>
+          {{ username }} used Come closer
+        </v-card-title>
+        <v-card-text>
+          Changed his/hers {{ givenCrystal }} for {{ target }}'s {{ takenCrystal }}
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            @click="dialog = false"
+          >
+            Cancel
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </div>
 </template>
 
 <script>
