@@ -3,16 +3,16 @@
   "short_name": "Quartz",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#E91E63",
+  "theme_color": "#E5B045",
   "background_color": "#fff",
   "icons": [
     {
-      "src": "/static/icon-192x192.png",
+      "src": "https://assets.bendev.com.br/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/static/icon-512x512.png",
+      "src": "https://assets.bendev.com.br/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
