@@ -4,21 +4,12 @@
     full-width
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
       >
-        <v-btn
-          flat 
-          icon 
-          @click="dialog = false"
-        >
-          <v-icon>close</v-icon>
-        </v-btn>
-        <v-toolbar-title>
-          Keep one crystal safe until the end of the day.
-        </v-toolbar-title>
-      </v-toolbar>
+        Keep one crystal safe until the end of the day
+      </v-card-title>
       <v-card-text>
         <v-container 
           fluid
@@ -55,16 +46,25 @@
               </div>
             </v-radio-group>
           </v-layout>
-          <v-btn
-            v-if="pickedCrystalIndex > -1"
-            :loading="loading"
-            color="secondary"
-            @click="keepCrystal()"
-          >
-            Keep crystal
-          </v-btn>
         </v-container>
       </v-card-text>
+      <v-card-actions>
+        <v-btn
+          v-if="pickedCrystalIndex > -1"
+          :loading="loading" 
+          color="secondary"
+          @click="keepCrystal()"
+        >
+          Keep crystal
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn
+          :loading="loading" 
+          @click="dialog = false"
+        >
+          Cancel
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

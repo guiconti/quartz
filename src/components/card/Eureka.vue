@@ -1,11 +1,15 @@
 <template>
   <v-dialog
     v-model="dialog"
+    :persistent="isCurrentPlayerOnCardAnswer(loggedUser._id)"
     full-width
   >
     <v-card>
-      <v-card-title>
-        <span class="headline">{{ username }} used Eureka, received 7 crystals and can pick one</span>
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
+      >
+        {{ username }} used Eureka, received 7 crystals and can pick one
       </v-card-title>
       <v-card-text>
         <v-container 

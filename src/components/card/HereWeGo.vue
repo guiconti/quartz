@@ -4,8 +4,11 @@
     full-width
   >
     <v-card>
-      <v-card-title>
-        <span class="headline">{{ username }} used Here we go and received 3 crystals</span>
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
+      >
+        {{ username }} used Here we go and received 3 crystals
       </v-card-title>
       <v-card-text>
         <v-container fluid>
@@ -26,18 +29,17 @@
               />
             </v-flex>
           </v-layout>
-          <div
-            v-if="finished"
-          >
-            <h3> {{ username }} picked {{ realCrystals.join(', ') }} </h3>
-            <v-btn
-              @click="dialog = false"
-            >
-              Close
-            </v-btn>
-          </div>
         </v-container>
       </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn
+          v-if="finished"
+          @click="dialog = false"
+        >
+          Cancel
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

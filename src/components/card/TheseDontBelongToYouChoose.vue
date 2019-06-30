@@ -4,21 +4,12 @@
     full-width
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
       >
-        <v-btn
-          flat 
-          icon 
-          @click="dialog = false"
-        >
-          <v-icon>close</v-icon>
-        </v-btn>
-        <v-toolbar-title>
-          Take two crystal's from a player
-        </v-toolbar-title>
-      </v-toolbar>
+        Take two crystal's from a player
+      </v-card-title>
       <v-card-text>
         <v-container 
           fluid
@@ -81,16 +72,24 @@
               </v-layout>
             </v-flex>
           </v-layout>
-          <v-btn
-            v-if="pickedCrystals.reduce((a, b) => a + b) > 0 && pickedCrystals.reduce((a, b) => a + b) <= 2"
-            :loading="loading"
-            color="secondary"
-            @click="take()"
-          >
-            Take
-          </v-btn>
         </v-container>
       </v-card-text>
+      <v-card-actions>
+        <v-btn
+          v-if="pickedCrystals.reduce((a, b) => a + b) > 0 && pickedCrystals.reduce((a, b) => a + b) <= 2"
+          :loading="loading" 
+          color="secondary"
+          @click="take()"
+        >
+          Take
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn
+          @click="dialog = false"
+        >
+          Cancel
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

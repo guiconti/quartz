@@ -4,8 +4,11 @@
     full-width
   >
     <v-card>
-      <v-card-title>
-        <span class="headline">{{ username }} used Out of my way, each player lost one crystal.</span>
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
+      >
+        {{ username }} used Out of my way, each player lost one crystal
       </v-card-title>
       <v-card-text>
         <v-container 
@@ -45,15 +48,17 @@
               </v-layout>
             </v-flex>
           </v-layout>
-          <div v-if="finished">
-            <v-btn
-              @click="dialog = false"
-            >
-              Close
-            </v-btn>
-          </div>
         </v-container>
       </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn
+          v-if="finished"
+          @click="dialog = false"
+        >
+          Cancel
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
@@ -80,7 +85,6 @@ export default {
   },
   sockets: {
     outOfMyWay: function(data) {
-      console.log(data);
       this.dialog = true;
       this.username = data.player.username;
       this.realLostCrystals = JSON.parse(JSON.stringify(data.crystalsLost));

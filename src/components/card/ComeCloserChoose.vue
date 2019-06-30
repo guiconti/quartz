@@ -4,21 +4,12 @@
     full-width
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
       >
-        <v-btn
-          flat 
-          icon 
-          @click="dialog = false"
-        >
-          <v-icon>close</v-icon>
-        </v-btn>
-        <v-toolbar-title>
-          Trade one crystal with another player's crystal
-        </v-toolbar-title>
-      </v-toolbar>
+        Trade one crystal with another player's crystal
+      </v-card-title>
       <v-card-text>
         <v-container 
           fluid
@@ -88,15 +79,24 @@
               </v-radio-group>
             </v-flex>
           </v-layout>
+        </v-container>
+        <v-card-actions>
           <v-btn
             v-if="givenCrystalIndex > -1 && pickedCrystalIndex > -1"
-            :loading="loading"
+            :loading="loading" 
             color="secondary"
             @click="trade()"
           >
             Trade
           </v-btn>
-        </v-container>
+          <v-spacer></v-spacer>
+          <v-btn
+            :loading="loading" 
+            @click="dialog = false"
+          >
+            Cancel
+          </v-btn>
+        </v-card-actions>
       </v-card-text>
     </v-card>
   </v-dialog>

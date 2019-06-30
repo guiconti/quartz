@@ -5,8 +5,11 @@
     persistent
   >
     <v-card>
-      <v-card-title>
-        <span class="headline">Pick a crystal. If booth of them are Obsidian you can just send both to the target.</span>
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
+      >
+        Pick a crystal. If booth of them are Obsidian you can just send both to the target
       </v-card-title>
       <v-card-text>
         <v-container 
@@ -41,16 +44,25 @@
               </div>
             </v-radio-group>
           </v-layout>
-          <v-btn
-            v-if="pickedCrystalIndex !== -1 || crystals[crystals.length - 1] === 2"
-            :loading="loading" 
-            color="secondary"
-            @click="take()"
-          >
-            Take
-          </v-btn>
         </v-container>
       </v-card-text>
+      <v-card-actions>
+        <v-btn
+          v-if="pickedCrystalIndex !== -1 || crystals[crystals.length - 1] === 2"
+          :loading="loading" 
+          color="secondary"
+          @click="take()"
+        >
+          Take
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn
+          :loading="loading"
+          @click="dialog = false"
+        >
+          Cancel
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

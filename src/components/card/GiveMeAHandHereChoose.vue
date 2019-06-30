@@ -4,21 +4,12 @@
     full-width
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        class="headline grey lighten-2"
+        primary-title
       >
-        <v-btn
-          flat 
-          icon 
-          @click="dialog = false"
-        >
-          <v-icon>close</v-icon>
-        </v-btn>
-        <v-toolbar-title>
-          Select a target to mine two crystals
-        </v-toolbar-title>
-      </v-toolbar>
+        Select a target to mine two crystals
+      </v-card-title>
       <v-card-text>
         <v-container 
           fluid
@@ -46,16 +37,24 @@
               />
             </v-flex>
           </v-layout>
-          <v-btn
-            v-if="target"
-            :loading="loading" 
-            color="secondary"
-            @click="makeItMine()"
-          >
-            Make it mine!
-          </v-btn>
         </v-container>
       </v-card-text>
+      <v-card-actions>
+        <v-btn
+          v-if="target"
+          :loading="loading" 
+          color="secondary"
+          @click="makeItMine()"
+        >
+          Make it mine!
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn
+          @click="dialog = false"
+        >
+          Cancel
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>

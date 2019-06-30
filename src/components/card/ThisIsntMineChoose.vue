@@ -4,24 +4,20 @@
     full-width
   >
     <v-card>
-      <v-toolbar
-        flat
-        color="white"
+      <v-card-title
+        v-if="player && player.crystals[player.crystals.length - 1].amount > 0"
+        class="headline grey lighten-2"
+        primary-title
       >
-        <v-btn
-          flat 
-          icon 
-          @click="dialog = false"
-        >
-          <v-icon>close</v-icon>
-        </v-btn>
-        <v-toolbar-title v-if="player && player.crystals[player.crystals.length - 1].amount > 0">
-          Send an Obsidian to another player
-        </v-toolbar-title>
-        <v-toolbar-title v-else>
-          You don't have an Autunita to send to someone
-        </v-toolbar-title>
-      </v-toolbar>
+        Send an Obsidian to another player
+      </v-card-title>
+      <v-card-title
+        v-else
+        class="headline grey lighten-2"
+        primary-title
+      >
+         You don't have an Autunita to send to someone
+      </v-card-title>
       <v-card-text>
         <v-container 
           fluid
@@ -50,25 +46,24 @@
               />
             </v-flex>
           </v-layout>
-          <div v-if="player && player.crystals[player.crystals.length - 1].amount > 0">
-            <v-btn
-              v-if="target !== {}"
-              :loading="loading" 
-              color="secondary"
-              @click="send()"
-            >
-              Send
-            </v-btn>
-          </div>
-          <div v-else>
-            <v-btn
-              @click="dialog = false"
-            >
-              Cancel
-            </v-btn>
-          </div>
         </v-container>
       </v-card-text>
+      <v-card-actions>
+        <v-btn
+          v-if="player && player.crystals[player.crystals.length - 1].amount > 0 && target"
+          :loading="loading" 
+          color="secondary"
+          @click="send()"
+        >
+          Send
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn
+          @click="dialog = false"
+        >
+          Cancel
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
@@ -90,7 +85,7 @@ export default {
       loading: false,
       player: null,
       targets: [],
-      target: {}
+      target: null
     }
   },
   computed: {
@@ -102,7 +97,7 @@ export default {
     dialog (val) {
       if (!val) {
         this.player = null;
-        this.target = {};
+        this.target = null;
         this.targets = [];
         this.loading = false;
         this.$emit('close');
