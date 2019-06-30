@@ -14,10 +14,10 @@
       <v-card-actions v-if="!listOnly && type !== 'REACTION'">
         <v-btn
           flat
-          color="orange"
+          color="secondary"
           @click="useCard()"
         >
-          Usar
+          Use
         </v-btn>
       </v-card-actions>
       <v-slide-y-transition>

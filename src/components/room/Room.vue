@@ -7,7 +7,7 @@
     <v-btn 
       v-if="room.owner && room.owner._id === loggedUser._id && room.users.length >= 2"
       large
-      color="info"
+      color="secondary"
       block
       @click="startGame()"
     >

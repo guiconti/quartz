@@ -11,7 +11,7 @@
         <v-btn
           v-if="isLogged"
           flat
-          color="orange" 
+          color="secondary" 
           @click="join"
         >
           Join

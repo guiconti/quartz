@@ -90,7 +90,8 @@
           </v-layout>
           <v-btn
             v-if="givenCrystalIndex > -1 && pickedCrystalIndex > -1"
-            :loading="loading" 
+            :loading="loading"
+            color="secondary"
             @click="trade()"
           >
             Trade

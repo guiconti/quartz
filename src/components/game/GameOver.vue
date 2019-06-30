@@ -28,6 +28,7 @@
               md4
             >
               <v-btn
+                color="secondary"
                 @click="$router.push({ path: `/` })"
               >
                 Voltar para o lobby

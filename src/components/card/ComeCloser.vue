@@ -10,7 +10,8 @@
       >
         <v-btn
           flat 
-          icon 
+          icon
+          color="secondary"
           @click="dialog = false"
         >
           <v-icon>close</v-icon>

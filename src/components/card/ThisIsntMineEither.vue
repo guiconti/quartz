@@ -44,6 +44,7 @@
           </v-layout>
           <v-btn
             :loading="loading" 
+            color="secondary"
             @click="resend(true)"
           >
             Resend

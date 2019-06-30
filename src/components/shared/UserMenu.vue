@@ -9,7 +9,7 @@
           alt="avatar"
         >
       </v-list-tile-avatar>
-      <v-list-tile-content>
+      <v-list-tile-content class="white--text">
         {{ user.username }}
       </v-list-tile-content>
     </v-list-tile>
@@ -18,7 +18,7 @@
       :key="index"
       @click="item.click"
     >
-      <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+      <v-list-tile-title class="white--text">{{ item.title }}</v-list-tile-title>
     </v-list-tile>
   </div>
   <div v-else>
@@ -36,13 +36,13 @@
           >
         </v-avatar>
       </v-btn>
-      <v-list>
+      <v-list class="primary">
         <v-list-tile
           v-for="(item, index) in items"
           :key="index"
           @click="item.click"
         >
-          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+          <v-list-tile-title class="white--text">{{ item.title }}</v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-menu>
@@ -99,3 +99,9 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+  .v-menu { 
+    height: 100% !important
+  }
+</style>

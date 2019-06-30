@@ -49,6 +49,7 @@
           <v-btn
             v-if="target"
             :loading="loading" 
+            color="secondary"
             @click="makeItMine()"
           >
             Make it mine!

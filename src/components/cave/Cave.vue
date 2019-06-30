@@ -33,7 +33,7 @@
             <v-btn 
               :disabled="!player || !player.currentTurn || waitingPlayerForDefensiveResponse !== ''"
               flat 
-              color="orange"
+              color="secondary"
               @click="pickCrystal($route.params.id)"
             >
               <app-pickaxe-icon :size="30"/>

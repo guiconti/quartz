@@ -140,6 +140,7 @@
         </h3>
         <v-btn 
           :disabled="!enableSelling"
+          color="secondary"
           @click="send"
         > Finish </v-btn>
       </v-container>

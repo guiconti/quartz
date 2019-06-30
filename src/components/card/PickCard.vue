@@ -8,7 +8,7 @@
       slot="activator"
       :disabled="!currentTurn || waitingPlayerForDefensiveResponse !== ''"
       flat 
-      color="orange"
+      color="secondary"
     >
       Use a card
     </v-btn>

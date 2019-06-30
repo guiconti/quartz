@@ -13,8 +13,8 @@ import store from './store';
 
 Vue.use(Vuetify, {
   theme: {
-    primary: "#1E152A",
-    secondary: "#5C6784",
+    primary: "#E5B045",
+    secondary: "#6D58B1",
     accent: "#E8DCB9"
   }
 });

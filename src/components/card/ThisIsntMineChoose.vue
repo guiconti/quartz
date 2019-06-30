@@ -54,6 +54,7 @@
             <v-btn
               v-if="target !== {}"
               :loading="loading" 
+              color="secondary"
               @click="send()"
             >
               Send

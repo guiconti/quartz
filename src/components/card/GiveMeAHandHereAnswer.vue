@@ -44,6 +44,7 @@
           <v-btn
             v-if="pickedCrystalIndex !== -1 || crystals[crystals.length - 1] === 2"
             :loading="loading" 
+            color="secondary"
             @click="take()"
           >
             Take

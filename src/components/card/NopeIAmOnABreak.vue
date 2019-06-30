@@ -21,7 +21,8 @@
           class="pt-0"
         >
           <v-btn
-            :loading="loading" 
+            :loading="loading"
+            color="secondary"
             @click="defend(true)"
           >
             Defend

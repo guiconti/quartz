@@ -5,7 +5,10 @@
   >
     <v-list-tile slot="activator" v-if="drawer">
       <v-list-tile-content>
-        <v-btn flat>
+        <v-btn
+          class="white--text"
+          flat
+        >
           Create room
         </v-btn>
       </v-list-tile-content>
@@ -13,6 +16,7 @@
     <v-btn
       v-else
       slot="activator"
+      class="white--text"
       flat
     >
       Create room
@@ -58,7 +62,7 @@
       <v-card-actions>
         <v-spacer/>
         <v-btn 
-          color="blue darken-1"
+          color="secondary"
           flat 
           @click.native="dialog = false"
         >
@@ -66,7 +70,7 @@
         </v-btn>
         <v-btn 
           :disabled="!valid"
-          color="blue darken-1" 
+          color="secondary" 
           flat 
           type="submit" 
           @click.native="submit"

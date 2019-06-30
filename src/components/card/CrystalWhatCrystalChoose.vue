@@ -57,7 +57,8 @@
           </v-layout>
           <v-btn
             v-if="pickedCrystalIndex > -1"
-            :loading="loading" 
+            :loading="loading"
+            color="secondary"
             @click="keepCrystal()"
           >
             Keep crystal

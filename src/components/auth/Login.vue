@@ -13,6 +13,7 @@
     <v-btn
       v-else
       slot="activator"
+      class="white--text"
       flat
     >
       Login
@@ -69,7 +70,7 @@
       <v-card-actions>
         <v-btn
           v-if="!isSignUp"
-          color="blue darken-1" 
+          color="secondary" 
           flat 
           @click.native="isSignUp = true"
         >
@@ -77,7 +78,7 @@
         </v-btn>
         <v-btn 
           v-if="isSignUp" 
-          color="blue darken-1" 
+          color="secondary" 
           flat 
           @click.native="isSignUp = false"
         >
@@ -85,7 +86,7 @@
         </v-btn>
         <v-spacer/>
         <v-btn 
-          color="blue darken-1"
+          color="secondary"
           flat 
           @click.native="dialog = false"
         >
@@ -94,7 +95,7 @@
         <v-btn 
           v-if="isSignUp" 
           :disabled="!valid" 
-          color="blue darken-1" 
+          color="secondary" 
           flat 
           type="submit" 
           @click.native="submit"
@@ -104,7 +105,7 @@
         <v-btn 
           v-if="!isSignUp" 
           :disabled="!valid"
-          color="blue darken-1" 
+          color="secondary" 
           flat 
           type="submit" 
           @click.native="submit"

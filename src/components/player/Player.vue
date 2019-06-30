@@ -98,7 +98,7 @@
             <v-btn 
               :disabled="!currentTurn || waitingPlayerForDefensiveResponse !== ''"
               flat 
-              color="orange"
+              color="secondary"
               @click="closeMine($route.params.id)"
             >
               Close mine

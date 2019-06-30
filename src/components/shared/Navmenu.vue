@@ -3,6 +3,7 @@
     <v-navigation-drawer
       persistent
       v-model="drawer"
+      class="primary"
       fixed
       app
     >
@@ -18,16 +19,23 @@
         <app-login v-else/>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar v-if="showNavmenu">
+    <v-toolbar 
+      v-if="showNavmenu"
+      color="primary"
+    >
       <v-menu class="hidden-md-and-up">
-        <v-toolbar-side-icon slot="activator" @click.stop="drawer = !drawer"/>
+        <v-toolbar-side-icon 
+          slot="activator"
+          class="white--text"
+          @click.stop="drawer = !drawer"
+        />
       </v-menu>
 
       <router-link 
         to="/" 
         class="nav-link"
       >
-        <v-toolbar-title>
+        <v-toolbar-title class="white--text">
           Tiimus
         </v-toolbar-title>
       </router-link>

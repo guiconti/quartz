@@ -67,7 +67,8 @@
           </v-layout>
           <v-btn
             v-if="pickedCrystals.reduce((a, b) => a + b) >= 0 && pickedCrystals.reduce((a, b) => a + b) <= 1"
-            :loading="loading" 
+            :loading="loading"
+            color="secondary"
             @click="counter(true)"
           >
             Counter
