@@ -6,8 +6,6 @@
     >
       <v-flex
         sm12
-        md10
-        lg10
       >
         <v-layout column>
           <v-flex xs12>
