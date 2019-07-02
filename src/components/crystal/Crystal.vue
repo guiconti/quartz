@@ -25,12 +25,10 @@
         >
           <v-flex xs12>
             <div class="font-weight-bold">{{ amount }}</div>
-          </v-flex>
-          <div v-if="value > -1">
-            <v-flex xs12>
+            <div v-if="value > -1" class="text-xs-center">
               {{ value }}<v-icon small color="primary">monetization_on</v-icon> each
-            </v-flex>
-          </div>
+            </div>
+          </v-flex>
         </v-layout>
       </div>
     </v-flex>

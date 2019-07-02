@@ -61,7 +61,7 @@
       align-center
     >
       <v-flex 
-        xs2
+        xs4
         style="padding-right: 20px; padding-left: 20px;"
       >
         <v-select
@@ -71,13 +71,13 @@
         />
       </v-flex>
       <v-flex 
-        xs2 md1
+        xs3 md2
         class="text-xs-center"
       >
         <v-icon>arrow_forward</v-icon>
       </v-flex>
       <v-flex 
-        xs2
+        xs4
         style="padding-right: 20px; padding-left: 20px;"
       >
         <v-select
