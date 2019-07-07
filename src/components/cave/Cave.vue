@@ -5,7 +5,7 @@
         <v-card>
           <v-card-title primary-title>
             <div>
-              <h3 class="headline mb-0">Mining room</h3>
+              <h3 class="headline mb-0">Mining room - Day {{ round }}/{{ amountOfRounds }}</h3>
             </div>
           </v-card-title>
 
@@ -70,22 +70,32 @@ export default {
     crystals: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     player: {
       type: Object,
       required: false,
-      default: () => {}
+      default: () => {},
     },
     cards: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     waitingPlayerForDefensiveResponse: {
       type: String,
       required: false,
-      default: ''
+      default: '',
+    },
+    round: {
+      type: Number,
+      required: false,
+      default: 0,
+    },
+    amountOfRounds: {
+      type: Number,
+      required: false,
+      default: 0,
     }
   },
   data() {
