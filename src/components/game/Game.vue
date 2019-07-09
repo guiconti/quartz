@@ -55,6 +55,8 @@
                   :player="getCurrentPlayer(loggedUser._id)"
                   :cards="game.cardsBoard"
                   :waiting-player-for-defensive-response="game.waitingPlayerForDefensiveResponse"
+                  :round="game.round"
+                  :amount-of-rounds="game.amountOfRounds"
                 />
               </v-flex>
               <v-flex
@@ -115,6 +117,7 @@
     <app-game-over
       v-if="game.players"
       :players="game.players"
+      :summaries="game.summaries"
       :is-game-over="!game.active"
     />
     <app-informative />
