@@ -19,13 +19,17 @@
               :key="player._id"
               xs12
             >
-              <h3 class="headline">
-                {{ index + 1 }} - {{ player.user.username }} <v-icon color="primary">monetization_on</v-icon>{{ player.money }}
-              </h3>
+              <app-game-over-player
+                :position="index + 1"
+                :name="player.user.username"
+                :money="player.money"
+                :summary="summaries[index]"
+              />
             </v-flex>
             <v-flex 
               xs12
               md4
+              style="padding-top: 20px !important"
             >
               <v-btn
                 color="secondary"
@@ -42,20 +46,33 @@
 </template>
 
 <script>
+import GameOverPlayer from './GameOverPlayer';
+
 export default {
   name: 'GameOver',
+  components: {
+    appGameOverPlayer: GameOverPlayer,
+  },
   props: {
     players: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
+    },
+    summaries: {
+      type: Array,
+      required: false,
+      default: () => [],
     },
     isGameOver: {
       type: Boolean,
       required: false,
-      default: false
-    }
+      default: false,
+    },
   },
+  data: () => ({
+    show: false,
+  }),
   computed: {
     leaderboard: function() {
       let leaderboard = [];
