@@ -12,8 +12,14 @@
         >
           {{ title }}
         </v-card-title>
-        <v-card-text>
+        <v-card-text v-if="url === ''">
           {{ message }}
+        </v-card-text>
+        <v-card-text>
+        <v-img
+          :src="url"
+          class="grey lighten-2"
+        />
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
@@ -36,13 +42,16 @@ export default {
     return {
       dialog: false,
       title: '',
-      message: ''
+      message: '',
+      url: '',
     };
   },
   sockets: {
     informative: function(data) {
+      console.log(data);
       this.title = data.title;
       this.message = data.message;
+      this.url = data.url;
       this.dialog = true;
     }
   },
@@ -51,6 +60,7 @@ export default {
       if (!val) {
         this.title = ''
         this.message = '';
+        this.url = '';
       }
     }
   }
