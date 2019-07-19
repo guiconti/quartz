@@ -181,7 +181,6 @@ export default {
           toSecond: this.toSelectedSecond
         }
       };
-      console.log(JSON.stringify(comboData));
       EventBus.$emit('combo-filled', comboData);
       this.fillChoices();
       this.selected = !this.selected;

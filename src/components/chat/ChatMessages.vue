@@ -8,13 +8,19 @@
       <div
         v-for="(message, index) in messages"
         :key="message._id"
-        :class="{ own: message.owner._id == loggedUser._id }"
+        :class="{ 
+          own: message.owner && message.owner._id == loggedUser._id,
+          log: !message.owner
+        }"
       >
         <div
-          v-if="(index > 0 && messages[index - 1].owner._id != message.owner._id) || index == 0"
+          v-if="((index > 0 && !messages[index - 1].owner && message.owner) || index > 0 && messages[index - 1].owner && message.owner && messages[index - 1].owner._id != message.owner._id) || index == 0"
           class="username"
         >
           {{ message.owner.username }}
+        </div>
+        <div v-else-if="!message.owner && messages[index - 1].owner" class="username">
+          Log
         </div>
         <div class="content">
           {{ message.content }}
@@ -102,6 +108,9 @@ export default {
 }
 .own .content {
   background-color: lightskyblue;
+}
+.log .content {
+  background-color: #bbbaba !important;
 }
 .username {
   font-size: 18px;
