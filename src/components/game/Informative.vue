@@ -12,14 +12,14 @@
         >
           {{ title }}
         </v-card-title>
-        <v-card-text v-if="url === ''">
+        <v-card-text v-if="url === undefined">
           {{ message }}
         </v-card-text>
-        <v-card-text>
-        <v-img
-          :src="url"
-          class="grey lighten-2"
-        />
+        <v-card-text v-else>
+          <v-img
+            :src="url"
+            class="grey lighten-2"
+          />
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
@@ -48,7 +48,6 @@ export default {
   },
   sockets: {
     informative: function(data) {
-      console.log(data);
       this.title = data.title;
       this.message = data.message;
       this.url = data.url;
