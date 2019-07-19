@@ -1,6 +1,7 @@
 <template>
   <v-dialog
     v-model="dialog"
+    :disabled="!currentTurn || waitingPlayerForDefensiveResponse !== ''"
     full-width
   >
     <v-btn
