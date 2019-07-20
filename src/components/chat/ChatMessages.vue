@@ -14,12 +14,12 @@
         }"
       >
         <div
-          v-if="((index > 0 && !messages[index - 1].owner && message.owner) || index > 0 && messages[index - 1].owner && message.owner && messages[index - 1].owner._id != message.owner._id) || index == 0"
+          v-if="((index > 0 && !messages[index - 1].owner && message.owner) || index > 0 && messages[index - 1].owner && message.owner && messages[index - 1].owner._id != message.owner._id) || (index == 0 && message.owner)"
           class="username"
         >
           {{ message.owner.username }}
         </div>
-        <div v-else-if="!message.owner && messages[index - 1].owner" class="username">
+        <div v-else-if="index > 0 && !message.owner && messages[index - 1].owner || index == 0" class="username">
           Log
         </div>
         <div class="content">
